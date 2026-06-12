@@ -1,0 +1,550 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; }
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --gold-bg: #f5eed8;
+    --text-dark: #1a2744;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --white: #ffffff;
+    --offwhite: #f9f7f2;
+    --border: #e2d9c0;
+  }
+  .page { background: var(--offwhite); min-height: 100vh; font-family: 'Georgia', serif; }
+
+  /* TOP NAV */
+  .topnav {
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-text { color: var(--gold); font-size: 18px; font-weight: 700; letter-spacing: 1px; font-family: 'Georgia', serif; }
+  .logo-sub { color: #8fa3c8; font-size: 9px; letter-spacing: 2px; display: block; margin-top: 1px; font-family: sans-serif; }
+  .hamburger { color: var(--white); cursor: pointer; font-size: 20px; }
+
+  /* TICKER */
+  .ticker {
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 11px; letter-spacing: 1.5px; font-weight: 700;
+    padding: 7px 0; overflow: hidden; white-space: nowrap;
+    font-family: sans-serif;
+  }
+  .ticker-inner { display: inline-block; animation: ticker 20s linear infinite; }
+  @keyframes ticker { 0%{transform:translateX(100%)} 100%{transform:translateX(-100%)} }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 36px 20px 28px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; bottom: -20px; right: -20px;
+    width: 140px; height: 140px;
+    background: var(--gold); opacity: 0.08; border-radius: 50%;
+  }
+  .hero-tag { color: var(--gold); font-size: 10px; letter-spacing: 2.5px; font-family: sans-serif; font-weight: 600; margin-bottom: 10px; }
+  .hero-title { color: var(--white); font-size: 26px; line-height: 1.3; margin-bottom: 8px; }
+  .hero-title span { color: var(--gold); }
+  .hero-line { width: 40px; height: 2px; background: var(--gold); margin-top: 14px; }
+  .hero-sub { color: #8fa3c8; font-size: 13px; margin-top: 12px; line-height: 1.6; font-family: sans-serif; }
+
+  /* SECTION */
+  .section { padding: 28px 20px; }
+  .section-label { color: var(--gold); font-size: 10px; letter-spacing: 2.5px; font-family: sans-serif; font-weight: 700; margin-bottom: 6px; }
+  .section-title { color: var(--navy); font-size: 20px; margin-bottom: 4px; }
+  .section-line { width: 32px; height: 2px; background: var(--gold); margin-bottom: 20px; }
+
+  /* VACANCY CARDS */
+  .vacancy-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 16px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--gold);
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+  .vacancy-card:active { background: var(--offwhite); }
+  .dept-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .dept-name { color: var(--navy); font-size: 16px; font-weight: 600; font-family: sans-serif; }
+  .badge {
+    font-size: 10px; font-family: sans-serif; font-weight: 700; letter-spacing: 0.5px;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .badge-open { background: #e8f5ee; color: #1a6b3a; }
+  .badge-urgent { background: #fff3e0; color: #9a4f0a; }
+  .vac-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+  .vac-meta-item { font-size: 11px; color: var(--text-light); font-family: sans-serif; display: flex; align-items: center; gap: 4px; }
+  .vac-desc { font-size: 12px; color: var(--text-mid); font-family: sans-serif; margin-top: 8px; line-height: 1.5; }
+  .apply-btn {
+    margin-top: 12px;
+    background: var(--navy);
+    color: var(--gold);
+    font-size: 11px; font-family: sans-serif; font-weight: 700; letter-spacing: 1px;
+    padding: 8px 18px; border: none; border-radius: 5px; cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 4px 0 24px; }
+
+  /* FORM SECTION */
+  .form-section {
+    background: var(--navy);
+    padding: 28px 20px 36px;
+  }
+  .form-section .section-label { color: var(--gold-light); }
+  .form-section .section-title { color: var(--white); font-size: 20px; }
+  .form-section .section-line { background: var(--gold); }
+
+  .form-card {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 22px 16px;
+    margin-top: 20px;
+  }
+
+  .form-row { margin-bottom: 16px; }
+  .form-label {
+    display: block; font-size: 11px; font-family: sans-serif;
+    color: var(--gold-light); letter-spacing: 1px; font-weight: 600;
+    margin-bottom: 6px; text-transform: uppercase;
+  }
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(201,168,76,0.4);
+    border-radius: 6px;
+    color: var(--white);
+    font-size: 14px; font-family: sans-serif;
+    padding: 10px 12px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-select option { background: var(--navy); color: var(--white); }
+  .form-textarea { min-height: 90px; resize: vertical; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .file-box {
+    border: 1px dashed rgba(201,168,76,0.5);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .file-box-icon { color: var(--gold); font-size: 24px; margin-bottom: 6px; }
+  .file-box-text { font-size: 12px; color: rgba(255,255,255,0.5); font-family: sans-serif; }
+  .file-box-hint { font-size: 10px; color: rgba(201,168,76,0.6); font-family: sans-serif; margin-top: 4px; }
+
+  .checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 4px; }
+  .checkbox-row input[type="checkbox"] { margin-top: 2px; accent-color: var(--gold); }
+  .checkbox-row label { font-size: 12px; color: rgba(255,255,255,0.6); font-family: sans-serif; line-height: 1.5; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 13px; font-family: sans-serif; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 14px; border: none; border-radius: 6px;
+    margin-top: 20px; cursor: pointer;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #111b30;
+    padding: 20px;
+    text-align: center;
+  }
+  .footer-logo { color: var(--gold); font-size: 15px; font-weight: 700; font-family: 'Georgia', serif; }
+  .footer-text { color: #5a6e8a; font-size: 11px; font-family: sans-serif; margin-top: 8px; line-height: 1.6; }
+
+  /* NAV DRAWER */
+  .nav-drawer {
+    position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px;
+    height: 100vh; background: var(--white); z-index: 200;
+    transition: right 0.3s ease; padding: 20px;
+    border-left: 3px solid var(--gold);
+  }
+  .nav-drawer.open { right: 0; }
+  .nav-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 190; display: none;
+  }
+  .nav-overlay.open { display: block; }
+  .nav-close { text-align: right; margin-bottom: 20px; }
+  .nav-close-btn {
+    background: var(--navy); color: var(--white); border: none;
+    width: 34px; height: 34px; border-radius: 6px; font-size: 18px; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 13px 0; border-bottom: 0.5px solid var(--border);
+    text-decoration: none;
+  }
+  .nav-num {
+    width: 30px; height: 30px; border-radius: 50%; background: var(--navy);
+    color: var(--white); font-size: 12px; font-weight: 700; font-family: sans-serif;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-label { color: var(--text-dark); font-size: 15px; font-family: sans-serif; }
+  .nav-label.active { color: var(--gold); font-weight: 600; }
+
+  /* SUCCESS */
+  .success-msg {
+    background: rgba(26,107,58,0.15); border: 0.5px solid rgba(26,107,58,0.4);
+    border-radius: 8px; padding: 16px; margin-top: 20px; display: none;
+    text-align: center;
+  }
+  .success-msg .s-icon { color: #4caf50; font-size: 30px; margin-bottom: 8px; }
+  .success-msg p { color: var(--gold-light); font-size: 13px; font-family: sans-serif; line-height: 1.6; }
+</style>
+
+<div class="page">
+
+  <div class="nav-overlay" id="overlay" onclick="closeNav()"></div>
+  <div class="nav-drawer" id="navDrawer">
+    <div class="nav-close">
+      <button class="nav-close-btn" onclick="closeNav()"><i class="ti ti-x"></i></button>
+    </div>
+    <a class="nav-item" href="#"><div class="nav-num">01</div><span class="nav-label">Home</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">02</div><span class="nav-label">Industries We Serve</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">03</div><span class="nav-label">Our People Strength</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">04</div><span class="nav-label">Gallery</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">05</div><span class="nav-label active">Career Options</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">06</div><span class="nav-label">Knowledge Centre</span></a>
+    <a class="nav-item" href="#"><div class="nav-num">07</div><span class="nav-label">Connect Us</span></a>
+  </div>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <div>
+      <div class="logo-text">BD<span style="color:#fff">&</span>A</div>
+      <span class="logo-sub">BATRA DEEPAK & ASSOCIATES</span>
+    </div>
+    <button style="background:none;border:none;cursor:pointer;color:#fff;font-size:22px;" onclick="openNav()">
+      <i class="ti ti-menu-2" aria-hidden="true"></i>
+    </button>
+  </nav>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <span class="ticker-inner">◆ &nbsp; NOW HIRING &nbsp; ◆ &nbsp; AUDIT · TAX · CORPORATE · ACCOUNTS · RECEPTION &nbsp; ◆ &nbsp; JOIN A LEGACY OF EXPERTISE SINCE 1998 &nbsp; ◆ &nbsp; APPLY BELOW &nbsp; ◆ &nbsp; INTEGRITY FIRST · CLIENT FOCUS · DEEP EXPERTISE &nbsp; ◆</span>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">CAREER OPTIONS</div>
+    <div class="hero-title">Build Your Career<br>with <span>Integrity &</span><br>Excellence</div>
+    <div class="hero-line"></div>
+    <div class="hero-sub">Be part of one of the region's most trusted CA firms. We invest in people who are driven, detail-oriented, and committed to delivering real value.</div>
+  </div>
+
+  <!-- VACANCIES -->
+  <div class="section">
+    <div class="section-label">OPEN POSITIONS</div>
+    <div class="section-title">Current Vacancies</div>
+    <div class="section-line"></div>
+
+    <!-- AUDIT -->
+    <div class="vacancy-card">
+      <div class="dept-row">
+        <div class="dept-name"><i class="ti ti-file-certificate" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#c9a84c" aria-hidden="true"></i>Audit</div>
+        <span class="badge badge-urgent">Urgent</span>
+      </div>
+      <div class="vac-desc">Assist in statutory audits, internal audits, and due diligence assignments across manufacturing, real estate, and FMCG clients.</div>
+      <div class="vac-meta">
+        <div class="vac-meta-item"><i class="ti ti-users" aria-hidden="true"></i>2 Openings</div>
+        <div class="vac-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i>On-site</div>
+        <div class="vac-meta-item"><i class="ti ti-clock" aria-hidden="true"></i>Full-time</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;font-family:sans-serif;color:#4a5568;">
+        <strong style="color:#1a2744">Required:</strong> CA Inter / CA Final, Article ship experience preferred
+      </div>
+      <button class="apply-btn" onclick="scrollToForm('Audit')">Apply Now →</button>
+    </div>
+
+    <!-- TAX -->
+    <div class="vacancy-card">
+      <div class="dept-row">
+        <div class="dept-name"><i class="ti ti-calculator" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#c9a84c" aria-hidden="true"></i>Tax</div>
+        <span class="badge badge-open">Open</span>
+      </div>
+      <div class="vac-desc">Handle GST compliance, income tax filings, assessments, and advisory for a diverse portfolio of clients.</div>
+      <div class="vac-meta">
+        <div class="vac-meta-item"><i class="ti ti-users" aria-hidden="true"></i>3 Openings</div>
+        <div class="vac-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i>On-site</div>
+        <div class="vac-meta-item"><i class="ti ti-clock" aria-hidden="true"></i>Full-time</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;font-family:sans-serif;color:#4a5568;">
+        <strong style="color:#1a2744">Required:</strong> B.Com / CA Inter, knowledge of GST & direct tax
+      </div>
+      <button class="apply-btn" onclick="scrollToForm('Tax')">Apply Now →</button>
+    </div>
+
+    <!-- CORPORATE -->
+    <div class="vacancy-card">
+      <div class="dept-row">
+        <div class="dept-name"><i class="ti ti-building" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#c9a84c" aria-hidden="true"></i>Corporate</div>
+        <span class="badge badge-open">Open</span>
+      </div>
+      <div class="vac-desc">Support corporate law compliance, ROC filings, MCA work, secretarial compliance, and corporate restructuring advisory.</div>
+      <div class="vac-meta">
+        <div class="vac-meta-item"><i class="ti ti-users" aria-hidden="true"></i>2 Openings</div>
+        <div class="vac-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i>On-site</div>
+        <div class="vac-meta-item"><i class="ti ti-clock" aria-hidden="true"></i>Full-time</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;font-family:sans-serif;color:#4a5568;">
+        <strong style="color:#1a2744">Required:</strong> CS Inter / LLB / CA Inter, Companies Act knowledge
+      </div>
+      <button class="apply-btn" onclick="scrollToForm('Corporate')">Apply Now →</button>
+    </div>
+
+    <!-- ACCOUNTS -->
+    <div class="vacancy-card">
+      <div class="dept-row">
+        <div class="dept-name"><i class="ti ti-report-money" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#c9a84c" aria-hidden="true"></i>Accounts</div>
+        <span class="badge badge-urgent">Urgent</span>
+      </div>
+      <div class="vac-desc">Manage bookkeeping, finalization of accounts, MIS reporting, and client accounting support using Tally/ERP systems.</div>
+      <div class="vac-meta">
+        <div class="vac-meta-item"><i class="ti ti-users" aria-hidden="true"></i>4 Openings</div>
+        <div class="vac-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i>On-site</div>
+        <div class="vac-meta-item"><i class="ti ti-clock" aria-hidden="true"></i>Full-time</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;font-family:sans-serif;color:#4a5568;">
+        <strong style="color:#1a2744">Required:</strong> B.Com / M.Com, Tally Prime proficiency
+      </div>
+      <button class="apply-btn" onclick="scrollToForm('Accounts')">Apply Now →</button>
+    </div>
+
+    <!-- RECEPTION -->
+    <div class="vacancy-card">
+      <div class="dept-row">
+        <div class="dept-name"><i class="ti ti-phone-calling" style="font-size:16px;vertical-align:-2px;margin-right:6px;color:#c9a84c" aria-hidden="true"></i>Reception</div>
+        <span class="badge badge-open">Open</span>
+      </div>
+      <div class="vac-desc">Manage front-desk operations, client coordination, scheduling, and office administration with a professional and warm demeanour.</div>
+      <div class="vac-meta">
+        <div class="vac-meta-item"><i class="ti ti-users" aria-hidden="true"></i>1 Opening</div>
+        <div class="vac-meta-item"><i class="ti ti-map-pin" aria-hidden="true"></i>On-site</div>
+        <div class="vac-meta-item"><i class="ti ti-clock" aria-hidden="true"></i>Full-time</div>
+      </div>
+      <div style="margin-top:10px;font-size:11px;font-family:sans-serif;color:#4a5568;">
+        <strong style="color:#1a2744">Required:</strong> Graduate, excellent communication, MS Office
+      </div>
+      <button class="apply-btn" onclick="scrollToForm('Reception')">Apply Now →</button>
+    </div>
+
+  </div>
+
+  <!-- WHY JOIN STRIP -->
+  <div style="background:var(--gold-bg);padding:24px 20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="section-label">WHY JOIN US</div>
+    <div class="section-title" style="color:var(--navy);margin-bottom:16px;">What we offer</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div style="background:var(--white);border-radius:8px;padding:14px;border-left:3px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;font-family:sans-serif;color:var(--navy);margin-bottom:4px;">GROWTH</div>
+        <div style="font-size:12px;color:var(--text-mid);font-family:sans-serif;line-height:1.4;">Structured learning paths & CA exam support</div>
+      </div>
+      <div style="background:var(--white);border-radius:8px;padding:14px;border-left:3px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;font-family:sans-serif;color:var(--navy);margin-bottom:4px;">EXPOSURE</div>
+        <div style="font-size:12px;color:var(--text-mid);font-family:sans-serif;line-height:1.4;">Diverse clients across 7+ industries</div>
+      </div>
+      <div style="background:var(--white);border-radius:8px;padding:14px;border-left:3px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;font-family:sans-serif;color:var(--navy);margin-bottom:4px;">CULTURE</div>
+        <div style="font-size:12px;color:var(--text-mid);font-family:sans-serif;line-height:1.4;">Integrity-driven, collaborative team</div>
+      </div>
+      <div style="background:var(--white);border-radius:8px;padding:14px;border-left:3px solid var(--gold);">
+        <div style="font-size:11px;font-weight:700;font-family:sans-serif;color:var(--navy);margin-bottom:4px;">STABILITY</div>
+        <div style="font-size:12px;color:var(--text-mid);font-family:sans-serif;line-height:1.4;">25+ years of trusted firm legacy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLICATION FORM -->
+  <div class="form-section" id="applyForm">
+    <div class="section-label">JOIN THE TEAM</div>
+    <div class="section-title">Apply Now</div>
+    <div class="section-line"></div>
+    <p style="font-size:13px;color:#8fa3c8;font-family:sans-serif;line-height:1.6;">Fill in the details below and we'll reach out within 3–5 working days.</p>
+
+    <div class="form-card">
+      <div class="two-col">
+        <div class="form-row">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Rahul" id="fname">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="Sharma" id="lname">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="rahul@email.com" id="email">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Mobile Number</label>
+        <input class="form-input" type="tel" placeholder="+91 98765 43210" id="phone">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Apply For Department</label>
+        <select class="form-select" id="dept">
+          <option value="" disabled selected>Select a department</option>
+          <option value="Audit">Audit</option>
+          <option value="Tax">Tax</option>
+          <option value="Corporate">Corporate</option>
+          <option value="Accounts">Accounts</option>
+          <option value="Reception">Reception</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Highest Qualification</label>
+        <select class="form-select" id="qual">
+          <option value="" disabled selected>Select qualification</option>
+          <option>B.Com</option>
+          <option>M.Com</option>
+          <option>CA Inter</option>
+          <option>CA Final</option>
+          <option>CS Inter / Final</option>
+          <option>LLB</option>
+          <option>MBA (Finance)</option>
+          <option>Other Graduate</option>
+        </select>
+      </div>
+
+      <div class="two-col">
+        <div class="form-row">
+          <label class="form-label">Experience</label>
+          <select class="form-select" id="exp">
+            <option value="" disabled selected>Years</option>
+            <option>Fresher</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>5+ years</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Expected CTC</label>
+          <input class="form-input" type="text" placeholder="₹ p.a." id="ctc">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Current / Last Employer</label>
+        <input class="form-input" type="text" placeholder="Company name or Articleship firm" id="employer">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Key Skills</label>
+        <input class="form-input" type="text" placeholder="e.g. Tally, GST, Statutory Audit, ROC" id="skills">
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Cover Note</label>
+        <textarea class="form-textarea" placeholder="Briefly tell us why you want to join BD&A and what you bring to the team..." id="cover"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">Upload Resume</label>
+        <div class="file-box" onclick="document.getElementById('resumeFile').click()">
+          <div class="file-box-icon"><i class="ti ti-upload" aria-hidden="true"></i></div>
+          <div class="file-box-text" id="fileLabel">Tap to upload your resume</div>
+          <div class="file-box-hint">PDF or DOC — Max 5 MB</div>
+          <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" style="display:none" onchange="updateFileLabel(this)">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label">How did you hear about us?</label>
+        <select class="form-select" id="source">
+          <option value="" disabled selected>Select source</option>
+          <option>LinkedIn</option>
+          <option>Naukri / Indeed</option>
+          <option>Referral from employee</option>
+          <option>Our website</option>
+          <option>Social media</option>
+          <option>Walk-in / Direct approach</option>
+        </select>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="consent">
+        <label for="consent">I confirm that the information provided is accurate and I consent to BD&A storing my details for recruitment purposes.</label>
+      </div>
+
+      <button class="submit-btn" onclick="submitForm()">Submit Application</button>
+
+      <div class="success-msg" id="successMsg">
+        <div class="s-icon"><i class="ti ti-circle-check" aria-hidden="true"></i></div>
+        <p><strong>Application received!</strong><br>Thank you for your interest in joining Batra Deepak & Associates. Our team will review your application and get in touch within 3–5 working days.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">BD<span style="color:#fff">&</span>A</div>
+    <div class="footer-text">
+      Batra Deepak & Associates — Chartered Accountants<br>
+      Founded 1998 · Integrity · Expertise · Trust<br>
+      <span style="color:#c9a84c;">careers@bdassociates.in</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openNav() {
+  document.getElementById('navDrawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeNav() {
+  document.getElementById('navDrawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+function scrollToForm(dept) {
+  document.getElementById('dept').value = dept;
+  document.getElementById('applyForm').scrollIntoView({ behavior: 'smooth' });
+}
+function updateFileLabel(input) {
+  if (input.files && input.files[0]) {
+    document.getElementById('fileLabel').textContent = input.files[0].name;
+  }
+}
+function submitForm() {
+  var fname = document.getElementById('fname').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var dept = document.getElementById('dept').value;
+  var consent = document.getElementById('consent').checked;
+  if (!fname || !email || !dept) {
+    alert('Please fill in your name, email, and department before submitting.');
+    return;
+  }
+  if (!consent) {
+    alert('Please confirm your consent before submitting.');
+    return;
+  }
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth' });
+  document.querySelector('.submit-btn').style.display = 'none';
+}
+</script>

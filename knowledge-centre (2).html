@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Knowledge Centre – BD&A</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --navy:    #1a2744;
+      --navy2:   #223060;
+      --gold:    #b8954a;
+      --gold-lt: #d4ab62;
+      --white:   #ffffff;
+      --offwhite:#f0f2f7;
+      --offwhite2:#e8eaf2;
+      --muted:   #5a6580;
+      --muted-lt:#8a94aa;
+      --border:  rgba(26,39,68,.13);
+      --border-gold: rgba(184,149,74,.3);
+      --radius:  4px;
+      --text-primary: #1a2744;
+      --text-secondary: #3d4f72;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ─── FIXED HEADER ─── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(26,39,68,.2);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+
+    .logo-block { display: flex; flex-direction: column; gap: 2px; cursor: pointer; }
+    .logo-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; letter-spacing: .04em;
+      color: var(--white);
+      line-height: 1;
+    }
+    .logo-main span { color: var(--gold); }
+    .logo-sub {
+      font-size: 8px; letter-spacing: .22em; font-weight: 500;
+      color: var(--muted); text-transform: uppercase;
+    }
+
+    .hamburger-btn {
+      width: 42px; height: 42px; border: 1px solid var(--gold);
+      background: transparent; cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 5px;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .hamburger-btn:hover { background: rgba(184,149,74,.12); }
+    .hamburger-btn span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--gold);
+    }
+
+    /* ─── SIDE DRAWER ─── */
+    .drawer-overlay {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(10,15,30,.65);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    .drawer {
+      position: fixed; top: 0; right: -340px; bottom: 0;
+      width: 320px; z-index: 1200;
+      background: var(--white);
+      transition: right .35s cubic-bezier(.4,0,.2,1);
+      display: flex; flex-direction: column;
+      padding: 16px 0;
+    }
+    .drawer.open { right: 0; }
+
+    .drawer-close {
+      align-self: flex-end;
+      margin: 4px 16px 12px;
+      width: 42px; height: 42px;
+      border: 1px solid var(--gold);
+      background: var(--navy); cursor: pointer;
+      font-size: 18px; color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius);
+      font-weight: 300;
+      transition: background .2s;
+    }
+    .drawer-close:hover { background: var(--navy2); }
+
+    .drawer nav { flex: 1; overflow-y: auto; }
+    .drawer nav a {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(26,39,68,.1);
+      text-decoration: none; color: var(--navy);
+      font-size: 15px; font-weight: 500;
+      transition: background .15s;
+    }
+    .drawer nav a:hover { background: rgba(184,149,74,.08); }
+    .drawer nav a.active { color: var(--gold); }
+    .nav-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      font-size: 11px; font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .drawer nav a.active .nav-num { background: var(--gold); }
+
+    /* ─── PAGE CONTENT ─── */
+    main { padding-top: 64px; }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: var(--navy);
+      padding: 64px 24px 48px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .eyebrow {
+      font-size: 10px; letter-spacing: .25em; font-weight: 500;
+      color: var(--gold-lt); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 6vw, 48px);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p {
+      font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.65);
+      max-width: 560px;
+    }
+
+    /* SECTIONS */
+    section { padding: 56px 24px; background: var(--offwhite); }
+    section:nth-child(even) { background: var(--offwhite2); }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--gold);
+    }
+    .section-label span {
+      font-size: 10px; letter-spacing: .22em; font-weight: 600;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 700; margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .section-desc {
+      font-size: 13px; color: var(--muted); line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* ─── PORTAL GRID ─── */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 14px;
+    }
+
+    .portal-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 16px 18px;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 10px;
+      transition: background .2s, border-color .2s, transform .2s;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(26,39,68,.06);
+    }
+    .portal-card:hover {
+      background: rgba(184,149,74,.06);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26,39,68,.1);
+    }
+
+    .portal-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(184,149,74,.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .portal-card h3 { font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+    .portal-card p { font-size: 11px; color: var(--muted); line-height: 1.5; flex: 1; }
+    .portal-link {
+      font-size: 10px; letter-spacing: .08em; font-weight: 600;
+      color: var(--gold); text-transform: uppercase;
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    /* ─── COMPLIANCE CALENDAR ─── */
+    .cal-tabs {
+      display: flex; gap: 0; margin-bottom: 24px;
+      border: 1px solid var(--border); border-radius: 6px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .cal-tab {
+      flex: 1; padding: 10px 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: .04em;
+      text-align: center; cursor: pointer;
+      background: transparent; color: var(--muted);
+      border: none; border-right: 1px solid var(--border);
+      transition: background .15s, color .15s;
+    }
+    .cal-tab:last-child { border-right: none; }
+    .cal-tab.active { background: var(--navy); color: var(--white); }
+
+    .cal-content { display: none; }
+    .cal-content.active { display: block; }
+
+    .cal-entry {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cal-entry:last-child { border-bottom: none; }
+
+    .cal-date {
+      min-width: 52px; text-align: center;
+      background: rgba(26,39,68,.05);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 6px 4px;
+      flex-shrink: 0;
+    }
+    .cal-date .day { font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1; }
+    .cal-date .mo  { font-size: 9px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; margin-top: 2px; }
+
+    .cal-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 3px; color: var(--navy); }
+    .cal-info p  { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    .badge {
+      display: inline-block; font-size: 9px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 20px; margin-left: 6px;
+      vertical-align: middle;
+    }
+    .badge-gst  { background: rgba(72,187,120,.2); color: #48bb78; }
+    .badge-tds  { background: rgba(99,179,237,.2); color: #63b3ed; }
+    .badge-itr  { background: rgba(246,173,85,.2); color: #f6ad55; }
+    .badge-mca  { background: rgba(183,148,244,.2); color: #b794f4; }
+    .badge-adv  { background: rgba(252,129,74,.2); color: #fc814a; }
+
+    /* ─── FAQ ─── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: var(--white);
+    }
+    .faq-q {
+      width: 100%; text-align: left;
+      background: var(--white);
+      border: none; cursor: pointer;
+      color: var(--navy);
+      padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 600; line-height: 1.4;
+      transition: background .15s;
+    }
+    .faq-q:hover { background: rgba(26,39,68,.03); }
+    .faq-q .arrow {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border: 1px solid var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--gold);
+      transition: transform .25s;
+    }
+    .faq-item.open .faq-q { background: rgba(184,149,74,.07); }
+    .faq-item.open .faq-q .arrow { transform: rotate(45deg); }
+
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      padding: 0 18px;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 18px 16px; }
+
+    .faq-tag {
+      display: inline-block;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+      background: rgba(26,39,68,.08); color: var(--navy2);
+      margin-bottom: 6px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      border-top: 3px solid var(--gold);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 11px; color: rgba(255,255,255,.5); letter-spacing: .06em;
+    }
+    footer strong { color: var(--gold); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--offwhite); }
+    ::-webkit-scrollbar-thumb { background: rgba(26,39,68,.2); border-radius: 3px; }
+
+    /* ─── NEWS SECTION ─── */
+    .news-grid { display: flex; flex-direction: column; gap: 14px; }
+
+    .news-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 16px 18px;
+      text-decoration: none;
+      display: block;
+      transition: box-shadow .2s, border-left-color .2s;
+      box-shadow: 0 1px 4px rgba(26,39,68,.05);
+    }
+    .news-card:hover {
+      box-shadow: 0 4px 14px rgba(26,39,68,.1);
+      border-left-color: var(--navy);
+    }
+
+    .news-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 6px;
+    }
+    .news-category {
+      font-size: 9px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 20px;
+    }
+    .cat-gst   { background: rgba(72,187,120,.15); color: #2d8a5c; }
+    .cat-itr   { background: rgba(246,173,85,.18); color: #b07c1a; }
+    .cat-mca   { background: rgba(183,148,244,.18); color: #6b46c1; }
+    .cat-ita   { background: rgba(99,179,237,.18); color: #2b6cb0; }
+    .cat-tds   { background: rgba(252,129,74,.18); color: #c05621; }
+
+    .news-date {
+      font-size: 10px; color: var(--muted-lt); letter-spacing: .04em;
+    }
+
+    .news-card h4 {
+      font-size: 14px; font-weight: 600; color: var(--navy);
+      line-height: 1.4; margin-bottom: 5px;
+    }
+    .news-card p {
+      font-size: 12px; color: var(--muted); line-height: 1.55;
+    }
+    .news-read-more {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 10px;
+      font-size: 10px; font-weight: 600; letter-spacing: .08em;
+      color: var(--gold); text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FIXED HEADER ═══ -->
+<header>
+  <a href="https://folio304.github.io/Batradeepakandassociates/" class="logo-block" style="text-decoration:none;">
+    <div class="logo-main">BD<span>&amp;</span>A</div>
+    <div class="logo-sub">Batra Deepak &amp; Associates</div>
+  </a>
+  <button class="hamburger-btn" onclick="openDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ═══ SIDE DRAWER ═══ -->
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  <nav>
+    <a href="index.html" class="active">
+      <span class="nav-num">01</span>Home
+    </a>
+    <a href="industries-we-serve.html" class="active">
+      <span class="nav-num">02</span>Industries We Serve
+    </a>
+    <a href="our-people-strength.html" class="active">
+      <span class="nav-num">03</span>Our People Strength
+    </a>
+    <a href="https://folio304.github.io/Batradeepakandassociates/#gallery">
+      <span class="nav-num">04</span>Gallery
+    </a>
+    <a href="career_options.html" class="active">
+      <span class="nav-num">05</span>Career Options
+    </a>
+    <a href="knowledge-centre.html" class="active">
+      <span class="nav-num" style="background:var(--gold);color:var(--navy);">06</span>Knowledge Centre
+    </a>
+    <a href="connect-us.html" class="active">
+      <span class="nav-num">07</span>Connect Us
+    </a>
+  </nav>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="eyebrow">BD&amp;A · Knowledge Centre</div>
+    <h1>Your <em>Financial</em><br>Reference Hub</h1>
+    <p>Quick access to government portals, real-time compliance deadlines, and answers to the questions that matter most to Indian businesses and professionals in 2026.</p>
+  </div>
+
+  <!-- ─── SECTION 1 · QUICK PORTALS ─── -->
+  <section>
+    <div class="section-label"><span>Essential Portals</span></div>
+    <h2 class="section-title">Important Government Links</h2>
+    <p class="section-desc">Direct access to the portals you use every day — no searching required.</p>
+
+    <div class="portal-grid">
+
+      <a class="portal-card" href="https://www.gst.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">🧾</div>
+        <h3>GST Portal</h3>
+        <p>File GSTR-1, GSTR-3B, claim refunds, track notices &amp; e-invoicing.</p>
+        <div class="portal-link">gst.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.incometax.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">💼</div>
+        <h3>Income Tax Portal</h3>
+        <p>e-File ITR, view Form 26AS, AIS, respond to notices, check refunds.</p>
+        <div class="portal-link">incometax.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.icai.org" target="_blank" rel="noopener">
+        <div class="portal-icon">🎓</div>
+        <h3>ICAI Portal</h3>
+        <p>CA member services, CPE hours, publications, exam schedules &amp; SSP.</p>
+        <div class="portal-link">icai.org ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.mca.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">🏛️</div>
+        <h3>MCA Portal</h3>
+        <p>Company incorporation, ROC filings, MCA21, director KYC &amp; LLP services.</p>
+        <div class="portal-link">mca.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.tds.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">📋</div>
+        <h3>TRACES Portal</h3>
+        <p>TDS statements, Form 16 / 16A download, defaults &amp; rectifications.</p>
+        <div class="portal-link">tdscpc.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.ibbi.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">⚖️</div>
+        <h3>IBBI Portal</h3>
+        <p>Insolvency resolution, liquidation processes &amp; IP registration.</p>
+        <div class="portal-link">ibbi.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://efiling.sebi.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">📈</div>
+        <h3>SEBI eFiling</h3>
+        <p>Securities regulation, disclosures, intermediary compliance &amp; grievances.</p>
+        <div class="portal-link">sebi.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.epfindia.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">🛡️</div>
+        <h3>EPFO Portal</h3>
+        <p>PF deposits, ECR filing, UAN activation &amp; employer registration.</p>
+        <div class="portal-link">epfindia.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://eportal.cbic.gov.in" target="_blank" rel="noopener">
+        <div class="portal-icon">🚢</div>
+        <h3>ICEGATE / CBIC</h3>
+        <p>Customs duty, import-export procedures &amp; CBIC notifications.</p>
+        <div class="portal-link">cbic.gov.in ↗</div>
+      </a>
+
+      <a class="portal-card" href="https://www.rbi.org.in" target="_blank" rel="noopener">
+        <div class="portal-icon">🏦</div>
+        <h3>RBI Portal</h3>
+        <p>FEMA compliance, master circulars, NBFC &amp; banking regulations.</p>
+        <div class="portal-link">rbi.org.in ↗</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── SECTION 2 · COMPLIANCE CALENDAR ─── -->
+  <section>
+    <div class="section-label"><span>Compliance Calendar</span></div>
+    <h2 class="section-title">Key Due Dates — June &amp; July 2026</h2>
+    <p class="section-desc">Stay penalty-free. Dates based on standard statutory schedules for Tax Year 2026-27. Always confirm extensions on the respective portals.</p>
+
+    <div class="cal-tabs">
+      <button class="cal-tab active" onclick="switchTab('gst')">GST</button>
+      <button class="cal-tab" onclick="switchTab('tds')">TDS / TCS</button>
+      <button class="cal-tab" onclick="switchTab('itr')">ITR</button>
+      <button class="cal-tab" onclick="switchTab('mca')">MCA / ROC</button>
+    </div>
+
+    <!-- GST -->
+    <div class="cal-content active" id="tab-gst">
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">10</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>GSTR-7 &amp; GSTR-8 <span class="badge badge-gst">GST</span></h4>
+          <p>TDS &amp; TCS returns under GST for May 2026 deductors and e-commerce operators.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">11</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>GSTR-1 (Monthly) <span class="badge badge-gst">GST</span></h4>
+          <p>Outward supply return for May 2026 — taxpayers with turnover above ₹5 Cr.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">13</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>GSTR-1 IFF (QRMP) <span class="badge badge-gst">GST</span></h4>
+          <p>Invoice Furnishing Facility for May 2026 — QRMP scheme taxpayers (Q1 month 2).</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">20</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>GSTR-3B (Monthly) <span class="badge badge-gst">GST</span></h4>
+          <p>Summary return for May 2026 — taxpayers with turnover above ₹5 Cr (all India).</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">22/24</div><div class="mo">Jul</div></div>
+        <div class="cal-info">
+          <h4>GSTR-3B (QRMP — Q1) <span class="badge badge-gst">GST</span></h4>
+          <p>22 Jul for South India states; 24 Jul for North India — Q1 Apr–Jun 2026 filers.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">31</div><div class="mo">Jul</div></div>
+        <div class="cal-info">
+          <h4>GSTR-1 (Quarterly — Q1) <span class="badge badge-gst">GST</span></h4>
+          <p>Quarterly outward supply return for Q1 (Apr–Jun 2026) under QRMP scheme.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TDS -->
+    <div class="cal-content" id="tab-tds">
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">07</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>TDS / TCS Payment — May 2026 <span class="badge badge-tds">TDS</span></h4>
+          <p>Challan 281 deposit for TDS deducted and TCS collected in May 2026. (7 Jun is Sunday — deposit by 5 Jun.)</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">15</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>Advance Tax — 1st Instalment <span class="badge badge-adv">Advance Tax</span></h4>
+          <p>15% of estimated annual tax liability for Tax Year 2026-27. Interest u/s 234C from this date if missed.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">15</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>Form 16A Issue Deadline <span class="badge badge-tds">TDS</span></h4>
+          <p>Employers/deductors must issue Form 16A (non-salary, Q4 Jan–Mar 2026) to deductees.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">15</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>Form 16 (Salary TDS) <span class="badge badge-tds">TDS</span></h4>
+          <p>Employers must issue Form 16 for FY 2025-26 salary TDS to employees by this date.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">30</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>TDS Return — Q4 (Jan–Mar 2026) <span class="badge badge-tds">TDS</span></h4>
+          <p>Filing of Form 24Q / 26Q / 27Q / 27EQ for Q4 of FY 2025-26.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">07</div><div class="mo">Jul</div></div>
+        <div class="cal-info">
+          <h4>TDS / TCS Payment — June 2026 <span class="badge badge-tds">TDS</span></h4>
+          <p>Challan 281 deposit for TDS deducted and TCS collected in June 2026.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ITR -->
+    <div class="cal-content" id="tab-itr">
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">31</div><div class="mo">Jul</div></div>
+        <div class="cal-info">
+          <h4>ITR-1 / ITR-2 Filing <span class="badge badge-itr">ITR</span></h4>
+          <p>Deadline for individuals &amp; HUFs not liable to audit — AY 2026-27 (FY 2025-26 income).</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">31</div><div class="mo">Aug</div></div>
+        <div class="cal-info">
+          <h4>ITR-3 / ITR-4 Filing <span class="badge badge-itr">ITR</span></h4>
+          <p>Businesses and professionals (no audit) — last date to file for AY 2026-27.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">31</div><div class="mo">Oct</div></div>
+        <div class="cal-info">
+          <h4>ITR (Audit Cases) <span class="badge badge-itr">ITR</span></h4>
+          <p>Last date for taxpayers liable to audit under any law (Tax Year 2026-27).</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">30</div><div class="mo">Nov</div></div>
+        <div class="cal-info">
+          <h4>Tax Audit Report — Form 3CA / 3CB / 3CD <span class="badge badge-itr">ITR</span></h4>
+          <p>Submission of tax audit report for entities whose turnover exceeds prescribed limits.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MCA -->
+    <div class="cal-content" id="tab-mca">
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">30</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>DIR-3 KYC / DIR-3 KYC-Web <span class="badge badge-mca">MCA</span></h4>
+          <p>Annual KYC for all directors who have been allotted DIN — due by 30 Sep each year (earlier filings current as of last year's deadline).</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">30</div><div class="mo">Sep</div></div>
+        <div class="cal-info">
+          <h4>ADT-1 — Auditor Appointment <span class="badge badge-mca">MCA</span></h4>
+          <p>Companies must file the auditor appointment form (ADT-1) within 15 days of AGM.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">60</div><div class="mo">Days</div></div>
+        <div class="cal-info">
+          <h4>MGT-7 &amp; AOC-4 — Annual Filings <span class="badge badge-mca">MCA</span></h4>
+          <p>MGT-7 (Annual Return) within 60 days of AGM; AOC-4 (Financial Statements) within 30 days of AGM.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">30</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>CCFS-2026 (MCA Amnesty) <span class="badge badge-mca">MCA</span></h4>
+          <p>MCA's Companies Compliance Facilitation Scheme 2026 — one-time waiver of additional fees for pending ROC filings. Check MCA21 for exact cut-off.</p>
+        </div>
+      </div>
+
+      <div class="cal-entry">
+        <div class="cal-date"><div class="day">15</div><div class="mo">Jun</div></div>
+        <div class="cal-info">
+          <h4>PF &amp; ESI Deposit — May 2026 <span class="badge badge-mca">Labour</span></h4>
+          <p>Employer must deposit Provident Fund &amp; ESI contributions for May 2026 by 15 Jun 2026.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SECTION · LATEST NEWS & UPDATES ─── -->
+  <section>
+    <div class="section-label"><span>Latest News</span></div>
+    <h2 class="section-title">Recent Tax &amp; Regulatory Updates</h2>
+    <p class="section-desc">Curated news from June 2026 — developments that matter to businesses and individuals across India.</p>
+
+    <div class="news-grid">
+
+      <a class="news-card" href="https://cleartax.in/s/income-tax-act-2025" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-ita">Income Tax Act 2025</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>New Income Tax Act 2025 Now in Force — What Changes for You</h4>
+        <p>The Income Tax Act 2025 replaced the 1961 Act from 1 April 2026, consolidating provisions into 536 sections across 23 chapters. The "Tax Year" concept replaces previous / assessment year terminology. No new taxes — this is a simplification exercise.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+      <a class="news-card" href="https://cleartax.in/s/due-date-tax-filing" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-itr">ITR Filing</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>ITR Filing for AY 2026‑27 Now Live — Deadline 31 July 2026</h4>
+        <p>ITR-1, ITR-2, and ITR-4 for Assessment Year 2026‑27 are enabled on the e-filing portal. Individuals with non-audit income must file by 31 July 2026; business/profession non-audit cases by 31 August 2026.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+      <a class="news-card" href="https://cleartax.in/s/gst-news-and-announcements" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-gst">GST</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>E-Way Bill "Ship To GSTIN" Mandate Deferred to 1 August 2026</h4>
+        <p>GSTN has postponed the mandatory "Ship To GSTIN" field for Bill-to/Ship-to transactions and the voluntary E-Way Bill Closure feature — originally due 15 June 2026 — to 1 August 2026 following industry representations about ERP and API readiness.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+      <a class="news-card" href="https://cleartax.in/s/draft-income-tax-rules" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-ita">IT Rules 2026</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>Income Tax Rules 2026 Replace 1962 Rules — Key Changes</h4>
+        <p>The Income Tax Rules 2026 are effective from 1 April 2026 for Tax Year 2026-27 onwards. Key updates include higher exemption limits for education, hostel, and meal allowances; revised PAN quoting thresholds; and HRA 50% exemption extended to four additional cities.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+      <a class="news-card" href="https://blog.saginfotech.com/gst-latest-updates" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-gst">GST</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>GST 2.0 Slabs in Effect — Simplified to 5%, 18% &amp; 40%</h4>
+        <p>India's landmark GST 2.0 reform, effective September 2025, consolidated four tax slabs into two primary slabs of 5% and 18%, with a 40% rate for super-luxury and sin goods. Businesses should review their product classifications and GST invoicing accordingly.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+      <a class="news-card" href="https://www.caclubindia.com/articles/latest-changes-in-itr-1-itr-2-itr-4-for-ay-2026-27-a-detailed-analysis-55730.asp" target="_blank" rel="noopener">
+        <div class="news-meta">
+          <span class="news-category cat-itr">ITR Forms</span>
+          <span class="news-date">June 2026</span>
+        </div>
+        <h4>Key Changes in ITR-1, ITR-2 &amp; ITR-4 for AY 2026‑27</h4>
+        <p>Updated ITR forms for AY 2026-27 remove transitional capital gains disclosures and simplify interest income reporting under Section 194LC. The revised new regime slabs (zero tax up to ₹4 lakh) and enhanced Section 87A rebate are now reflected across all forms.</p>
+        <span class="news-read-more">Read full update ↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── SECTION 3 · FAQ ─── -->
+  <section>
+    <div class="section-label"><span>FAQs</span></div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-desc">Based on current news, regulatory changes, and what clients are asking us most in 2026.</p>
+
+    <div id="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">Income Tax Act 2025</span><br>Has the old Income Tax Act 1961 been replaced?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">Yes. The Income Tax Act, 2025 came into force on 1 April 2026, fully replacing the Income Tax Act, 1961. It is leaner — 536 sections vs 819 in the old Act — and introduces a unified "Tax Year" concept (April to March) replacing the separate "Previous Year" and "Assessment Year" terminology. Crucially, no new taxes have been imposed; the reform is aimed at simplification and easier compliance. All proceedings relating to years prior to 1 April 2026 continue under the old Act's transitional provisions.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">ITR Filing</span><br>What is the ITR filing deadline for individuals for AY 2026-27?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">For individuals and HUFs not subject to tax audit, the due date for ITR-1 and ITR-2 is 31 July 2026. For those filing ITR-3 or ITR-4 (business/profession, no audit), the deadline is 31 August 2026. Taxpayers liable to audit have until 31 October 2026. The revised return window has also been extended to 12 months from the end of the tax year under the new Act.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">GST</span><br>What is e-invoicing and is my business required to comply?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">E-invoicing (electronic Invoice Registration Portal) is now mandatory for all businesses with an annual aggregate turnover exceeding ₹5 crore. Registered taxpayers in this bracket must generate a unique Invoice Reference Number (IRN) via the IRP before issuing a GST invoice. This directly impacts ITC eligibility for your buyers — invoices without a valid IRN will not reflect in GSTR-2B.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">GST</span><br>What is the QRMP scheme and who should opt for it?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">The Quarterly Return Monthly Payment (QRMP) scheme allows taxpayers with aggregate turnover up to ₹5 crore in the previous financial year to file GSTR-1 and GSTR-3B quarterly, while paying tax monthly via a Fixed Sum or Self-Assessment method. It reduces the compliance burden — instead of 24 returns per year, only 8 quarterly returns are filed. IFF (Invoice Furnishing Facility) allows you to upload B2B invoices for the first two months of a quarter so your buyers can claim ITC in those months.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">New Tax Regime</span><br>Should I opt for the old or new income tax regime?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">Under the new regime effective from Tax Year 2026-27, income up to ₹4 lakh is tax-free, with rates graduating to 30% for higher slabs. The new regime is now the default and does not allow most deductions (80C, HRA, home loan interest, etc.). The old regime remains available as an option and is beneficial if you have substantial deductions. The right choice depends entirely on your specific deductions — a personalised computation by your CA is strongly recommended before the filing date.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">MCA 2026</span><br>What is the Companies Compliance Facilitation Scheme 2026?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">The MCA recently notified the Companies Compliance Facilitation Scheme 2026 (CCFS-2026), a one-time amnesty programme that waives additional late fees for companies that file overdue ROC forms during the scheme's window. This is an opportunity for companies with pending AOC-4, MGT-7, or other MCA filings to regularise their compliance at normal fees. Check MCA21 portal for the exact operational dates and applicable forms.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">Budget 2026</span><br>What were the key direct tax changes in Union Budget 2026?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">Union Budget 2026 (presented 1 February 2026) kept personal income tax slabs unchanged and focused on compliance ease under the new Income Tax Act 2025. Key direct tax changes include: rationalised TDS/TCS provisions to reduce cash-flow burden; simplified forms under the new Act; extended revised return timelines; and the introduction of a Foreign Assets of Small Taxpayers – Disclosure Scheme 2026 — a six-month voluntary disclosure window for eligible taxpayers to regularise limited undisclosed foreign income with immunity from penalties.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span><span class="faq-tag">TDS</span><br>What is the penalty for late TDS deposit?</span>
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">Interest for late or non-deposit of TDS runs at 1.5% per month (or part thereof) from the date of deduction to the date of actual deposit, under Section 201(1A) of the Income Tax Act 2025. Additionally, failure to file TDS returns on time attracts a penalty of ₹200 per day under Section 234E, subject to a maximum of the TDS amount. Depositing TDS before the 7th of the following month avoids all interest charges for deductions made in that month.</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <strong>BD&A · Batra Deepak &amp; Associates</strong> &nbsp;·&nbsp; Chartered Accountants &nbsp;·&nbsp;
+  Information is for general guidance. Always verify due dates on official government portals and consult your CA.
+</footer>
+
+<script>
+  function openDrawer() {
+    document.getElementById('drawer').classList.add('open');
+    document.getElementById('overlay').classList.add('open');
+  }
+  function closeDrawer() {
+    document.getElementById('drawer').classList.remove('open');
+    document.getElementById('overlay').classList.remove('open');
+  }
+
+  function switchTab(id) {
+    document.querySelectorAll('.cal-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.cal-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>

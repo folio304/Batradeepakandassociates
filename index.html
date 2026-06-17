@@ -166,15 +166,20 @@
     }
 
     /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #F7F8FA 0%, #EDF0F6 55%, #E7ECF5 100%);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding: 120px 5% 60px;
-    }
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(27,43,75,0.45), rgba(27,43,75,0.45)),
+    url('assets/hero_bg_3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 5% 60px;
+}
     .hero::before {
       content: '';
       position: absolute;
@@ -206,7 +211,7 @@
       font-size: 0.7rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #6b5200;
       font-weight: 700;
       margin-bottom: 24px;
     }
@@ -221,7 +226,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.4rem, 5vw, 4rem);
       font-weight: 700;
-      color: var(--navy);
+      color: #081220;
       line-height: 1.15;
       margin-bottom: 24px;
     }
@@ -231,7 +236,7 @@
     }
     .hero-desc {
       font-size: 1.05rem;
-      color: var(--slate);
+      color: #1f2937;
       line-height: 1.75;
       max-width: 520px;
       margin-bottom: 40px;
@@ -935,7 +940,7 @@
 
       <div class="about-visual fade-up stagger-2">
         <div class="about-img-box">
-          <img class="about-img" src="about-monogram.jpg" alt="Batra Deepak & Associates" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <img class="about-img" src="assets/monogram.jpg" alt="Batra Deepak & Associates" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="about-monogram">BDA</div>
         </div>
         <div class="about-badge">

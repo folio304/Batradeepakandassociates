@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our People Strength | BD&A – Batra Deepak & Associates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:   #1a2744;
+      --navy-light: #233059;
+      --gold:   #b8972a;
+      --gold-light: #d4af37;
+      --cream:  #f9f7f2;
+      --white:  #ffffff;
+      --text-light: rgba(255,255,255,0.75);
+      --text-dark: rgba(26,39,68,0.7);
+      --photo-placeholder: #ece6d6;
+      --card-shadow: 0 4px 24px rgba(26,39,68,0.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      height: 64px;
+      border-bottom: 1px solid rgba(184,151,42,0.25);
+    }
+
+    .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { height: 38px; max-width: 170px; object-fit: contain; }
+
+    .nav-toggle {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      width: 40px; height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .nav-toggle:hover { background: rgba(184,151,42,0.15); }
+
+    /* Dropdown */
+    .nav-menu {
+      position: absolute;
+      top: 64px; right: 0;
+      background: var(--white);
+      width: 280px;
+      box-shadow: var(--card-shadow);
+      display: none;
+      flex-direction: column;
+      border-top: 2px solid var(--gold);
+    }
+    .nav-menu.open { display: flex; }
+    .nav-menu a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 500;
+      border-bottom: 1px solid #eee;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-menu a:hover, .nav-menu a.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .nav-menu a.active .num { background: var(--gold); }
+    .num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-menu a:hover .num { background: var(--gold); color: var(--navy); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      margin-top: 64px;
+      background-color: var(--photo-placeholder);
+      background-image: url('assets/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 28px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 24px,
+        rgba(184,151,42,0.04) 24px,
+        rgba(184,151,42,0.04) 25px
+      );
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--gold);
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .page-hero h1 em { color: var(--gold); font-style: italic; }
+    .page-hero p {
+      color: var(--text-dark);
+      font-size: 0.92rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── DEPT FILTER TABS ── */
+    .dept-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      padding: 32px 20px 20px;
+      background: var(--cream);
+      border-bottom: 1px solid #e0d8c8;
+      position: sticky;
+      top: 64px;
+      z-index: 900;
+    }
+    .tab-btn {
+      padding: 8px 20px;
+      border-radius: 100px;
+      border: 1.5px solid var(--navy);
+      background: transparent;
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover, .tab-btn.active {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .tab-btn.all.active { background: var(--gold); border-color: var(--gold); color: var(--white); }
+
+    /* ── CONTENT AREA ── */
+    main { padding: 0 16px 80px; max-width: 900px; margin: 0 auto; }
+
+    /* ── CHAIRMAN ── */
+    .chairman-section {
+      margin: 48px 0 56px;
+    }
+    .chairman-card {
+      background: var(--navy);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 28px 32px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(26,39,68,0.22);
+    }
+    .chairman-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+    .chairman-badge {
+      position: absolute;
+      top: 20px; right: 20px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+    .chairman-photo {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      background: var(--navy-light);
+      margin-bottom: 18px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .chairman-photo svg { opacity: 0.35; }
+    .chairman-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .chairman-desig {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .bio-box {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(184,151,42,0.2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: left;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+    .bio-box strong { color: var(--gold-light); display: block; margin-bottom: 4px; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── DEPT SECTION ── */
+    .dept-section {
+      margin-bottom: 56px;
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+    .dept-section.hidden { display: none; }
+
+    .dept-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #ddd5c0;
+    }
+    .dept-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .dept-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .dept-count {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── PEOPLE GRID ── */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .person-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+      transition: transform 0.22s, box-shadow 0.22s;
+      border: 1px solid #ede8dc;
+      position: relative;
+    }
+    .person-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(26,39,68,0.18);
+    }
+    .person-card.senior::after {
+      content: 'Senior';
+      position: absolute;
+      top: 10px; right: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 3/3.2;
+      background: var(--photo-placeholder);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .card-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .card-photo svg { opacity: 0.25; }
+
+    /* Initials avatar */
+    .avatar-initials {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(184,151,42,0.18);
+      border: 2px solid rgba(184,151,42,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.02em;
+    }
+
+    .card-body { padding: 16px 16px 18px; }
+    .person-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .person-desig {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 12px;
+    }
+    .bio-snippet {
+      font-size: 0.78rem;
+      color: #5a6278;
+      line-height: 1.6;
+      border-top: 1px solid #ede8dc;
+      padding-top: 10px;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,18,40,0.72);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 14px;
+      max-width: 480px;
+      width: 100%;
+      overflow: hidden;
+      transform: translateY(20px);
+      transition: transform 0.25s;
+      box-shadow: 0 24px 80px rgba(10,18,40,0.35);
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-top {
+      background: var(--cream);
+      padding: 28px 28px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      border-bottom: 1px solid #ede8dc;
+    }
+    .modal-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .modal-photo {
+      width: 120px; height: 120px;
+      border-radius: 12px;
+      background: var(--photo-placeholder);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-info { flex: 1; }
+    .modal-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .modal-desig {
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .modal-dept {
+      font-size: 0.72rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      background: rgba(26,39,68,0.08);
+      border: none;
+      color: var(--navy);
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .modal-body { padding: 24px 28px 28px; }
+    .modal-section { margin-bottom: 18px; }
+    .modal-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+    .modal-text {
+      font-size: 0.85rem;
+      color: #3d4760;
+      line-height: 1.7;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag {
+      background: #f0ecdf;
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: var(--text-light);
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+    }
+    footer span { color: var(--gold); }
+
+    @media (max-width: 480px) {
+      .people-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .dept-title { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo-wrap">
+    <img src="assets/logo.png" alt="Firm Logo" class="logo-img" onerror="this.style.display='none'">
+  </a>
+  <button class="nav-toggle" onclick="toggleMenu()" id="menuBtn">☰</button>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html"><span class="num">01</span> Home</a>
+    <a href="industries-we-serve.html"><span class="num">02</span> Industries We Serve</a>
+    <a href="our-people-strength.html" class="active"><span class="num">03</span> Our People Strength</a>
+    <a href="#"><span class="num">04</span> Gallery</a>
+    <a href="career_options.html"><span class="num">05</span> Career Options</a>
+    <a href="knowledge-centre.html"><span class="num">06</span> Knowledge Centre</a>
+    <a href="connect-us.html"><span class="num">07</span> Connect Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-eyebrow">Our People</div>
+  <h1>The <em>Strength</em> Behind<br>Our Firm</h1>
+  <p>A dedicated team of qualified professionals across audit, tax, finance and accounts — committed to delivering clarity, precision and trust.</p>
+</section>
+
+<!-- DEPT FILTER TABS -->
+<div class="dept-tabs">
+  <button class="tab-btn all active" onclick="filterDept('all', this)">All Departments</button>
+  <button class="tab-btn" onclick="filterDept('audit', this)">Audit</button>
+  <button class="tab-btn" onclick="filterDept('tax', this)">Tax</button>
+  <button class="tab-btn" onclick="filterDept('finance', this)">Finance</button>
+  <button class="tab-btn" onclick="filterDept('accounts', this)">Accounts</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- CHAIRMAN -->
+  <div class="chairman-section" data-dept="chairman">
+    <div class="chairman-card">
+      <div class="chairman-badge">Chairman &amp; Leader</div>
+      <div class="chairman-photo">
+        <div class="avatar-initials">DB</div>
+      </div>
+      <h2>Shri CA Deepak Batra</h2>
+      <div class="chairman-desig">Founder &amp; Managing Partner</div>
+      <div class="bio-box">
+        <strong>About</strong>
+        With over two decades of expertise in statutory audit, taxation and corporate advisory, Shri CA Deepak Batra has built a firm trusted by businesses across India. His leadership philosophy centres on integrity, precision and long-term client relationships. [Your detailed bio here]
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIT -->
+  <div class="dept-section" id="dept-audit" data-dept="audit">
+    <div class="dept-header">
+      <div class="dept-icon">🔍</div>
+      <div class="dept-title">Audit Department</div>
+      <div class="dept-count">4 Members</div>
+    </div>
+    <div class="people-grid">
+      <!-- card -->
+      <div class="person-card senior" onclick="openModal({name:'Shri CA Sumit Lunia',desig:'Senior Chartered Accountant',dept:'Audit Department',photo:'assets/people/shri-ca-sumit-lunia.jpg',experience:'15+ years of experience in statutory and internal audits, risk management and compliance reviews across mid-to-large corporations. [Add your content here]',skills:['Statutory Audit','Internal Audit','Risk Management','Compliance','IFRS']})">
+        <div class="card-photo"><img src="assets/people/shri-ca-sumit-lunia.jpg" alt="Shri CA Sumit Lunia" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri CA Sumit Lunia</div>
+          <div class="person-desig">Senior Chartered Accountant</div>
+          <div class="bio-snippet">15+ years in statutory &amp; internal audits. [Add experience details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri Mohak Tiwari',desig:'Audit Associate',dept:'Audit Department',photo:'assets/people/shri-mohak-tiwari.jpg',experience:'A versatile assistant with experience across statutory, internal, special, and forensic audits. Skilled in advanced MS Excel and well-versed in accounting and taxation software, including Tally and Computax. Has actively supported the finance vertical in the past as well in preparing financial projections for project finance assignments, investor pitch decks, information memorandum for fundraising initiatives, and board notes. Demonstrates strong analytical capabilities through the preparation of comparative evaluation charts for turnkey projects. Brings a diverse skill set and the ability to seamlessly manage responsibilities across both finance and audit domains.',skills:['Statutory, Internal & Forensic Audits','Financial Projections & Project Finance','Fundraising Support & Investor Documentation','Advanced MS Excel, Tally & Computax']})">
+        <div class="card-photo"><img src="assets/people/shri-mohak-tiwari.jpg" alt="Shri Mohak Tiwari" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri Mohak Tiwari</div>
+          <div class="person-desig">Audit Associate</div>
+          <div class="bio-snippet">Experienced in audit, financial analysis, and project finance assignments.</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Ms. Ranu Agrawal',desig:'Audit Associate',dept:'Audit Department',photo:'assets/people/ms-ranu-agrawal.jpg',experience:'Assists the Audit Department in conducting statutory audits, limited reviews, and internal audits. Experienced in preparation and filing of TDS returns, reconciliation of financial data, and audit documentation. Proficient in accounting and tax software, including Tally, Excel, and Computax, enabling efficient execution of audit and compliance assignments.',skills:['Statutory Audit','Limited Review','Audit Documentation']})">
+        <div class="card-photo"><img src="assets/people/ms-ranu-agrawal.jpg" alt="Ms. Ranu Agrawal" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. Ranu Agrawal</div>
+          <div class="person-desig">Audit Associate</div>
+          <div class="bio-snippet">Skilled in ledger scrutiny, Audit and audit documentation.</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri Shrikant Sahu',desig:'Audit Associate',dept:'Audit Department',photo:'assets/people/shri-shrikant-sahu.jpg',experience:'Focused on internal control assessments and process audits. Assists in preparation of management letters and audit observations. [Add your content here]',skills:['Internal Controls','Process Audit','Management Reports']})">
+        <div class="card-photo"><img src="assets/people/shri-shrikant-sahu.jpg" alt="Shri Shrikant Sahu" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri Shrikant Sahu</div>
+          <div class="person-desig">Audit Associate</div>
+          <div class="bio-snippet">Internal controls and process audit specialist. [Add details here]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAX -->
+  <div class="dept-section" id="dept-tax" data-dept="tax">
+    <div class="dept-header">
+      <div class="dept-icon">📋</div>
+      <div class="dept-title">Tax Department</div>
+      <div class="dept-count">3 Members</div>
+    </div>
+    <div class="people-grid">
+      <div class="person-card senior" onclick="openModal({name:'Ms. CA Saroj Sahu',desig:'Senior Chartered Accountant',dept:'Tax Department',photo:'assets/people/ms-ca-saroj-sahu.jpg',experience:'Over 5+ years handling direct and indirect tax matters, GST advisory, income tax assessments and appeals before CIT(A) and ITAT. [Add your content here]',skills:['Direct Tax','GST','Income Tax','Appeals','ITAT']})">
+        <div class="card-photo"><img src="assets/people/ms-ca-saroj-sahu.jpg" alt="Ms. CA Saroj Sahu" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. CA Saroj Sahu</div>
+          <div class="person-desig">Senior Chartered Accountant</div>
+          <div class="bio-snippet">5+ years in direct &amp; indirect tax advisory. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri Om Bajaj',desig:'Tax Associate',dept:'Tax Department',photo:'assets/people/shri-om-bajaj.jpg',experience:'Assists the Tax Litigation Department in income tax and GST compliances, return filing, preparation and submission of replies to departmental notices, and handling assessment and appellate proceedings. Actively involved in legal research and analysis of judicial precedents to support litigation matters.',skills:['Tax Litigation','Return  Filing','Appeal and Assessment Proceedings','Case Law Research']})">
+        <div class="card-photo"><img src="assets/people/shri-om-bajaj.jpg" alt="Shri Om Bajaj" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri Om Bajaj</div>
+          <div class="person-desig">Tax Associate</div>
+          <div class="bio-snippet">Tax litigation, Appeal & Assesment Proceedings, Case Law Research...</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Ms. Nihar Sachdev',desig:'Tax Associate',dept:'Tax Department',photo:'assets/people/ms-nihar-sachdev.jpg',experience:'Proficient in income tax return preparation, TDS compliance and tax planning for individuals and SMEs.',skills:['Income Tax','TDS','Tax Planning','ITR Filing']})">
+        <div class="card-photo"><img src="assets/people/ms-nihar-sachdev.jpg" alt="Ms. Nihar Sachdev" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. Nihar Sachdev</div>
+          <div class="person-desig">Tax Associate</div>
+          <div class="bio-snippet">IT returns, TDS compliance and tax planning.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANCE -->
+  <div class="dept-section" id="dept-finance" data-dept="finance">
+    <div class="dept-header">
+      <div class="dept-icon">💼</div>
+      <div class="dept-title">Finance Department</div>
+      <div class="dept-count">5 Members</div>
+    </div>
+    <div class="people-grid">
+      <div class="person-card" onclick="openModal({name:'Ms. CA Tanvi Jain',desig:'Chartered Accountant',dept:'Finance Department',photo:'assets/people/ms-ca-tanvi-jain.jpg',experience:'Specialises in financial modelling, project finance and MIS reporting for corporate clients across manufacturing and infrastructure sectors. [Add your content here]',skills:['Financial Modelling','MIS Reports','Project Finance','Budgeting']})">
+        <div class="card-photo"><img src="assets/people/ms-ca-tanvi-jain.jpg" alt="Ms. CA Tanvi Jain" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. CA Tanvi Jain</div>
+          <div class="person-desig">Chartered Accountant</div>
+          <div class="bio-snippet">Financial modelling and MIS reporting specialist. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri CA Neeraj Dahiya',desig:'Chartered Accountant',dept:'Finance Department',photo:'assets/people/shri-ca-neeraj-dahiya.jpg',experience:'A Chartered Accountant in the Finance Department with extensive experience in CMA data preparation, loan processing, and financial documentation. Actively involved in project report preparation, financial modeling, business valuation, and assisting clients in securing credit facilities through comprehensive financial analysis and strategic planning.',skills:['CMA Data Preparation','Working Capital Assessment','Financial Analysis','Business Valuation']})">
+        <div class="card-photo"><img src="assets/people/shri-ca-neeraj-dahiya.jpg" alt="Shri CA Neeraj Dahiya" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri CA Neeraj Dahiya</div>
+          <div class="person-desig">Chartered Accountant</div>
+          <div class="bio-snippet">Specializes in project finance, financial modeling, valuation, and loan advisory services.</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri CA Pratham Goyal',desig:'Chartered Accountant',dept:'Finance Department',photo:'assets/people/shri-ca-pratham-goyal.jpg',experience:'Handles financial due diligence, valuation assignments and preparation of CMA data for bank loan proposals. [Add your content here]',skills:['Due Diligence','Valuation','CMA Data','Bank Proposals']})">
+        <div class="card-photo"><img src="assets/people/shri-ca-pratham-goyal.jpg" alt="Shri CA Pratham Goyal" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri CA Pratham Goyal</div>
+          <div class="person-desig">Chartered Accountant</div>
+          <div class="bio-snippet">Due diligence and CMA data for bank proposals. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Ms. Shruti Agrawal',desig:'Finance Associate',dept:'Finance Department',photo:'assets/people/ms-shruti-agrawal.jpg',experience:'Assists in preparation of financial statements, budget variance analysis and periodic financial reporting for diverse client portfolios. [Add your content here]',skills:['Financial Statements','Budget Analysis','Reporting']})">
+        <div class="card-photo"><img src="assets/people/ms-shruti-agrawal.jpg" alt="Ms. Shruti Agrawal" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. Shruti Agrawal</div>
+          <div class="person-desig">Finance Associate</div>
+          <div class="bio-snippet">Financial statements and budget variance analysis. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Shri Nitish Agrawal',desig:'Finance Associate',dept:'Finance Department',photo:'assets/people/shri-nitish-agrawal.jpg',experience:'Supports the finance team with ratio analysis, profitability reports and preparation of projected financial statements for new ventures. [Add your content here]',skills:['Ratio Analysis','Profitability Reports','Projections']})">
+        <div class="card-photo"><img src="assets/people/shri-nitish-agrawal.jpg" alt="Shri Nitish Agrawal" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri Nitish Agrawal</div>
+          <div class="person-desig">Finance Associate</div>
+          <div class="bio-snippet">Ratio analysis and projected financials. [Add details here]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNTS -->
+  <div class="dept-section" id="dept-accounts" data-dept="accounts">
+    <div class="dept-header">
+      <div class="dept-icon">🗂️</div>
+      <div class="dept-title">Accounts Department</div>
+      <div class="dept-count">3 Members</div>
+    </div>
+    <div class="people-grid">
+      <div class="person-card" onclick="openModal({name:'Shri Jitendra Chaturvedi',desig:'Senior Accounts Executive',dept:'Accounts Department',photo:'assets/people/shri-jitendra-chaturvedi.jpg',experience:'Expert in bookkeeping, accounts finalisation and preparation of balance sheets. Manages accounts for over 20 clients simultaneously with high accuracy. [Add your content here]',skills:['Bookkeeping','Accounts Finalisation','Balance Sheet','Tally']})">
+        <div class="card-photo"><img src="assets/people/shri-jitendra-chaturvedi.jpg" alt="Shri Jitendra Chaturvedi" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Shri Jitendra Chaturvedi</div>
+          <div class="person-desig">Senior Accounts Executive</div>
+          <div class="bio-snippet">Bookkeeping and accounts finalisation expert. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Ms. Juliee Deep',desig:'Accounts Executive',dept:'Accounts Department',photo:'assets/people/ms-juliee-deep.jpg',experience:'Handles daily bookkeeping entries, vendor payments, bank reconciliations and monthly MIS for assigned client accounts. [Add your content here]',skills:['Bookkeeping','Bank Reconciliation','Vendor Payments','MIS']})">
+        <div class="card-photo"><img src="assets/people/ms-juliee-deep.jpg" alt="Ms. Juliee Deep" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. Juliee Deep</div>
+          <div class="person-desig">Accounts Executive</div>
+          <div class="bio-snippet">Daily bookkeeping and bank reconciliation. [Add details here]</div>
+        </div>
+      </div>
+      <div class="person-card" onclick="openModal({name:'Ms. Aashi Lautre',desig:'Accounts Executive',dept:'Accounts Department',photo:'assets/people/ms-aashi-lautre.jpg',experience:'Manages accounts payable/receivable, invoice processing and assists in quarterly GST return preparation for assigned clients. [Add your content here]',skills:['Accounts Payable','Accounts Receivable','Invoice Processing','GST']})">
+        <div class="card-photo"><img src="assets/people/ms-aashi-lautre.jpg" alt="Ms. Aashi Lautre" onerror="this.style.display='none'"></div>
+        <div class="card-body">
+          <div class="person-name">Ms. Aashi Lautre</div>
+          <div class="person-desig">Accounts Executive</div>
+          <div class="bio-snippet">Accounts payable/receivable and invoice management. [Add details here]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-top">
+      <div class="modal-photo" id="modalPhoto">
+        <img id="modalPhotoImg" src="" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="modal-info">
+        <div class="modal-name" id="modalName"></div>
+        <div class="modal-desig" id="modalDesig"></div>
+        <div class="modal-dept" id="modalDept"></div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-label">Experience &amp; Work Profile</div>
+        <div class="modal-text" id="modalExp"></div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-label">Areas of Expertise</div>
+        <div class="skill-tags" id="modalSkills"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 <span>Batra Deepak &amp; Associates</span> · Chartered Accountants · All Rights Reserved
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    const btn = document.getElementById('menuBtn');
+    const open = menu.classList.toggle('open');
+    btn.textContent = open ? '✕' : '☰';
+  }
+
+  document.addEventListener('click', function(e) {
+    const nav = document.querySelector('nav');
+    if (!nav.contains(e.target)) {
+      document.getElementById('navMenu').classList.remove('open');
+      document.getElementById('menuBtn').textContent = '☰';
+    }
+  });
+
+  function filterDept(dept, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.dept-section').forEach(sec => {
+      if (dept === 'all' || sec.id === 'dept-' + dept) {
+        sec.classList.remove('hidden');
+      } else {
+        sec.classList.add('hidden');
+      }
+    });
+
+    const chairman = document.querySelector('.chairman-section');
+    if (dept === 'all') {
+      chairman.style.display = '';
+    } else {
+      chairman.style.display = 'none';
+    }
+  }
+
+  function openModal(data) {
+    document.getElementById('modalName').textContent = data.name;
+    document.getElementById('modalDesig').textContent = data.desig;
+    document.getElementById('modalDept').textContent = data.dept;
+    const modalImg = document.getElementById('modalPhotoImg');
+    modalImg.style.display = '';
+    modalImg.src = data.photo;
+    modalImg.alt = data.name;
+    document.getElementById('modalExp').textContent = data.experience;
+
+    const skillsEl = document.getElementById('modalSkills');
+    skillsEl.innerHTML = '';
+    data.skills.forEach(s => {
+      const t = document.createElement('span');
+      t.className = 'skill-tag';
+      t.textContent = s;
+      skillsEl.appendChild(t);
+    });
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>

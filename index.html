@@ -52,8 +52,7 @@
       justify-content: space-between;
       padding: 0 5%;
       height: 80px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+      background:#ffffff;
       border-bottom: 1px solid var(--border);
       transition: box-shadow 0.3s;
     }
@@ -66,6 +65,11 @@
       gap: 12px;
       line-height: 1.1;
       text-decoration: none;
+    }
+    .logo-image {
+  height: 50px;
+  width: auto;
+  display: block;
     }
     .logo-mark {
       width: 46px;
@@ -521,7 +525,7 @@
     }
 
     /* ── WHY US ── */
-    .why { background: var(--navy); }
+    .why { background: #2C3E6B; }
     .why .section-title { color: var(--white); }
     .why .section-desc { color: rgba(255,255,255,0.65); }
     .why .gold-rule { background: var(--gold); }
@@ -529,17 +533,17 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       margin-top: 50px;
       border-radius: 10px;
       overflow: hidden;
     }
     .why-card {
-      background: var(--navy);
+      background: #2C3E6B;
       padding: 36px 28px;
       transition: background 0.25s;
     }
-    .why-card:hover { background: var(--navy-light); }
+    .why-card:hover { background: #3A4E80; }
     .why-num {
       font-family: 'Playfair Display', serif;
       font-size: 2.4rem;
@@ -555,13 +559,13 @@
     }
     .why-desc {
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.6);
       line-height: 1.65;
     }
 
     /* ── FOOTER NAV ── */
     .footer-nav {
-      background: var(--navy);
+      background: #2C3E6B;
       padding: 70px 5% 0;
     }
     .footer-top {
@@ -569,13 +573,13 @@
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
       gap: 40px;
       padding-bottom: 50px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .footer-brand .logo-main { font-size: 1.2rem; color: var(--white); }
     .footer-brand .logo-sub { margin-top: 4px; color: var(--gold-light); }
     .footer-brand p {
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.6);
       line-height: 1.75;
       margin-top: 16px;
     }
@@ -590,7 +594,7 @@
     .footer-col a, .footer-col span.footer-link {
       display: block;
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.65);
       text-decoration: none;
       padding: 5px 0;
       transition: color 0.2s, padding-left 0.2s;
@@ -603,7 +607,7 @@
       align-items: center;
       justify-content: space-between;
       font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.4);
     }
 
     /* ── SCROLL ANIMATIONS ── */
@@ -824,20 +828,9 @@
 
   <!-- ── NAVIGATION ── -->
   <nav id="mainNav">
-    <a href="index.html" class="logo-wrap">
-      <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <circle cx="50" cy="50" r="48" fill="#1B2B4B"/>
-        <circle cx="50" cy="50" r="48" fill="none" stroke="#B8923A" stroke-width="2"/>
-        <circle cx="50" cy="50" r="40" fill="none" stroke="#D4AF60" stroke-width="1" opacity="0.55"/>
-        <line x1="27" y1="50" x2="35" y2="50" stroke="#D4AF60" stroke-width="1.2" opacity="0.7"/>
-        <line x1="65" y1="50" x2="73" y2="50" stroke="#D4AF60" stroke-width="1.2" opacity="0.7"/>
-        <text x="50" y="58" font-family="Playfair Display, serif" font-size="25" font-weight="700" fill="#D4AF60" text-anchor="middle" letter-spacing="1">BDA</text>
-      </svg>
-      <span class="logo-text">
-        <span class="logo-main">BD&amp;A</span>
-        <span class="logo-sub">Batra Deepak &amp; Associates</span>
-      </span>
-    </a>
+<a href="#" class="logo-wrap">
+  <img src="assets/logo.png" alt="Batra Deepak & Associates" class="logo-image">
+</a>
 
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -871,20 +864,7 @@
       </div>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-num">37+</div>
-        <div class="stat-label">Years Experience</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Clients Served</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">18</div>
-        <div class="stat-label">Professional Partners</div>
-      </div>
-    </div>
+
   </section>
 
   <!-- ── TICKER ── -->
@@ -1093,9 +1073,12 @@
 
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="#">📍 [Office Address Here]</a>
-        <a href="tel:+910000000000">📞 +91 00000 00000</a>
-        <a href="mailto:info@bdassociates.in">✉️ info@bdassociates.in</a>
+        <a href="#" style="line-height:1.6;">📍 Office No. 28, 2nd Floor, Ashoka Plaza Complex,<br>Near Ashoka Ratan, Khamardih,<br>Vidhan Sabha Road, Raipur – 492 001</a>
+        <a href="tel:+917828780780">📞 +91 78287 80780</a>
+        <a href="https://wa.me/917828780780" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:6px;color:#25D366;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp: +91 78287 80780
+        </a>
+        <a href="mailto:frontdesk0.bda@gmail.com">✉️ frontdesk0.bda@gmail.com</a>
       </div>
     </div>
 
@@ -1113,25 +1096,27 @@
       <h3 class="modal-title">Book a Consultation</h3>
       <p class="modal-desc">Reach out to us directly using any of the options below — our team typically responds within one business day.</p>
       <div class="contact-rows">
-        <a href="tel:+910000000000" class="contact-row">
+        <a href="tel:+917828780780" class="contact-row">
           <div class="contact-icon">📞</div>
           <div>
             <div class="contact-text-label">Call Us</div>
-            <div class="contact-text-value">+91 00000 00000</div>
+            <div class="contact-text-value">+91 78287 80780</div>
           </div>
         </a>
-        <a href="https://wa.me/910000000000" target="_blank" class="contact-row">
-          <div class="contact-icon">💬</div>
+        <a href="https://wa.me/917828780780" target="_blank" rel="noopener" class="contact-row">
+          <div class="contact-icon" style="background:#25D366;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:20px;height:20px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
           <div>
             <div class="contact-text-label">WhatsApp</div>
-            <div class="contact-text-value">+91 00000 00000</div>
+            <div class="contact-text-value">+91 78287 80780</div>
           </div>
         </a>
-        <a href="mailto:info@bdassociates.in" class="contact-row">
+        <a href="mailto:frontdesk0.bda@gmail.com" class="contact-row">
           <div class="contact-icon">✉️</div>
           <div>
             <div class="contact-text-label">Email</div>
-            <div class="contact-text-value">info@bdassociates.in</div>
+            <div class="contact-text-value">frontdesk0.bda@gmail.com</div>
           </div>
         </a>
       </div>

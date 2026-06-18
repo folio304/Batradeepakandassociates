@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connect Us — Batra Deepak & Associates</title>
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --navy:   #1a2744;
+      --gold:   #b8962e;
+      --gold-lt:#d4af50;
+      --cream:  #f5f0e8;
+      --white:  #ffffff;
+      --text:   #1a2744;
+      --muted:  #6b7280;
+      --border: #e5dfd0;
+      --pin-size: 18px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV (locked) ── */
+    nav {
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,.10);
+    }
+    .logo-block { display: flex; align-items: center; gap: 12px; line-height: 1; }
+    .logo-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--gold);
+      letter-spacing: .04em; flex-shrink: 0;
+    }
+    .logo-text .brand { font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: .03em; }
+    .logo-text .sub   { font-size: 8px; letter-spacing: .18em; color: #888; text-transform: uppercase; margin-top: 2px; }
+
+    .hamburger {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--navy);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 5px;
+      transition: background .2s;
+    }
+    .hamburger:hover { background: rgba(26,39,68,.07); }
+    .hamburger span {
+      display: block; width: 20px; height: 2px;
+      background: var(--navy);
+      transition: transform .25s, opacity .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* sliding menu */
+    .slide-menu {
+      position: fixed;
+      top: 64px; right: 0;
+      width: 260px;
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(0,0,0,.15);
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      z-index: 999;
+      border-radius: 0 0 0 8px;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 12px 0; }
+    .slide-menu li { border-bottom: 1px solid #f0ebe0; }
+    .slide-menu a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 14px;
+      font-family: 'Arial', sans-serif;
+      transition: background .15s;
+    }
+    .slide-menu a:hover { background: var(--cream); }
+    .slide-menu .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .slide-menu a.active .num { background: var(--gold); }
+
+    /* ticker removed */
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(rgba(26,39,68,0.72), rgba(26,39,68,0.72)),
+                  url('assets/connect-hero-bg.jpg') center/cover no-repeat;
+      padding: 54px 40px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      color: var(--white);
+      letter-spacing: .04em;
+      font-weight: 400;
+    }
+    .page-hero h1 span { color: var(--gold); font-style: italic; }
+    .page-hero p {
+      color: #b0b8c8; font-family: 'Arial', sans-serif;
+      font-size: 14px; margin-top: 10px; letter-spacing: .06em;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 64px 40px; }
+    .section-label {
+      font-family: 'Arial', sans-serif; font-size: 10px;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: clamp(22px, 3vw, 32px);
+      color: var(--navy); font-weight: 400; margin-bottom: 10px;
+    }
+    .divider {
+      width: 48px; height: 2px; background: var(--gold); margin-bottom: 32px;
+    }
+
+    /* ── INDIA MAP ── */
+    .map-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .map-wrapper img {
+      width: 100%; display: block;
+      filter: drop-shadow(0 6px 20px rgba(26,39,68,.18));
+    }
+
+    /* Pins */
+    .pin {
+      position: absolute;
+      transform: translate(-50%, -100%);
+      cursor: pointer;
+      z-index: 10;
+    }
+    .pin-dot {
+      width: var(--pin-size); height: var(--pin-size);
+      background: var(--gold);
+      border: 2.5px solid var(--navy);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 3px 10px rgba(0,0,0,.3);
+      transition: transform .2s, background .2s;
+    }
+    .pin:hover .pin-dot {
+      background: var(--navy);
+      transform: rotate(-45deg) scale(1.25);
+    }
+    .pin-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(45deg);
+      width: 6px; height: 6px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 220px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.35);
+      pointer-events: none;
+      z-index: 20;
+    }
+    .pin:hover .tooltip { display: block; }
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%; left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-top-color: var(--navy);
+    }
+    .tooltip .city-name {
+      font-size: 13px; font-weight: 700;
+      color: var(--gold); margin-bottom: 6px;
+      letter-spacing: .04em;
+    }
+    .tooltip .address, .tooltip .phone {
+      font-family: 'Arial', sans-serif;
+      font-size: 11.5px; color: #d0d8e8;
+      line-height: 1.55;
+    }
+    .tooltip .phone { margin-top: 5px; color: var(--gold-lt); }
+    .tooltip .map-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'Arial', sans-serif;
+      font-size: 11px; letter-spacing: .08em;
+      color: var(--gold-lt);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold-lt);
+      pointer-events: all;
+      cursor: pointer;
+    }
+    .tooltip .map-link:hover { color: #fff; border-color: #fff; }
+    .tooltip .phone {
+      display: inline-block;
+      margin-top: 5px;
+      font-family: 'Arial', sans-serif;
+      font-size: 11.5px;
+      color: var(--gold-lt);
+      text-decoration: none;
+      pointer-events: all;
+    }
+    .tooltip .phone:hover { color: #fff; }
+
+    /* ── HEAD OFFICE CONTACT CARDS (3-col) ── */
+    .contact-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 28px 24px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .contact-card:hover {
+      box-shadow: 0 8px 28px rgba(26,39,68,.12);
+      transform: translateY(-3px);
+    }
+    .contact-card .cc-icon {
+      font-size: 24px; margin-bottom: 12px; display: block;
+    }
+    .contact-card .cc-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 10px; letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px; font-weight: 700;
+    }
+    .contact-card .cc-body {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px; color: var(--text);
+      line-height: 1.7;
+    }
+    .contact-card .cc-body a {
+      color: var(--text); text-decoration: none;
+    }
+    .contact-card .cc-body a:hover { color: var(--gold); }
+
+    /* ── SOCIAL MEDIA ── */
+    .social-section {
+      background: #f0f2f5;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .social-section .section-label { color: var(--gold); }
+    .social-section .section-title { color: #2d3748; }
+    .social-section .divider { margin: 0 auto 36px; }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .social-pill {
+      display: flex; align-items: center; gap: 10px;
+      padding: 13px 22px;
+      border-radius: 50px;
+      border: 1.5px solid #d1d5db;
+      background: var(--white);
+      text-decoration: none;
+      color: #2d3748;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: .04em;
+      transition: border-color .2s, background .2s, transform .15s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .social-pill:hover {
+      border-color: var(--gold);
+      background: #faf6ee;
+      transform: translateY(-2px);
+    }
+    .social-pill svg { flex-shrink: 0; }
+
+    /* re-enable pointer on hover tooltip */
+    .pin:hover .tooltip { pointer-events: all; }
+
+    /* ── DETAILS GRID ── */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 960px;
+    }
+    .detail-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .detail-card:hover {
+      box-shadow: 0 8px 28px rgba(26,39,68,.12);
+      transform: translateY(-3px);
+    }
+    .detail-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
+    }
+    .detail-card .icon {
+      font-size: 26px; margin-bottom: 12px;
+    }
+    .detail-card h3 {
+      font-size: 11px; letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+      font-family: 'Arial', sans-serif;
+    }
+    .detail-card p, .detail-card a {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px; color: var(--text);
+      line-height: 1.65; text-decoration: none;
+    }
+    .detail-card a:hover { color: var(--gold); }
+
+    /* ── OFFICE HOURS ── */
+    .hours-table {
+      max-width: 480px;
+      border-collapse: collapse;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      width: 100%;
+    }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table td { padding: 10px 0; }
+    .hours-table td:last-child { text-align: right; color: var(--gold); font-weight: 600; }
+    .closed { color: var(--muted) !important; }
+
+    /* ── BOOK APPOINTMENT CTA ── */
+    .cta-section {
+      background: #f0f2f5;
+      padding: 72px 40px;
+      text-align: center;
+    }
+    .cta-section p {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px; letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .cta-section h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      color: #1a2744; font-weight: 400;
+      margin-bottom: 32px;
+    }
+    .btn-appt {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Arial', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 16px 36px;
+      border: none; border-radius: 4px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-appt:hover { background: var(--gold-lt); transform: scale(1.03); }
+
+    /* ── APPOINTMENT POPUP ── */
+    .popup-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(10,15,30,.72);
+      z-index: 2000;
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(3px);
+    }
+    .popup-overlay.open { display: flex; }
+    .popup-box {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 40px 36px;
+      width: min(480px, 92vw);
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      animation: pop-in .25s ease;
+    }
+    @keyframes pop-in {
+      from { transform: scale(.88); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .popup-close {
+      position: absolute; top: 14px; right: 16px;
+      background: none; border: none;
+      font-size: 22px; cursor: pointer; color: var(--muted);
+      line-height: 1; transition: color .15s;
+    }
+    .popup-close:hover { color: var(--navy); }
+    .popup-box h3 {
+      font-size: 22px; color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .popup-box .sub-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .contact-btn {
+      display: flex; align-items: center; gap: 16px;
+      width: 100%;
+      padding: 15px 20px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: var(--cream);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--navy);
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      transition: border-color .2s, background .2s;
+    }
+    .contact-btn:hover { border-color: var(--gold); background: #faf6ee; }
+    .contact-btn .cb-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .cb-phone  { background: #e8f4fd; }
+    .cb-email  { background: #fef3e2; }
+    .cb-whatsapp { background: #e8f8ee; }
+    .contact-btn .cb-label { font-weight: 700; font-size: 13px; color: var(--navy); }
+    .contact-btn .cb-value { font-size: 12px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111b30;
+      padding: 24px 40px;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 12px; color: #6b7a99;
+    }
+    footer span { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .section { padding: 48px 20px; }
+      .page-hero { padding: 40px 20px 32px; }
+      .cta-section { padding: 52px 20px; }
+      .tooltip { min-width: 180px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html">
+    <img src="assets/logo.png" alt="Batra Deepak & Associates" style="height:44px; width:auto; display:block;" />
+  </a>
+  <button class="hamburger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="slide-menu" id="slideMenu">
+  <ul>
+    <li><a href="index.html"><span class="num">01</span>Home</a></li>
+    <li><a href="industries-we-serve.html"><span class="num">02</span>Industries We Serve</a></li>
+    <li><a href="our-people-strength.html"><span class="num">03</span>Our People Strength</a></li>
+    <li><a href="#"><span class="num">04</span>Gallery</a></li>
+    <li><a href="career_options.html"><span class="num">05</span>Career Options</a></li>
+    <li><a href="knowledge-centre.html"><span class="num">06</span>Knowledge Centre</a></li>
+    <li><a href="connect-us.html" class="active"><span class="num">07</span>Connect Us</a></li>
+  </ul>
+</div>
+
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <h1>Connect <span>With Us</span></h1>
+  <p>Nine offices. One standard of excellence.</p>
+</div>
+
+<!-- ── MAP SECTION ── -->
+<div class="section" style="background:#fff; text-align:center;">
+  <div style="max-width:780px; margin:0 auto;">
+    <div class="section-label">Our Presence</div>
+    <h2 class="section-title">Where We Operate</h2>
+    <div class="divider" style="margin:0 auto 32px;"></div>
+    <p style="font-family:'Arial',sans-serif; font-size:14px; color:var(--muted); margin-bottom:36px; max-width:520px; margin-left:auto; margin-right:auto;">
+      With offices across Raipur, Delhi, Mumbai, Jagdalpur, Durg, Giridih, Bhopal and more — we bring CA expertise closer to you.
+    </p>
+
+    <div class="map-wrapper" id="mapWrapper">
+      <!-- India map image -->
+      <img src="india_map.jpg" alt="Map of India" id="indiaMap" />
+
+      <!-- ── PINS (positions as % of image) ── -->
+
+      <!-- Raipur 1 (Byron Bazar) ~56%, 58% -->
+      <div class="pin" style="left:51%; top:52%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">🏛 Raipur — Office 1 (Head Office)</div>
+          <div class="address">1st Floor, Ashirwad Bhawan,<br>Byron Bazar, Raipur – 492 001,<br>Chhattisgarh</div>
+          <a class="phone" href="tel:+917770000001">📞 +91 77700 00001</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/rewvCxr8iiMGycELA" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Raipur 2 (Vidhan Sabha Road) ~57%, 60% -->
+      <div class="pin" style="left:52%; top:52%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">🏛 Raipur — Office 2</div>
+          <div class="address">Office No. 28, 2nd Floor, Ashoka Plaza Coomplex,<br>Near Ashoka Ratan, Khamardih,<br>Vidhan Sabha Road, Raipur – 492 001</div>
+          <a class="phone" href="tel:+917770000002">📞 +91 77700 00002</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/iMABgxew6g9e8qLu6" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Mumbai ~30%, 66% -->
+      <div class="pin" style="left:24%; top:61%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Mumbai</div>
+          <div class="address">A 219, Kanakia Zillion, Junction of SCLR &amp; LBS Road,<br>BKC Annex, Mumbai – 400 070,<br>Maharashtra</div>
+          <a class="phone" href="tel:+917770000003">📞 +91 77700 00003</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/y8CS58nEnpTnkjce8?g_st=iw" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Delhi (Netaji Subhash Place) ~46%, 23% -->
+      <div class="pin" style="left:36%; top:33%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Delhi — Office 1</div>
+          <div class="address">904, Aggaarwal Millenium Tower-1,<br>Netaji Subhash Place, Delhi – 110 034</div>
+          <a class="phone" href="tel:+917770000004">📞 +91 77700 00004</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/3uEA6CigMQMkgpuW6" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Jagdalpur ~58%, 68% -->
+      <div class="pin" style="left:48%; top:60%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Jagdalpur</div>
+          <div class="address">C/O Trilok Chand Jain, Moti Talab Para,<br>Rammaiyya Ward, Near Anil Provision Stores,<br>Jagdalpur – 494 004, Chhattisgarh</div>
+          <a class="phone" href="tel:+917770000005">📞 +91 77700 00005</a>
+          <a class=" map-link" href="https://maps.google.com/?q=Moti+Talab+Para,Jagdalpur,Chhattisgarh" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Delhi (Lasmi Nagar) ~49%, 24% -->
+      <div class="pin" style="left:35%; top:31%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Delhi — Office 2</div>
+          <div class="address">1-B 1/17, Lalita Park,<br>Lasmi Nagar, Vikas Marg,<br>Delhi – 110 092</div>
+          <a class="phone" href="tel:+917770000006">📞 +91 77700 00006</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/q1GZDsQBwvwUgqNB6?g_st=iw" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Durg/Supela ~54%, 59% -->
+      <div class="pin" style="left:49%; top:50%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Durg</div>
+          <div class="address">303-306, Chauhan Towers,<br>Near Chandra Maurya Theatre, G E Road,<br>Supela, Durg – 490 001, Chhattisgarh</div>
+          <a class="phone" href="tel:+917770000007">📞 +91 77700 00007</a>
+          <a class=" map-link" href=" https://maps.google.com/?q=Chauhan+Towers,Supela,Durg,Chhattisgarh" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Giridih ~65%, 40% -->
+      <div class="pin" style="left:63%; top:45%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Giridih</div>
+          <div class="address">1st Floor, Near Khalsa Lodge,<br>Buxidih Road, Giridih – 815 301,<br>Jharkhand</div>
+          <a class="phone" href="tel:+917770000008">📞 +91 77700 00008</a>
+          <a class=" map-link" href=" https://maps.app.goo.gl/XFyFuvWVWhm99FkQA?g_st=iw" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+      <!-- Bhopal ~45%, 48% -->
+      <div class="pin" style="left:37%; top:48%;">
+        <div class="pin-dot"></div>
+        <div class="tooltip">
+          <div class="city-name">📍 Bhopal</div>
+          <div class="address">Plot No. 2, Khasra No. 398/1/6,<br>Near Bhel Sangam Square,<br>Bag Mugalia, Bhopal – 462 043, M.P.</div>
+          <a class="phone" href="tel:+917770000009">📞 +91 77700 00009</a>
+          <a class=" map-link" href="https://maps.app.goo.gl/2hExNLwyRXQVwb8o6?g_st=iw" target="_blank">Open in Google Maps ↗</a>
+        </div>
+      </div>
+
+    </div><!-- /map-wrapper -->
+
+    <p style="font-family:'Arial',sans-serif;font-size:12px;color:var(--muted);margin-top:18px;">
+      Hover over a pin to see office details · Click <em>Open in Google Maps</em> for directions
+    </p>
+  </div>
+</div>
+
+<!-- ── HEAD OFFICE CONTACT INFORMATION ── -->
+<div class="section" style="background:var(--cream);">
+  <div class="section-label">Reach Us</div>
+  <h2 class="section-title">Contact Information</h2>
+  <div class="divider"></div>
+
+  <div class="contact-cards-grid">
+
+    <div class="contact-card">
+      <span class="cc-icon">🏛</span>
+      <div class="cc-label">Head Office — Raipur</div>
+      <div class="cc-body">Office No. 28, 2nd Floor, Ashoka Plaza Coomplex,<br>Near Ashoka Ratan, Khamardih,<br>Vidhan Sabha Road, Raipur – 492 001
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon">📞</span>
+      <div class="cc-label">Phone</div>
+      <div class="cc-body">
+        <a href="tel:+917770000001">+91 77700 00001</a> &nbsp;(Raipur)<br>
+        <a href="tel:+917770000004">+91 77700 00004</a> &nbsp;(Delhi)<br>
+        <a href="tel:+917770000003">+91 77700 00003</a> &nbsp;(Mumbai)
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <span class="cc-icon">✉️</span>
+      <div class="cc-label">Email</div>
+      <div class="cc-body">
+        <a href="mailto:info@batradeepak.com">info@batradeepak.com</a><br>
+        <a href="mailto:raipur@batradeepak.com">raipur@batradeepak.com</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SOCIAL MEDIA ── -->
+<div class="social-section">
+  <div class="section-label">Follow Us</div>
+  <h2 class="section-title" style="font-size:clamp(22px,3vw,32px);font-weight:400;margin-bottom:10px;">Our Social Presence</h2>
+  <div class="divider"></div>
+
+  <div class="social-links">
+
+    <!-- YouTube -->
+    <a class="social-pill" href="https://www.youtube.com/@batradeepak" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+      YouTube
+    </a>
+
+    <!-- LinkedIn -->
+    <a class="social-pill" href="https://www.linkedin.com/company/batradeepak" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.57V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.27V1.73C24 .77 23.21 0 22.22 0z"/></svg>
+      LinkedIn
+    </a>
+
+    <!-- Facebook -->
+    <a class="social-pill" href="https://www.facebook.com/batradeepak" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.69 4.55-4.69 1.32 0 2.7.24 2.7.24v2.97h-1.52c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+      Facebook
+    </a>
+
+    <!-- Instagram -->
+    <a class="social-pill" href="https://www.instagram.com/batradeepak" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+      Instagram
+    </a>
+
+    <!-- Naukri -->
+    <a class="social-pill" href="https://www.naukri.com/batradeepak-jobs" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#ff7555"><rect width="24" height="24" rx="4" fill="#ff7555"/><text x="3" y="17" font-family="Arial" font-weight="bold" font-size="11" fill="#fff">Naukri</text></svg>
+      Naukri.com
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="social-pill" href="https://wa.me/917828780780" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      WhatsApp
+    </a>
+
+  </div>
+</div>
+
+<!-- ── CTA ── -->
+<div class="cta-section">
+  <p>Ready to Get Started?</p>
+  <h2>Book a Free Consultation</h2>
+  <button class="btn-appt" id="apptBtn">
+    📅 &nbsp;Book Appointment
+  </button>
+</div>
+
+<!-- ── APPOINTMENT POPUP ── -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose">✕</button>
+    <h3>Get in Touch</h3>
+    <p class="sub-text">Choose how you'd like to connect with us</p>
+
+    <a class="contact-btn" href="tel:+917770000001">
+      <div class="cb-icon cb-phone">📞</div>
+      <div>
+        <div class="cb-label">Call Us</div>
+        <div class="cb-value">+91 77700 00001</div>
+      </div>
+    </a>
+
+    <a class="contact-btn" href="mailto:info@batradeepak.com">
+      <div class="cb-icon cb-email">✉️</div>
+      <div>
+        <div class="cb-label">Email Us</div>
+        <div class="cb-value">info@batradeepak.com</div>
+      </div>
+    </a>
+
+    <a class="contact-btn" href="https://wa.me/917828780780?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank">
+      <div class="cb-icon cb-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </div>
+      <div>
+        <div class="cb-label">WhatsApp</div>
+        <div class="cb-value">+91 78287 80780 — Chat with us instantly</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  &copy; 2025 <span>Batra Deepak &amp; Associates</span>. All rights reserved. &nbsp;|&nbsp; Chartered Accountants
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+  // Hamburger menu toggle
+  const menuBtn  = document.getElementById('menuBtn');
+  const slideMenu = document.getElementById('slideMenu');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    slideMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !slideMenu.contains(e.target)) {
+      menuBtn.classList.remove('open');
+      slideMenu.classList.remove('open');
+    }
+  });
+
+  // Appointment popup
+  const popup    = document.getElementById('popup');
+  const apptBtn  = document.getElementById('apptBtn');
+  const popupClose = document.getElementById('popupClose');
+  apptBtn.addEventListener('click', () => popup.classList.add('open'));
+  popupClose.addEventListener('click', () => popup.classList.remove('open'));
+  popup.addEventListener('click', e => {
+    if (e.target === popup) popup.classList.remove('open');
+  });
+</script>
+
+</body>
+</html>

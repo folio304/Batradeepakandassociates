@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Options — Batra Deepak & Associates</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B2B4B;
+      --navy-light: #2D4070;
+      --navy-dark: #0F1C36;
+      --gold: #B8923A;
+      --gold-light: #D4AF60;
+      --cream: #F7F8FA;
+      --text-dark: #1B2B4B;
+      --text-mid: #5A6A7A;
+      --text-light: #8a93a5;
+      --white: #ffffff;
+      --border: #E3E7ED;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      border-bottom: 1px solid rgba(27,43,75,.12);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 20px;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Menu toggle button */
+    .menu-btn {
+      width: 42px;
+      height: 42px;
+      border: 1.5px solid var(--navy);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .menu-btn:hover { background: rgba(27,43,75,0.07); }
+    .menu-btn .bar {
+      width: 18px;
+      height: 2px;
+      background: var(--navy);
+      display: block;
+      position: absolute;
+      transition: all 0.3s;
+    }
+    .menu-btn .bar:nth-child(1) { top: 13px; }
+    .menu-btn .bar:nth-child(2) { top: 19px; }
+    .menu-btn .bar:nth-child(3) { top: 25px; }
+    .menu-btn.open .bar:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .menu-btn.open .bar:nth-child(2) { opacity: 0; }
+    .menu-btn.open .bar:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* Nav drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 64px;
+      right: 0;
+      width: min(300px, 85vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(.4,0,.2,1);
+      border-top: 2px solid var(--gold);
+    }
+    .nav-drawer.open { transform: translateX(0); }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0ece4;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 15px;
+      font-weight: 400;
+      transition: background 0.15s;
+    }
+    .nav-item:hover { background: #faf8f4; }
+    .nav-item.active { color: var(--gold); font-weight: 600; }
+
+    .nav-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-item.active .nav-num { background: var(--gold); }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 98;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .overlay.active { opacity: 1; pointer-events: all; }
+
+    /* ── TICKER ── */
+    .ticker {
+      background: var(--gold);
+      padding: 8px 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: scroll 32s linear infinite;
+    }
+    .ticker-item {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy-dark);
+      flex-shrink: 0;
+    }
+    .ticker-item::before { content: '◆  '; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.55)),
+                  url('assets/career-hero-bg.jpg') center/cover no-repeat;
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -60px;
+      width: 220px; height: 220px;
+      background: var(--gold);
+      opacity: 0.07;
+      border-radius: 50%;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy-dark);
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 6vw, 44px);
+      color: var(--navy-dark);
+      font-weight: 700;
+      line-height: 1.18;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 18px auto 16px;
+    }
+    .hero-sub {
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── FACTS BAR ── */
+    .facts-bar {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      transform: translateY(-26px);
+    }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .fact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 14px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(27,43,75,0.08);
+    }
+    .fact-label {
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .fact-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+    .fact-note {
+      font-size: 10px;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    /* ── VACANCIES ── */
+    .vacancies-section {
+      padding: 36px 20px 36px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 32px);
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .section-heading span { color: var(--gold); }
+
+    .section-intro {
+      color: var(--text-mid);
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    /* Department cards */
+    .dept-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .dept-card {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 1px 6px rgba(26,39,68,0.06);
+      cursor: pointer;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .dept-card:hover {
+      box-shadow: 0 4px 16px rgba(26,39,68,0.12);
+      transform: translateY(-1px);
+    }
+
+    .dept-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .dept-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .dept-badge {
+      background: #eef7f0;
+      color: #2d7a45;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .dept-roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .role-tag {
+      background: #f0ecf7;
+      color: #4a3080;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .dept-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .dept-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .dept-meta {
+      font-size: 11px;
+      color: var(--text-light);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .dept-meta span::before { margin-right: 4px; }
+
+    .apply-btn {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 9px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .apply-btn:hover { background: var(--gold); color: var(--navy-dark); }
+
+    /* ── ELIGIBILITY ── */
+    .why-section {
+      background: var(--navy);
+      padding: 44px 20px;
+    }
+    .why-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .why-section .section-heading { color: var(--white); }
+    .why-section .section-intro { color: #a8b5cc; }
+
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .eligibility-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(184,146,58,0.25);
+      border-radius: 4px;
+      padding: 18px 18px 20px;
+    }
+
+    .eligibility-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .eligibility-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .eligibility-card li {
+      font-size: 12.5px;
+      color: #c4cee2;
+      line-height: 1.55;
+      padding-left: 18px;
+      position: relative;
+    }
+    .eligibility-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0; top: 0;
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .skills-block {
+      margin-top: 28px;
+    }
+    .skills-block .eligibility-title { margin-bottom: 14px; }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+    .skill-tag {
+      background: rgba(184,146,58,0.12);
+      border: 1px solid rgba(212,175,96,0.35);
+      color: var(--gold-light);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── ABOUT / GROW BANNER ── */
+    .about-banner {
+      background: var(--navy-dark);
+      padding: 40px 20px;
+    }
+    .about-banner-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .about-banner-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .about-banner-text {
+      font-size: 13.5px;
+      color: #a8b5cc;
+      line-height: 1.7;
+    }
+    .grow-box {
+      border-left: 2px solid var(--gold);
+      padding-left: 20px;
+    }
+    .grow-box p {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.45;
+    }
+    .grow-box p span { color: var(--gold-light); }
+
+    /* ── APPLY / CONTACT SECTION ── */
+    .apply-section {
+      padding: 44px 20px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .contact-card:hover {
+      box-shadow: 0 4px 16px rgba(26,39,68,0.1);
+      transform: translateY(-1px);
+    }
+    .contact-card .icon-wrap {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .contact-card .c-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .contact-card .c-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+    .contact-card:hover .c-value { color: var(--gold); }
+
+    .apply-summary {
+      margin-top: 16px;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+      padding: 16px 18px;
+      box-shadow: 0 1px 6px rgba(26,39,68,0.06);
+    }
+    .apply-summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 12.5px;
+    }
+    .apply-summary-row:last-child { border-bottom: none; }
+    .apply-summary-row .k {
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 10.5px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .apply-summary-row .v {
+      color: var(--navy);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* ── VALUES STRIP ── */
+    .values-strip {
+      background: var(--navy-dark);
+      padding: 24px 20px;
+      border-top: 1px solid rgba(184,146,58,0.2);
+    }
+    .values-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      text-align: center;
+    }
+    .value-item .v-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .value-item .v-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .value-item .v-sub {
+      font-size: 10.5px;
+      color: #8a9bc5;
+      margin-top: 2px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-dark);
+      text-align: center;
+      padding: 20px;
+      font-size: 11px;
+      color: #5a6a8a;
+      letter-spacing: 0.06em;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    footer span { color: var(--gold-light); }
+
+    /* ── CONTACT POPUP ── */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,28,54,0.75);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .popup-overlay.show { opacity: 1; pointer-events: all; }
+
+    .popup {
+      background: var(--white);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 400px;
+      overflow: hidden;
+      transform: translateY(18px) scale(0.97);
+      transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+    }
+    .popup-overlay.show .popup { transform: translateY(0) scale(1); }
+
+    .popup-header {
+      background: var(--navy);
+      padding: 20px 22px 16px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .popup-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .popup-sub {
+      font-size: 11px;
+      color: #8a9bc5;
+      margin-top: 3px;
+      letter-spacing: 0.06em;
+    }
+
+    .popup-close {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--white);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .popup-close:hover { background: rgba(255,255,255,0.2); }
+
+    .popup-body {
+      padding: 22px;
+    }
+
+    .popup-dept-name {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .popup-dept-name strong { color: var(--gold); font-size: 13px; }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+    }
+    .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .contact-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+    .icon-phone { background: #e8f5e9; }
+    .icon-whatsapp { background: #e3f7ec; }
+    .icon-email { background: #e8eaf6; }
+
+    .contact-label {
+      font-size: 10px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .contact-row:hover .contact-value { color: var(--gold); }
+
+    .popup-note {
+      margin-top: 16px;
+      background: #faf8f4;
+      border-left: 3px solid var(--gold);
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--text-mid);
+      line-height: 1.55;
+      border-radius: 0 3px 3px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .facts-grid { grid-template-columns: 1fr; }
+      .facts-bar { transform: translateY(-18px); }
+      .eligibility-grid { grid-template-columns: 1fr; }
+      .about-banner-inner { grid-template-columns: 1fr; }
+      .grow-box { border-left: none; border-top: 2px solid var(--gold); padding-left: 0; padding-top: 16px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .apply-summary-row { flex-direction: column; gap: 2px; }
+      .apply-summary-row .v { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-block" style="text-decoration:none;">
+      <img src="assets/logo.png" alt="Batra Deepak &amp; Associates" style="height:44px; width:auto; display:block;" />
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Nav Drawer -->
+<nav class="nav-drawer" id="navDrawer">
+  <a href="index.html" class="nav-item"><span class="nav-num">01</span> Home</a>
+  <a href="industries-we-serve.html" class="nav-item"><span class="nav-num">02</span> Industries We Serve</a>
+  <a href="our-people-strength.html" class="nav-item"><span class="nav-num">03</span> Our People Strength</a>
+  <a href="#" class="nav-item"><span class="nav-num">04</span> Gallery</a>
+  <a href="career_options.html" class="nav-item active"><span class="nav-num" style="background:var(--gold)">05</span> Career Options</a>
+  <a href="knowledge-centre.html" class="nav-item"><span class="nav-num">06</span> Knowledge Centre</a>
+  <a href="connect-us.html" class="nav-item"><span class="nav-num">07</span> Connect Us</a>
+</nav>
+<div class="overlay" id="overlay"></div>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">We Are Hiring</span>
+    <span class="ticker-item">Direct Taxation</span>
+    <span class="ticker-item">Indirect Taxation (GST)</span>
+    <span class="ticker-item">Audit &amp; Assurance</span>
+    <span class="ticker-item">Financial Reporting</span>
+    <span class="ticker-item">Financial Modelling &amp; Business Advisory</span>
+    <span class="ticker-item">Corporate Compliances</span>
+    <span class="ticker-item">36+ Years of Trust</span>
+    <span class="ticker-item">We Are Hiring</span>
+    <span class="ticker-item">Direct Taxation</span>
+    <span class="ticker-item">Indirect Taxation (GST)</span>
+    <span class="ticker-item">Audit &amp; Assurance</span>
+    <span class="ticker-item">Financial Reporting</span>
+    <span class="ticker-item">Financial Modelling &amp; Business Advisory</span>
+    <span class="ticker-item">Corporate Compliances</span>
+    <span class="ticker-item">36+ Years of Trust</span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-eyebrow">36+ Years of Trust · Excellence · Integrity · Impact</p>
+  <h1>We Are <span>Hiring!</span><br>Chartered Accountant (CA)</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">Freshers &amp; experienced professionals welcome. Join a Chartered Accountancy firm with over 36 years of experience, serving diverse private and public sector clients across Direct Taxation, Indirect Taxation, Audit &amp; Assurance, Financial Advisory, Compliance, and Business Consulting.</p>
+</section>
+
+<!-- ── QUICK FACTS ── -->
+<div class="facts-bar">
+  <div class="facts-grid">
+    <div class="fact-card">
+      <div class="fact-label">Location</div>
+      <div class="fact-value">Raipur, Chhattisgarh, India</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">CTC Range</div>
+      <div class="fact-value">₹4.5 – ₹12 LPA</div>
+      <div class="fact-note">Per annum, based on qualifications, experience &amp; interview performance</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Positions</div>
+      <div class="fact-value">CA, CMA, MBA, CS</div>
+      <div class="fact-note">Freshers &amp; Experienced Professionals</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── VACANCIES ── -->
+<section class="vacancies-section">
+  <p class="section-label">Open Positions</p>
+  <h2 class="section-heading">Roles We Are <span>Hiring For</span></h2>
+  <p class="section-intro">We are actively looking for motivated professionals across the following functions. Click "Apply Now" to get in touch with our team directly.</p>
+
+  <div class="dept-grid">
+
+    <!-- DIRECT TAXATION -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Direct Taxation</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">Taxation</span>
+      </div>
+      <p class="dept-desc">Income Tax returns, assessments, appeals, TDS compliance, tax planning &amp; advisory, and tax research.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Direct Taxation')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- INDIRECT TAXATION (GST) -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Indirect Taxation (GST)</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">GST</span>
+      </div>
+      <p class="dept-desc">GST compliance, advisory, audits, reconciliations, notices, assessments &amp; litigation support.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Indirect Taxation (GST)')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- AUDIT & ASSURANCE -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Audit &amp; Assurance</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">Audit</span>
+      </div>
+      <p class="dept-desc">Statutory / internal audits, bank &amp; stock audits, tax audits, audit reports, compliance &amp; documentation.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Audit & Assurance')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- FINANCIAL REPORTING -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Financial Reporting</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">Finance</span>
+      </div>
+      <p class="dept-desc">Financial statements, budgeting, MIS reporting, working capital &amp; cash flow management, due diligence.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Financial Reporting')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- FINANCIAL MODELLING & BUSINESS ADVISORY -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Financial Modelling &amp; Business Advisory</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">Advisory</span>
+      </div>
+      <p class="dept-desc">Financial models, valuations, CMA reports, project reports, feasibility studies, debt syndication &amp; banking proposals.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Financial Modelling & Business Advisory')">Apply Now →</button>
+      </div>
+    </div>
+
+    <!-- CORPORATE COMPLIANCES -->
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Corporate Compliances</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles">
+        <span class="role-tag">Manager Level</span>
+        <span class="role-tag">Corporate Law</span>
+      </div>
+      <p class="dept-desc">ROC filings, board &amp; shareholder meetings, due diligence, M&amp;A, share transfer, IPO/FPO advisory, LLP/Company formation.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span>📍 Raipur, Chhattisgarh</span>
+          <span>🎓 CA / CMA / MBA / CS</span>
+          <span>⏱ Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Corporate Compliances')">Apply Now →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ELIGIBILITY & SKILLS ── -->
+<section class="why-section">
+  <div class="why-inner">
+    <p class="section-label" style="color:var(--gold-light)">Who We're Looking For</p>
+    <h2 class="section-heading">Eligibility &amp; <span>Desired Skills</span></h2>
+    <p class="section-intro">We welcome both freshers stepping into their first role and experienced professionals ready to take on greater responsibility.</p>
+    <div class="eligibility-grid">
+      <div class="eligibility-card">
+        <div class="eligibility-title">For Freshers</div>
+        <ul>
+          <li>Qualified Chartered Accountant (CA)</li>
+          <li>Strong understanding of taxation, auditing and accounting standards</li>
+          <li>Good analytical &amp; communication skills</li>
+          <li>Proficiency in MS Excel &amp; financial reporting tools</li>
+        </ul>
+      </div>
+      <div class="eligibility-card">
+        <div class="eligibility-title">For Experienced Candidates</div>
+        <ul>
+          <li>CA / CMA / MBA / CS with 1–8 years of relevant experience</li>
+          <li>Experience in taxation, audit, finance or consulting assignments</li>
+          <li>Ability to independently handle client engagements</li>
+          <li>Experience in team management &amp; client communication is an added advantage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="skills-block">
+      <div class="eligibility-title">Desired Skills</div>
+      <div class="skills-grid">
+        <span class="skill-tag">Strong knowledge of Income Tax &amp; GST laws</span>
+        <span class="skill-tag">Expertise in audit procedures &amp; financial reporting</span>
+        <span class="skill-tag">Advanced MS Excel &amp; financial modelling skills</span>
+        <span class="skill-tag">Analytical &amp; problem-solving abilities</span>
+        <span class="skill-tag">Excellent written &amp; verbal communication</span>
+        <span class="skill-tag">Client handling &amp; presentation skills</span>
+        <span class="skill-tag">Ability to manage multiple assignments &amp; meet deadlines</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT / GROW BANNER ── -->
+<section class="about-banner">
+  <div class="about-banner-inner">
+    <div>
+      <div class="about-banner-title">About The Firm</div>
+      <p class="about-banner-text">We are a Chartered Accountancy firm with over 36 years of experience, serving diverse private and public sector clients. We provide services in Direct Taxation, Indirect Taxation, Audit &amp; Assurance, Financial Advisory, Compliance, and Business Consulting.</p>
+    </div>
+    <div class="grow-box">
+      <p>Grow Your Career.<br><span>Make An Impact.</span><br>Be a Part of Our Legacy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW TO APPLY ── -->
+<section class="apply-section">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-heading">How to <span>Apply</span></h2>
+  <p class="section-intro">Interested candidates may send their resume using any of the details below.</p>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:toshitbatra@gmail.com?subject=Job Application — Chartered Accountant (CA)">
+      <div class="icon-wrap">✉️</div>
+      <div>
+        <div class="c-label">Email</div>
+        <div class="c-value">toshitbatra@gmail.com</div>
+      </div>
+    </a>
+    <a class="contact-card" href="tel:+918839342250">
+      <div class="icon-wrap">📞</div>
+      <div>
+        <div class="c-label">Contact Person</div>
+        <div class="c-value">Jeetendra Chaturvedi<br>+91 88393 42250</div>
+      </div>
+    </a>
+    <a class="contact-card" href="https://wa.me/918839342250" target="_blank" style="grid-column: 1 / -1;">
+      <div class="icon-wrap">💬</div>
+      <div>
+        <div class="c-label">WhatsApp</div>
+        <div class="c-value">+91 88393 42250</div>
+      </div>
+    </a>
+    <div class="contact-card" style="grid-column: 1 / -1; cursor: default;">
+      <div class="icon-wrap">📍</div>
+      <div>
+        <div class="c-label">Office Address</div>
+        <div class="c-value">Office No. 28, 2nd Floor, Ashoka Plaza Complex, Beside Ashoka Ratan, Vidhan Sabha Road, Raipur, Chhattisgarh.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="apply-summary">
+    <div class="apply-summary-row"><span class="k">Position</span><span class="v">Chartered Accountant (CA)</span></div>
+    <div class="apply-summary-row"><span class="k">Location</span><span class="v">Raipur, Chhattisgarh</span></div>
+    <div class="apply-summary-row"><span class="k">Experience</span><span class="v">Freshers &amp; Experienced Candidates Welcome</span></div>
+    <div class="apply-summary-row"><span class="k">CTC Range</span><span class="v">₹4.5 LPA – ₹12 LPA per annum</span></div>
+  </div>
+</section>
+
+<!-- ── VALUES STRIP ── -->
+<div class="values-strip">
+  <div class="values-grid">
+    <div class="value-item">
+      <span class="v-icon">🛡️</span>
+      <div class="v-title">Integrity</div>
+      <div class="v-sub">Our Foundation</div>
+    </div>
+    <div class="value-item">
+      <span class="v-icon">⭐</span>
+      <div class="v-title">Excellence</div>
+      <div class="v-sub">Our Commitment</div>
+    </div>
+    <div class="value-item">
+      <span class="v-icon">🤝</span>
+      <div class="v-title">Trust</div>
+      <div class="v-sub">Our Strength</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 <span>Batra Deepak &amp; Associates</span> — Chartered Accountants. All rights reserved.
+</footer>
+
+<!-- ── CONTACT POPUP ── -->
+<div class="popup-overlay" id="popupOverlay" onclick="handleOverlayClick(event)">
+  <div class="popup">
+    <div class="popup-header">
+      <div>
+        <div class="popup-title">Get In Touch</div>
+        <div class="popup-sub">SEND US YOUR RESUME</div>
+      </div>
+      <button class="popup-close" onclick="closePopup()">✕</button>
+    </div>
+    <div class="popup-body">
+      <div class="popup-dept-name">
+        Applying for: <strong id="popupDeptName">—</strong>
+      </div>
+
+      <a class="contact-row" href="tel:+918839342250">
+        <div class="contact-icon-wrap icon-phone">📞</div>
+        <div>
+          <div class="contact-label">Contact Person — Jeetendra Chaturvedi</div>
+          <div class="contact-value">+91 88393 42250</div>
+        </div>
+      </a>
+
+      <a class="contact-row" href="https://wa.me/918839342250" target="_blank">
+        <div class="contact-icon-wrap icon-whatsapp">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">+91 88393 42250</div>
+        </div>
+      </a>
+
+      <a class="contact-row" href="mailto:toshitbatra@gmail.com?subject=Job Application — " id="emailLink">
+        <div class="contact-icon-wrap icon-email">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">toshitbatra@gmail.com</div>
+        </div>
+      </a>
+
+      <div class="popup-note">
+        📋 Please mention the <strong>role</strong> you are applying for when you call, message, or email. Office: No. 28, 2nd Floor, Ashoka Plaza Complex, Beside Ashoka Ratan, Vidhan Sabha Road, Raipur, Chhattisgarh.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navDrawer = document.getElementById('navDrawer');
+  const overlay = document.getElementById('overlay');
+
+  menuBtn.addEventListener('click', () => {
+    const open = navDrawer.classList.toggle('open');
+    overlay.classList.toggle('active', open);
+    menuBtn.classList.toggle('open', open);
+  });
+
+  overlay.addEventListener('click', () => {
+    navDrawer.classList.remove('open');
+    overlay.classList.remove('active');
+    menuBtn.classList.remove('open');
+  });
+
+  // ── Popup
+  function openPopup(dept) {
+    document.getElementById('popupDeptName').textContent = dept;
+    const emailLink = document.getElementById('emailLink');
+    emailLink.href = `mailto:toshitbatra@gmail.com?subject=Job Application — ${encodeURIComponent(dept)}`;
+    document.getElementById('popupOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    document.getElementById('popupOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('popupOverlay')) closePopup();
+  }
+</script>
+</body>
+</html>

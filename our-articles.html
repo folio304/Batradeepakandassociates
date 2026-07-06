@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Articles – BD&A</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --navy:    #0d1a36;
+      --navy2:   #1a2a55;
+      --gold:    #b8954a;
+      --gold-lt: #d4ab62;
+      --white:   #ffffff;
+      --offwhite:#f0f2f7;
+      --offwhite2:#e8eaf2;
+      --muted:   #1a2233;
+      --muted-lt:#2c3548;
+      --border:  rgba(26,39,68,.18);
+      --border-gold: rgba(184,149,74,.3);
+      --radius:  4px;
+      --text-primary: #000000;
+      --text-secondary: #0a0f1e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Verdana', 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ─── FIXED HEADER ─── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid rgba(26,39,68,.12);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+    }
+
+    .logo-block { display: flex; align-items: center; line-height: 1; }
+
+    .nav-strip-wrapper {
+      border-top: 1px solid var(--border);
+    }
+    .nav-strip {
+      background: rgba(247,248,250,.10);
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 4px 5%;
+    }
+    .nav-strip a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 4px 18px;
+      border: none; white-space: nowrap;
+      transition: color .2s, transform .2s, background .2s;
+      display: inline-block;
+    }
+    .nav-strip a:hover {
+      color: var(--gold); transform: translateY(-2px);
+      background: rgba(184,146,58,.06);
+    }
+    .nav-strip a.active { color: var(--gold); }
+
+    .hamburger-btn {
+      display: none;
+      width: 42px; height: 42px; border: 1.5px solid var(--navy);
+      background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .hamburger-btn:hover { background: rgba(26,39,68,.07); }
+    .hamburger-btn span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--navy);
+    }
+
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed;
+      top: 64px; right: 0;
+      width: 260px;
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(0,0,0,.15);
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      z-index: 1200;
+      border-radius: 0 0 0 8px;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 12px 0; }
+    .slide-menu li { border-bottom: 1px solid rgba(26,39,68,.08); }
+    .slide-menu a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 14px;
+      font-family: 'Verdana', sans-serif;
+      transition: background .15s;
+    }
+    .slide-menu a:hover { background: var(--offwhite); }
+    .slide-menu .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .slide-menu a.active .num { background: var(--gold); color: var(--navy); }
+
+    @media (max-width: 900px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger-btn { display: flex; }
+    }
+
+    /* ─── PAGE CONTENT ─── */
+    main { padding-top: 104px; }
+
+    @media (max-width: 900px) {
+      main { padding-top: 64px; }
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.55)),
+                  url('assets/knowledge-hero-bg.jpg') center/cover no-repeat;
+      padding: 64px 24px 48px;
+      border-bottom: 3px solid var(--gold);
+      opacity: 0; transform: translateY(16px);
+      animation: heroIn .7s ease forwards;
+    }
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow {
+      font-size: 12px; letter-spacing: .25em; font-weight: 600;
+      color: var(--navy); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-family: 'Verdana', sans-serif;
+      font-size: clamp(34px, 6vw, 52px);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p {
+      font-size: 16px; line-height: 1.7; color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* SECTIONS */
+    section { padding: 56px 24px; background: var(--offwhite); }
+    section:nth-child(even) { background: var(--offwhite2); }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--gold);
+    }
+    .section-label span {
+      font-size: 12px; letter-spacing: .22em; font-weight: 600;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Verdana', sans-serif;
+      font-size: 28px; font-weight: 700; margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .section-desc {
+      font-size: 15px; color: var(--muted); line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* ─── ARTICLES ─── */
+    .article-list {
+      display: flex; flex-direction: column; gap: 22px;
+      max-width: 900px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 26px 26px 24px;
+      box-shadow: 0 1px 4px rgba(26,39,68,.06);
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: box-shadow .25s, transform .25s, border-color .25s;
+      opacity: 0; transform: translateY(28px);
+    }
+    .article-card.in-view {
+      animation: cardIn .6s ease forwards;
+    }
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .article-card:hover {
+      box-shadow: 0 10px 28px rgba(26,39,68,.14);
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .article-icon {
+      flex-shrink: 0;
+      width: 56px; height: 56px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy), var(--navy2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      color: var(--gold-lt);
+      transition: transform .3s ease;
+    }
+    .article-card:hover .article-icon { transform: scale(1.08) rotate(-4deg); }
+
+    .article-body { flex: 1; min-width: 0; }
+
+    .article-meta {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .article-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      background: rgba(184,149,74,.15); color: var(--navy2);
+    }
+    .article-date {
+      font-size: 12px; color: var(--muted-lt); letter-spacing: .04em;
+    }
+
+    .article-body h3 {
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .article-body p {
+      font-size: 14px; color: var(--muted); line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .article-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; text-decoration: none;
+      color: var(--white); background: var(--navy);
+      padding: 9px 18px; border-radius: 20px;
+      transition: background .2s, transform .2s, gap .2s;
+    }
+    .article-cta:hover {
+      background: var(--gold); gap: 10px; transform: translateX(2px);
+    }
+
+    @media (max-width: 600px) {
+      .article-card { flex-direction: column; }
+      .article-icon { width: 48px; height: 48px; font-size: 20px; }
+    }
+
+    /* ─── COMING SOON NOTE ─── */
+    .more-note {
+      margin-top: 30px;
+      max-width: 900px;
+      font-size: 13px; color: var(--muted-lt);
+      letter-spacing: .03em; font-style: italic;
+      border-left: 3px solid var(--border-gold);
+      padding-left: 14px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      border-top: 3px solid var(--gold);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px; color: rgba(255,255,255,.75); letter-spacing: .06em;
+    }
+    footer strong { color: var(--gold); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--offwhite); }
+    ::-webkit-scrollbar-thumb { background: rgba(26,39,68,.2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FIXED HEADER ═══ -->
+<header>
+  <div class="nav-logo-row">
+    <a href="https://folio304.github.io/Batradeepakandassociates/" class="logo-block">
+      <img src="assets/logo.png" alt="Batra Deepak &amp; Associates" style="height:44px; width:auto; display:block;" />
+    </a>
+    <button class="hamburger-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-strip-wrapper">
+    <nav class="nav-strip">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html">Industries We Serve</a>
+      <a href="utilities.html">Utilities</a>
+      <a href="career_options.html">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="our-articles.html" class="active">Our Articles</a>
+      <a href="connect-us.html">Connect Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ SLIDE MENU ═══ -->
+<div class="slide-menu" id="slideMenu">
+  <ul>
+    <li><a href="index.html"><span class="num">01</span>Home</a></li>
+    <li><a href="industries-we-serve.html"><span class="num">02</span>Industries We Serve</a></li>
+    <li><a href="utilities.html"><span class="num">03</span>Utilities</a></li>
+    <li><a href="career_options.html"><span class="num">04</span>Career Options</a></li>
+    <li><a href="knowledge-centre.html"><span class="num">05</span>Knowledge Centre</a></li>
+    <li><a href="our-articles.html" class="active"><span class="num">06</span>Our Articles</a></li>
+    <li><a href="connect-us.html"><span class="num">07</span>Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="eyebrow">BD&amp;A · Our Articles</div>
+    <h1>Insights, <em>Written</em><br>By Our Team</h1>
+    <p>In-depth briefings and analysis on tax, regulatory, and compliance developments — researched and drafted by our team to help you stay ahead of change.</p>
+  </div>
+
+  <!-- ─── SECTION · ARTICLES ─── -->
+  <section>
+    <div class="section-label"><span>Published</span></div>
+    <h2 class="section-title">Articles &amp; Compliance Briefings</h2>
+    <p class="section-desc">Read our latest write-ups in full — each opens as a PDF for easy reading and sharing.</p>
+
+    <div class="article-list">
+
+      <a class="article-card" href="https://drive.google.com/file/d/1fCruGwKq4k9Pt1xmrKJDoad1QFDVTaIe/view?usp=drivesdk" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="article-icon">⚖️</div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-tag">MSME Act</span>
+            <span class="article-date">Compliance Briefing</span>
+          </div>
+          <h3>MSME Act — Key Compliances Every Buyer Should Know</h3>
+          <p>Payment timelines, interest liability, and mandatory disclosures under the Micro, Small and Medium Enterprises Development Act, 2006 — covering Section 15 payment obligations, Section 16 interest on delay, financial statement disclosures under Section 22, Schedule III ageing requirements, and the Section 43B deduction link. Includes worked examples for buyers, companies, and LLPs.</p>
+          <span class="article-cta">Read Full Article ↗</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://drive.google.com/file/d/1skgUBuk6VGir2wsKd1HO3N9a4uMN8X6J/view?usp=drivesdk" target="_blank" rel="noopener" style="text-decoration:none;">
+        <div class="article-icon">🧾</div>
+        <div class="article-body">
+          <div class="article-meta">
+            <span class="article-tag">CBDT</span>
+            <span class="article-date">June 2026</span>
+          </div>
+          <h3>CBDT Guidelines for Compulsory Scrutiny Selection of Income Tax Returns — FY 2026‑27</h3>
+          <p>A breakdown of the CBDT's guidelines for compulsory selection of ITRs for complete scrutiny during FY 2026-27, covering the six mandatory categories — survey cases, search and requisition cases, Section 148 notices, charitable institution registration matters, recurring assessment additions, and specific tax evasion information — along with the procedure for selection, approval, case transfer, and the 30 June 2026 deadline for Section 143(2) notices.</p>
+          <span class="article-cta">Read Full Article ↗</span>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="more-note">More articles from our team will be added here as they're published.</p>
+  </section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <strong>BD&A · Batra Deepak &amp; Associates</strong> &nbsp;·&nbsp; Chartered Accountants &nbsp;·&nbsp;
+  Information is for general guidance. Always verify due dates on official government portals and consult your CA.
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const slideMenu = document.getElementById('slideMenu');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    slideMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !slideMenu.contains(e.target)) {
+      menuBtn.classList.remove('open');
+      slideMenu.classList.remove('open');
+    }
+  });
+
+  // Scroll-reveal animation for article cards
+  const cards = document.querySelectorAll('.article-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 0.08) + 's';
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => observer.observe(card));
+</script>
+</body>
+</html>

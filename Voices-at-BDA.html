@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voices of BDA – BDA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --navy:    #0d1a36;
+      --navy2:   #1a2a55;
+      --gold:    #b8954a;
+      --gold-lt: #d4ab62;
+      --white:   #ffffff;
+      --offwhite:#f0f2f7;
+      --offwhite2:#e8eaf2;
+      --muted:   #1a2233;
+      --muted-lt:#2c3548;
+      --border:  rgba(26,39,68,.18);
+      --border-gold: rgba(184,149,74,.3);
+      --radius:  4px;
+      --text-primary: #000000;
+      --text-secondary: #0a0f1e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Verdana', 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    /* ─── FIXED HEADER ─── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid rgba(26,39,68,.12);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+    }
+
+    .logo-block { display: flex; align-items: center; line-height: 1; }
+
+    .nav-strip-wrapper {
+      border-top: 1px solid var(--border);
+    }
+    .nav-strip {
+      background: rgba(247,248,250,.10);
+      display: flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 4px 5%;
+    }
+    .nav-strip a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 4px 18px;
+      border: none; white-space: nowrap;
+      transition: color .2s, transform .2s, background .2s;
+      display: inline-block;
+    }
+    .nav-strip a:hover {
+      color: var(--gold); transform: translateY(-2px);
+      background: rgba(184,146,58,.06);
+    }
+    .nav-strip a.active { color: var(--gold); }
+
+    .hamburger-btn {
+      display: none;
+      width: 42px; height: 42px; border: 1.5px solid var(--navy);
+      background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: var(--radius);
+      transition: background .2s;
+    }
+    .hamburger-btn:hover { background: rgba(26,39,68,.07); }
+    .hamburger-btn span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--navy);
+    }
+
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed;
+      top: 64px; right: 0;
+      width: 260px;
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(0,0,0,.15);
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      z-index: 1200;
+      border-radius: 0 0 0 8px;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 12px 0; }
+    .slide-menu li { border-bottom: 1px solid rgba(26,39,68,.08); }
+    .slide-menu a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 14px;
+      font-family: 'Verdana', sans-serif;
+      transition: background .15s;
+    }
+    .slide-menu a:hover { background: var(--offwhite); }
+    .slide-menu .num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .slide-menu a.active .num { background: var(--gold); color: var(--navy); }
+
+    @media (max-width: 900px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger-btn { display: flex; }
+    }
+
+    /* ─── PAGE CONTENT ─── */
+    main { padding-top: 104px; }
+
+    @media (max-width: 900px) {
+      main { padding-top: 64px; }
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.55)),
+                  url('assets/knowledge-hero-bg.jpg') center/cover no-repeat;
+      padding: 64px 24px 48px;
+      border-bottom: 3px solid var(--gold);
+      opacity: 0; transform: translateY(16px);
+      animation: heroIn .7s ease forwards;
+    }
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .eyebrow {
+      font-size: 12px; letter-spacing: .25em; font-weight: 600;
+      color: var(--navy); text-transform: uppercase; margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-family: 'Verdana', sans-serif;
+      font-size: clamp(34px, 6vw, 52px);
+      font-weight: 700; line-height: 1.12;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero p {
+      font-size: 16px; line-height: 1.7; color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* SECTIONS */
+    section { padding: 56px 24px; background: var(--offwhite); }
+    section:nth-child(even) { background: var(--offwhite2); }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 32px;
+    }
+    .section-label::before {
+      content: ''; display: block;
+      width: 32px; height: 1px; background: var(--gold);
+    }
+    .section-label span {
+      font-size: 12px; letter-spacing: .22em; font-weight: 600;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: 'Verdana', sans-serif;
+      font-size: 28px; font-weight: 700; margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .section-desc {
+      font-size: 15px; color: var(--muted); line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    /* ─── VOICE / VIDEO GRID ─── */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 26px;
+      max-width: 1000px;
+    }
+
+    .voice-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(26,39,68,.06);
+      cursor: pointer;
+      transition: box-shadow .25s, transform .25s, border-color .25s;
+      opacity: 0; transform: translateY(28px);
+    }
+    .voice-card.in-view {
+      animation: cardIn .6s ease forwards;
+    }
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .voice-card:hover {
+      box-shadow: 0 10px 28px rgba(26,39,68,.14);
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .voice-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--navy), var(--navy2));
+      overflow: hidden;
+    }
+    .voice-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .voice-card:hover .voice-thumb img { transform: scale(1.06); }
+
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(13,26,54,.72);
+      border: 2px solid var(--gold-lt);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .25s, transform .25s;
+    }
+    .voice-card:hover .play-btn {
+      background: var(--gold);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .play-btn svg { width: 20px; height: 20px; margin-left: 3px; }
+
+    .voice-body { padding: 22px 24px 24px; }
+
+    .voice-meta {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .voice-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      background: rgba(184,149,74,.15); color: var(--navy2);
+    }
+
+    .voice-body h3 {
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      line-height: 1.4; margin-bottom: 8px;
+    }
+    .voice-body p {
+      font-size: 14px; color: var(--muted); line-height: 1.6;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .voice-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--white); background: var(--navy);
+      padding: 9px 18px; border-radius: 20px;
+      transition: background .2s, transform .2s, gap .2s;
+    }
+    .voice-card:hover .voice-cta {
+      background: var(--gold); gap: 10px;
+    }
+
+    /* ─── COMING SOON NOTE ─── */
+    .more-note {
+      margin-top: 30px;
+      max-width: 900px;
+      font-size: 13px; color: var(--muted-lt);
+      letter-spacing: .03em; font-style: italic;
+      border-left: 3px solid var(--border-gold);
+      padding-left: 14px;
+    }
+
+    /* ─── VIDEO MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(9,14,28,.82);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+    .modal-box {
+      background: var(--white);
+      border-radius: 10px;
+      max-width: 380px; width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      transform: translateY(24px) scale(.97);
+      transition: transform .3s ease;
+      border-top: 3px solid var(--gold);
+      position: relative;
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(13,26,54,.55);
+      border: 1px solid rgba(255,255,255,.3);
+      color: var(--white);
+      font-size: 18px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+      z-index: 10;
+    }
+    .modal-close:hover { background: var(--gold); }
+
+    /* Mobile: cropped shorter video, no black letterbox bars.
+       Container is a shorter-than-9:16 window; the iframe is
+       oversized and centered inside it so the crop hides any
+       top/bottom bars instead of showing them. */
+    .modal-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #000;
+    }
+    .modal-video-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 100%; height: 148%;
+      transform: translate(-50%, -50%);
+      border: 0;
+    }
+
+    .modal-info { padding: 26px 28px 30px; }
+    .modal-info .voice-tag { margin-bottom: 10px; display: inline-block; }
+    .modal-info h3 {
+      font-family: 'Verdana', sans-serif;
+      font-size: 22px; font-weight: 700; color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .modal-info p {
+      font-family: 'Caveat', cursive;
+      font-size: 23px; font-weight: 600; color: var(--muted);
+      line-height: 1.5; letter-spacing: .2px;
+    }
+
+    @media (max-width: 600px) {
+      .modal-info { padding: 20px 20px 26px; }
+      .modal-info h3 { font-size: 19px; }
+    }
+
+    /* Desktop / tablet: video docked left, name + paragraph on the right */
+    @media (min-width: 701px) {
+      .modal-box {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        max-width: 700px;
+        max-height: 560px;
+      }
+      .modal-video-wrap {
+        flex: 0 0 260px;
+        width: 260px;
+        aspect-ratio: 9 / 16;
+        height: auto;
+        border-radius: 10px 0 0 10px;
+        overflow: hidden;
+      }
+      .modal-video-wrap iframe {
+        height: 116%; /* trims any baked-in letterbox without shrinking the frame */
+      }
+      .modal-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: auto;
+        padding: 36px 40px;
+      }
+      .modal-info h3 { font-size: 25px; }
+      .modal-info p { font-size: 25px; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      border-top: 3px solid var(--gold);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px; color: rgba(255,255,255,.75); letter-spacing: .06em;
+    }
+    footer strong { color: var(--gold); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--offwhite); }
+    ::-webkit-scrollbar-thumb { background: rgba(26,39,68,.2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ FIXED HEADER ═══ -->
+<header>
+  <div class="nav-logo-row">
+    <a href="https://folio304.github.io/Batradeepakandassociates/" class="logo-block">
+      <img src="assets/logo.png" alt="Batra Deepak &amp; Associates" style="height:44px; width:auto; display:block;" />
+    </a>
+    <button class="hamburger-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-strip-wrapper">
+    <nav class="nav-strip">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html">Industries We Serve</a>
+      <a href="utilities.html">Utilities</a>
+      <a href="career_options.html">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="our-articles.html">Our Articles</a>
+      <a href="voices-of-bda.html" class="active">Voices of BDA</a>
+      <a href="connect-us.html">Connect Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ SLIDE MENU ═══ -->
+<div class="slide-menu" id="slideMenu">
+  <ul>
+    <li><a href="index.html"><span class="num">01</span>Home</a></li>
+    <li><a href="industries-we-serve.html"><span class="num">02</span>Industries We Serve</a></li>
+    <li><a href="utilities.html"><span class="num">03</span>Utilities</a></li>
+    <li><a href="career_options.html"><span class="num">04</span>Career Options</a></li>
+    <li><a href="knowledge-centre.html"><span class="num">05</span>Knowledge Centre</a></li>
+    <li><a href="our-articles.html"><span class="num">06</span>Our Articles</a></li>
+    <li><a href="voices-of-bda.html" class="active"><span class="num">07</span>Voices of BDA</a></li>
+    <li><a href="connect-us.html"><span class="num">08</span>Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="eyebrow">BDA · Voices of BDA</div>
+    <h1>Stories, <em>Told</em><br>By Our People</h1>
+    <p>Hear directly from those who've been part of the BDA journey — their experiences, growth, and what it meant to be part of the team.</p>
+  </div>
+
+  <!-- ─── SECTION · VOICES ─── -->
+  <section>
+    <div class="section-label"><span>Testimonials</span></div>
+    <h2 class="section-title">Our Associates</h2>
+    <p class="section-desc">Watch our former colleagues share their journey with BDA — click a card to play the video.</p>
+
+    <div class="voice-grid">
+
+      <!-- CARD 1 · MOHAK TIWARI -->
+      <div class="voice-card"
+           data-video-id="iw_T9FogDHo"
+           data-name="Mohak Tiwari"
+           data-role="Former Team Member"
+           data-experience="Hello everyone, my name is Mohak Tiwari, I have successfully completed two years of my CA articleship here at BDA. This is a very special message for CA Deepak Batra Sir, CA Sumit Lunia Sir, and also for my colleagues here at BDA.
+Dear Sir, thank you so much for providing me with a stage filled with opportunities since day one. I would like to say a big thank you to all my fellow colleagues as well.
+
+        Thank you, everyone.">
+        <div class="voice-thumb">
+          <img src="https://img.youtube.com/vi/iw_T9FogDHo/hqdefault.jpg" alt="Mohak Tiwari video thumbnail" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-meta">
+            <span class="voice-tag">Former Team Member</span>
+          </div>
+          <h3>Mohak Tiwari</h3>
+          <p>Hello everyone, my name is Mohak Tiwari, I have successfully completed two years of my CA articleship here at BDA.</p>
+          <span class="voice-cta">Watch Video ▶</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 · RANU AGRAWAL -->
+      <div class="voice-card"
+           data-video-id="OuXpa1K-x0A"
+           data-name="Ranu Agrawal"
+           data-role="Former Team Member"
+           data-experience="I am Ranu Agrawal. Articleship has taught me not only professional skills, but also discipline, responsibility, patience, and how to handle pressure.
+I would like to sincerely thank CA Deepak Batra Sir, CA Sumit Lunia Sir, and everyone in the office for guiding me, supporting me, and giving me countless opportunities to learn and grow.
+Thank you so much everyone.
+">
+        <div class="voice-thumb">
+          <img src="https://img.youtube.com/vi/OuXpa1K-x0A/hqdefault.jpg" alt="Ranu Agrawal video thumbnail" loading="lazy" />
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="voice-body">
+          <div class="voice-meta">
+            <span class="voice-tag">Former Team Member</span>
+          </div>
+          <h3>Ranu Agrawal</h3>
+          <p>I am Ranu Agrawal. Articleship has taught me not only professional skills, but also discipline, responsibility, patience...</p>
+          <span class="voice-cta">Watch Video ▶</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="more-note">More stories from our team will be added here over time.</p>
+  </section>
+
+</main>
+
+<!-- ═══ VIDEO MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" style="position:relative;">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+    <div class="modal-video-wrap" id="modalVideoWrap"></div>
+    <div class="modal-info">
+      <span class="voice-tag" id="modalRole"></span>
+      <h3 id="modalName"></h3>
+      <p id="modalExperience"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <strong>BDA · Batra Deepak &amp; Associates</strong> &nbsp;·&nbsp; Chartered Accountants &nbsp;·&nbsp;
+  Information is for general guidance.
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const slideMenu = document.getElementById('slideMenu');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    slideMenu.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !slideMenu.contains(e.target)) {
+      menuBtn.classList.remove('open');
+      slideMenu.classList.remove('open');
+    }
+  });
+
+  // Scroll-reveal animation for voice cards
+  const cards = document.querySelectorAll('.voice-card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 0.08) + 's';
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  cards.forEach(card => observer.observe(card));
+
+  // ─── VIDEO MODAL LOGIC ───
+  const overlay = document.getElementById('modalOverlay');
+  const videoWrap = document.getElementById('modalVideoWrap');
+  const modalName = document.getElementById('modalName');
+  const modalRole = document.getElementById('modalRole');
+  const modalExperience = document.getElementById('modalExperience');
+  const modalClose = document.getElementById('modalClose');
+
+  function openModal(card) {
+    const videoId = card.dataset.videoId;
+    const name = card.dataset.name;
+    const role = card.dataset.role;
+    const experience = card.dataset.experience;
+
+    videoWrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0&playsinline=1" title="${name} — Voices of BD&A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    modalName.textContent = name;
+    modalRole.textContent = role;
+    modalExperience.textContent = experience;
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    videoWrap.innerHTML = ''; // stop playback
+    document.body.style.overflow = '';
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+</script>
+</body>
+</html>

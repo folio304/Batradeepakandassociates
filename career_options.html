@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Options — Batra Deepak &amp; Associates | Chartered Accountants</title>
+  <meta name="description" content="Open positions at Batra Deepak &amp; Associates, Chartered Accountants — articled assistants and managers across direct tax, GST, audit and assurance, financial reporting, modelling and corporate compliance." />
+  <link rel="canonical" href="https://bdaca.com/career_options.html" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Career Options — Batra Deepak &amp; Associates" />
+  <meta property="og:description" content="We are hiring across taxation, audit, financial reporting and corporate compliance." />
+  <meta property="og:url" content="https://bdaca.com/career_options.html" />
+  <meta property="og:image" content="https://bdaca.com/assets/career-hero-bg.jpg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D7XWQZYL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D7XWQZYL6');
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TOKENS — oxblood burgundy + graphite. Shared across the site.
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --ink:        #1B1B19;
+      --ink-2:      #33332F;
+      --ink-3:      #5A5A54;
+
+      /* ── ACCENT — change these four lines to reskin the site ── */
+      --accent:      #6E2436;
+      --accent-2:    #8A3247;
+      --accent-wash: rgba(110,36,54,.07);
+      --accent-line: rgba(110,36,54,.26);
+
+      --white:      #ffffff;
+      --paper:      #F2F2EF;
+      --paper-2:    #E7E7E2;
+
+      --line:       rgba(27,27,25,.14);
+      --line-2:     rgba(27,27,25,.24);
+
+      --ok:         #1F5134;
+      --ok-bg:      #E8F0EA;
+      --err:        #96271F;
+      --err-bg:     #F8E9E7;
+
+      --shadow-1:   0 1px 2px rgba(27,27,25,.06);
+      --shadow-2:   0 6px 20px rgba(27,27,25,.11);
+
+      --pad:        20px;
+      --nav-h:      64px;
+      --strip-h:    33px;
+    }
+
+    @media (min-width: 600px)  { :root { --pad: 32px; } }
+    @media (min-width: 1000px) { :root { --pad: 44px; } }
+    @media (min-width: 1400px) { :root { --pad: 56px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+
+    body {
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink-2);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible, button:focus-visible,
+    input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Word-style justification — spaces stretch, words are never split */
+    .hero-sub, .section-intro, .dept-desc, .about-banner-text {
+      text-align: justify; text-justify: inter-word;
+      -webkit-hyphens: none; hyphens: none; overflow-wrap: break-word;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(27,27,25,.05);
+    }
+    nav.scrolled { box-shadow: 0 2px 14px rgba(27,27,25,.10); }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad); height: var(--nav-h);
+    }
+    .logo-wrap { display: flex; align-items: center; line-height: 1; }
+
+    .nav-strip-wrapper { border-top: 1px solid var(--line); background: var(--white); }
+    .nav-strip {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 2px; padding: 4px var(--pad);
+    }
+    .nav-strip a {
+      color: var(--ink-2); text-decoration: none;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px; white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-strip a:hover { color: var(--accent); background: var(--accent-wash); }
+    .nav-strip a.active { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+    .hamburger {
+      display: none;
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--line-2); background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: 4px;
+      transition: background .2s, border-color .2s;
+    }
+    .hamburger:hover { background: var(--accent-wash); border-color: var(--accent); }
+    .hamburger span {
+      display: block; width: 18px; height: 1.5px; background: var(--ink);
+      transition: transform .25s, opacity .2s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed; top: var(--nav-h); right: 0;
+      width: 280px; width: min(280px, 82vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(27,27,25,.16);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      z-index: 1200;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 6px 0; }
+    .slide-menu li + li { border-top: 1px solid var(--line); }
+    .slide-menu a {
+      display: block; padding: 15px 22px;
+      text-decoration: none; color: var(--ink-2); font-size: 14.5px;
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+    .slide-menu a:hover { background: var(--accent-wash); color: var(--accent); padding-left: 27px; }
+    .slide-menu a.active { color: var(--accent); font-weight: 700; box-shadow: inset 3px 0 0 var(--accent); }
+    .nav-num { display: none; }
+
+    @media (max-width: 980px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger { display: flex; }
+      :root { --strip-h: 0px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    .hero {
+      margin-top: calc(var(--nav-h) + var(--strip-h));
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.86) 46%, rgba(255,255,255,.62) 100%),
+        url('assets/career-hero-bg.jpg') center/cover no-repeat;
+      border-bottom: 2px solid var(--accent);
+      padding: 46px var(--pad) 40px;
+    }
+    @media (min-width: 800px)  { .hero { padding: 64px var(--pad) 52px; } }
+    @media (min-width: 1200px) { .hero { padding: 76px var(--pad) 60px; } }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+      font-size: 12px; letter-spacing: .16em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); flex-shrink: 0; }
+    .hero h1 {
+      font-size: 38px;
+      font-size: clamp(30px, 4.6vw, 49px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -.01em;
+      color: var(--ink); max-width: 20ch;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-rule { width: 52px; height: 3px; background: var(--accent); margin: 18px 0; }
+    .hero-sub {
+      font-size: 17px;
+      font-size: clamp(15.5px, 1.4vw, 17.5px);
+      line-height: 1.75; color: var(--ink-2); max-width: 70ch;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       QUICK FACTS
+       ══════════════════════════════════════════════════════════ */
+    .facts-bar { background: var(--paper-2); padding: 28px var(--pad); border-bottom: 1px solid var(--line); }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .fact-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-1);
+    }
+    .fact-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .fact-value { font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .fact-note { font-size: 12.5px; color: var(--ink-3); line-height: 1.6; margin-top: 7px; }
+
+    /* ══════════════════════════════════════════════════════════
+       SECTIONS
+       ══════════════════════════════════════════════════════════ */
+    .vacancies-section { padding: 44px var(--pad); background: var(--paper); }
+    @media (min-width: 800px)  { .vacancies-section { padding: 58px var(--pad); } }
+    @media (min-width: 1200px) { .vacancies-section { padding: 68px var(--pad); } }
+
+    .section-label {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      font-size: 11.5px; letter-spacing: .18em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .section-label::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); }
+    .section-heading {
+      font-size: 27px;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; line-height: 1.25; color: var(--ink); margin-bottom: 10px;
+    }
+    .section-heading span { color: var(--accent); }
+    .section-intro { font-size: 15.5px; color: var(--ink-2); line-height: 1.72; max-width: 74ch; margin-bottom: 30px; }
+
+    /* ══════════════════════════════════════════════════════════
+       VACANCY CARDS
+       ══════════════════════════════════════════════════════════ */
+    .dept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 18px;
+    }
+    .dept-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      padding: 22px 21px 0;
+      box-shadow: var(--shadow-1);
+      display: flex; flex-direction: column;
+      transition: box-shadow .22s, transform .22s;
+    }
+    .dept-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+
+    .dept-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px; margin-bottom: 12px;
+    }
+    .dept-name { font-size: 16.5px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .dept-badge {
+      flex-shrink: 0;
+      font-size: 9.5px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--accent); color: var(--white);
+      padding: 4px 9px;
+    }
+
+    .dept-roles { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .role-tag {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
+      background: var(--accent-wash); color: var(--accent);
+      border: 1px solid var(--accent-line);
+      padding: 4px 9px;
+    }
+
+    .dept-desc { font-size: 13.5px; line-height: 1.7; color: var(--ink-2); margin-bottom: 12px; }
+    .dept-eligibility {
+      font-size: 13px; line-height: 1.65; color: var(--ink-3);
+      background: var(--paper);
+      border-left: 2px solid var(--accent-line);
+      padding: 11px 13px;
+      margin-bottom: 16px;
+    }
+
+    .dept-footer {
+      margin-top: auto;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .dept-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .dept-meta span {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--ink-3);
+    }
+    .dept-meta svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+    /* The old build styled this grey with dark text, so on a page whose whole
+       purpose is applications the primary action looked disabled — and on a
+       phone, where there is no hover, it stayed grey permanently. */
+    .apply-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent); color: var(--white);
+      border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; letter-spacing: .05em;
+      padding: 10px 18px;
+      transition: background .2s;
+    }
+    .apply-btn:hover { background: var(--ink); }
+    .apply-btn svg { width: 13px; height: 13px; }
+
+    /* ══════════════════════════════════════════════════════════
+       ABOUT BANNER
+       ══════════════════════════════════════════════════════════ */
+    .about-banner { background: var(--paper-2); border-top: 1px solid var(--line); padding: 44px var(--pad); }
+    @media (min-width: 800px) { .about-banner { padding: 56px var(--pad); } }
+    .about-banner-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 30px; align-items: center;
+    }
+    @media (max-width: 860px) { .about-banner-inner { grid-template-columns: 1fr; } }
+    .about-banner-title {
+      font-size: 11.5px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .about-banner-text { font-size: 15px; line-height: 1.75; color: var(--ink-2); }
+    .grow-box {
+      background: var(--ink);
+      border-left: 3px solid var(--accent);
+      padding: 26px 24px;
+    }
+    .grow-box p { color: var(--white); font-size: 19px; font-weight: 700; line-height: 1.55; }
+    .grow-box span { color: var(--accent-2); }
+
+    /* ══════════════════════════════════════════════════════════
+       VALUES STRIP
+       ══════════════════════════════════════════════════════════ */
+    .values-strip { background: var(--paper); border-top: 1px solid var(--line); padding: 34px var(--pad); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .value-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-1);
+    }
+    .v-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; margin-bottom: 12px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-wash);
+      color: var(--accent);
+    }
+    .v-icon svg { width: 23px; height: 23px; }
+    .v-title { font-size: 15.5px; font-weight: 700; color: var(--ink); }
+    .v-sub { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
+
+    /* ══════════════════════════════════════════════════════════
+       APPLICATION POPUP
+       ══════════════════════════════════════════════════════════ */
+    .popup-overlay {
+      display: none;
+      position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2000;
+      background: rgba(27,27,25,.62);
+      align-items: center; justify-content: center;
+      padding: 20px; overflow-y: auto;
+    }
+    .popup-overlay.show, .popup-overlay.open { display: flex; }
+    .popup {
+      background: var(--white);
+      width: 100%; max-width: 520px;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .popup-header {
+      position: sticky; top: 0; z-index: 3;
+      background: var(--ink);
+      border-bottom: 3px solid var(--accent);
+      padding: 20px 22px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 14px;
+    }
+    .popup-title { font-size: 19px; font-weight: 700; color: var(--white); line-height: 1.3; }
+    .popup-sub { font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-2); margin-top: 6px; }
+    .popup-close {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,.3);
+      background: transparent; color: var(--white);
+      font-size: 16px; line-height: 1; cursor: pointer;
+    }
+    .popup-close:hover { background: var(--accent); border-color: var(--accent); }
+
+    .popup-body { padding: 22px; }
+    .popup-dept-name {
+      background: var(--accent-wash);
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      font-size: 13.5px; line-height: 1.6; color: var(--ink-2);
+      margin-bottom: 20px;
+    }
+    .popup-dept-name strong { color: var(--ink); }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 11.5px; font-weight: 700; letter-spacing: .09em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 7px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      font-size: 15px; color: var(--ink);
+      padding: 11px 13px;
+      border: 1px solid var(--line-2);
+      background: var(--white);
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-wash);
+      outline: none;
+    }
+    .form-group input::placeholder { color: #A5A29B; }
+    .form-group input[type="file"] { padding: 9px 11px; font-size: 13px; }
+
+    .field-error {
+      display: none;
+      font-size: 12.5px; color: var(--err); font-weight: 700;
+      margin-top: 6px;
+    }
+    .field-error.show { display: block; }
+    .form-group input.error, .form-group select.error { border-color: var(--err); }
+
+    .form-status {
+      display: none;
+      font-size: 13.5px; line-height: 1.6; font-weight: 700;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .form-status.show { display: block; }
+    .form-status.success { background: var(--ok-bg); color: var(--ok); border-left: 3px solid var(--ok); }
+    .form-status.error   { background: var(--err-bg); color: var(--err); border-left: 3px solid var(--err); }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--accent); color: var(--white);
+      border: none; cursor: pointer;
+      font-size: 13px; font-weight: 700; letter-spacing: .06em;
+      padding: 14px 20px;
+      transition: background .2s, opacity .2s;
+    }
+    .submit-btn:hover { background: var(--ink); }
+    .submit-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+    .popup-note {
+      display: flex; align-items: flex-start; gap: 10px;
+      margin-top: 18px; padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px; line-height: 1.65; color: var(--ink-3);
+    }
+    .popup-note strong { color: var(--ink); }
+    .popup-note svg { width: 15px; height: 15px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER — compact bar
+       ══════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      border-top: 2px solid var(--accent);
+      padding: 12px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 6px 20px;
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(255,255,255,.62);
+    }
+    footer strong { color: var(--white); font-weight: 700; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(27,27,25,.3); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .dept-grid, .facts-grid, .values-grid { grid-template-columns: 1fr; }
+      .dept-footer { flex-direction: column; align-items: stretch; }
+      .apply-btn { justify-content: center; }
+      .popup-body { padding: 18px; }
+      footer { justify-content: center; text-align: center; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HIRING ALERT BELL
+       Amber is used deliberately here and nowhere else on the site,
+       so it reads as a notice rather than as part of the brand palette.
+       Desktop: a pill in the right of the logo row.
+       Mobile:  a floating circle under the header (the logo row's right
+                corner is already taken by the hamburger).
+       ══════════════════════════════════════════════════════════ */
+    .hiring-bell {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #FBE7A1;
+      color: #4A3708;
+      border: 1px solid #E0BE4E;
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(224,190,78,.34);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .hiring-bell:hover {
+      background: #FDF3CB;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224,190,78,.5);
+    }
+    .hiring-bell:focus-visible { outline: 2px solid #4A3708; outline-offset: 3px; }
+
+    .hiring-bell svg {
+      width: 18px; height: 18px;
+      transform-origin: 50% 10%;
+      animation: bell-ring 2.8s ease-in-out infinite;
+    }
+    /* Expanding ring, to catch the eye without moving the button itself */
+    .hiring-bell::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
+      border: 2px solid #E0BE4E;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      animation: bell-pulse 2.8s ease-out infinite;
+    }
+
+    @keyframes bell-ring {
+      0%, 40%, 100% { transform: rotate(0deg); }
+      45% { transform: rotate(-13deg); }
+      50% { transform: rotate(11deg); }
+      55% { transform: rotate(-8deg); }
+      60% { transform: rotate(6deg); }
+      65% { transform: rotate(-3deg); }
+      70% { transform: rotate(0deg); }
+    }
+    @keyframes bell-pulse {
+      0%   { transform: scale(1);    opacity: .75; }
+      65%  { transform: scale(1.16); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hiring-bell {
+        position: fixed;
+        top: calc(var(--nav-h) + 12px);
+        right: 12px;
+        z-index: 900;
+        width: 54px; height: 54px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        gap: 0;
+      }
+      .hiring-bell .hb-text { display: none; }
+      .hiring-bell svg { width: 23px; height: 23px; }
+      .hiring-bell::after { border-radius: 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hiring-bell svg, .hiring-bell::after { animation: none; }
+      .hiring-bell::after { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-logo-row">
+    <a href="index.html" class="logo-wrap">
+      <img src="assets/logo.png" alt="Batra Deepak &amp; Associates" style="height:50px; width:auto; display:block;" />
+    </a>
+    <a class="hiring-bell" href="#vacancies" aria-label="We are hiring — jump to the open positions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.1-2.3 7.6-2.3 7.6h16.6S18 14.7 18 8.6Z"/><path d="M13.7 19.8a2 2 0 0 1-3.4 0"/></svg><span class="hb-text">We're Hiring</span></a>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-strip-wrapper">
+    <div class="nav-strip">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html">Industries We Serve</a>
+      <a href="utilities.html">Utilities</a>
+      <a href="career_options.html" class="active" aria-current="page">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="voices-of-bda.html">Voices of BDA</a>
+      <a href="connect-us.html">Connect Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile slide-menu -->
+<div class="slide-menu" id="navMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="industries-we-serve.html">Industries We Serve</a></li>
+    <li><a href="utilities.html">Utilities</a></li>
+    <li><a href="career_options.html" class="active" aria-current="page">Career Options</a></li>
+    <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+    <li><a href="voices-of-bda.html">Voices of BDA</a></li>
+    <li><a href="connect-us.html">Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-eyebrow">37+ Years of Trust · Excellence · Integrity · Impact</p>
+  <h1>We Are <span>Hiring</span></h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">Freshers &amp; experienced professionals welcome. Join a Chartered Accountancy firm with over 37 years of experience, serving diverse private and public sector clients across Direct Taxation, Indirect Taxation, Audit &amp; Assurance, Financial Advisory, Compliance, and Business Consulting.</p>
+</section>
+
+<!-- ── QUICK FACTS ── -->
+<div class="facts-bar">
+  <div class="facts-grid">
+    <div class="fact-card">
+      <div class="fact-label">Location</div>
+      <div class="fact-value">Raipur, Chhattisgarh, India</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">CTC Range</div>
+      <div class="fact-value">₹4.5 – ₹12 LPA</div>
+      <div class="fact-note">Amount commensurate to experience &amp; Industry practices.</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Positions</div>
+      <div class="fact-value">Articled Trainee, CA, CMA, MBA, CS</div>
+      <div class="fact-note">Freshers &amp; Experienced Professionals</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── VACANCIES ── -->
+<section class="vacancies-section" id="vacancies">
+  <p class="section-label">Open Positions</p>
+  <h2 class="section-heading">Roles We Are <span>Hiring For</span></h2>
+  <p class="section-intro">We are actively looking for motivated professionals across the following functions. Click "Apply Now" to get in touch with our team directly.</p>
+
+  <div class="dept-grid">
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Articled Assistant — Finance, Audit, Tax, Litigation &amp; Corporate</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Article Trainee</span><span class="role-tag">Finance</span><span class="role-tag">Audit</span><span class="role-tag">Tax</span><span class="role-tag">Litigation</span><span class="role-tag">Corporate</span></div>
+      <p class="dept-desc">Articleship exposure across Direct &amp; Indirect Taxation, Statutory &amp; Internal Audits, Litigation support, Financial Reporting &amp; Corporate Compliances, working closely with our Managers &amp; Partners.</p>
+      <p class="dept-eligibility">CA/CMA/CS Intermediate passout (Both Groups). Good analytical, communication &amp; drafting skills preferred.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CA Intermediate (Both Groups)</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Articled Assistant — Finance, Audit, Tax, Litigation &amp; Corporate')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Direct Taxation</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">Taxation</span></div>
+      <p class="dept-desc">Income Tax returns, assessments, appeals, TDS compliance, tax planning &amp; advisory, and tax research.</p>
+      <p class="dept-eligibility">Candidate must have strong understanding of the subject. Candidate should be with good analytical and communication skills, with proficiency in the language.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CA & Income Tax Experts</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Direct Taxation')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Indirect Taxation (GST)</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">GST</span></div>
+      <p class="dept-desc">GST compliance, advisory, audits, reconciliations, notices, assessments &amp; litigation support.</p>
+      <p class="dept-eligibility">CA / GST Expert with working knowledge of GST law &amp; return filing. Good analytical &amp; drafting skills preferred.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CA / GST Expert</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Indirect Taxation (GST)')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Audit &amp; Assurance</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">Audit</span></div>
+      <p class="dept-desc">Statutory / internal audits, bank &amp; stock audits, tax audits, audit reports, compliance &amp; documentation.</p>
+      <p class="dept-eligibility">CA / CMA with exposure to audit procedures &amp; accounting standards. Willingness to travel for client audits required.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CA / CMA</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Audit &amp; Assurance')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Financial Reporting</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">Finance</span></div>
+      <p class="dept-desc">Financial statements, budgeting, MIS reporting, working capital &amp; cash flow management, due diligence.</p>
+      <p class="dept-eligibility">CMA / MBA with strong command over financial statements &amp; MIS. Advanced MS Excel skills essential.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CMA / MBA</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Financial Reporting')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Financial Modelling &amp; Business Advisory</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">Advisory</span></div>
+      <p class="dept-desc">Financial models, valuations, CMA reports, project reports, feasibility studies, debt syndication &amp; banking proposals.</p>
+      <p class="dept-eligibility"> CMA / MBA (Finance) with hands-on financial modelling &amp; valuation exposure. Strong analytical &amp; presentation skills needed.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CMA / MBA</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Financial Modelling &amp; Business Advisory')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="dept-top">
+        <div class="dept-name">Manager — Corporate Compliances</div>
+        <span class="dept-badge">Hiring Now</span>
+      </div>
+      <div class="dept-roles"><span class="role-tag">Manager Level</span><span class="role-tag">Corporate Law</span></div>
+      <p class="dept-desc">ROC filings, board &amp; shareholder meetings, due diligence, M&amp;A, share transfer, IPO/FPO advisory, LLP/Company formation.</p>
+      <p class="dept-eligibility">CS (qualified/pursuing) or CA/MBA with Companies Act &amp; ROC compliance knowledge. Meticulous documentation skills required.</p>
+      <div class="dept-footer">
+        <div class="dept-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Raipur, Chhattisgarh</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/></svg>CA / CS / Law Graduate</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></svg>Full-time</span>
+        </div>
+        <button class="apply-btn" onclick="openPopup('Manager — Corporate Compliances')">Apply Now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ABOUT / GROW BANNER ── -->
+<section class="about-banner">
+  <div class="about-banner-inner">
+    <div>
+      <div class="about-banner-title">About The Firm</div>
+      <p class="about-banner-text">We are a Chartered Accountancy firm with over 37 years of experience, serving diverse private and public sector clients. We provide services in Direct Taxation, Indirect Taxation, Audit &amp; Assurance, Financial Advisory, Compliance, and Business Consulting.</p>
+    </div>
+    <div class="grow-box">
+      <p>Grow Your Career.<br><span>Make An Impact.</span><br>Be a Part of Our Legacy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES STRIP ── -->
+<div class="values-strip">
+  <div class="values-grid">
+    <div class="value-item">
+      <span class="v-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 4.4 5.6v6.1c0 4.6 3.1 8.4 7.6 9.7 4.5-1.3 7.6-5.1 7.6-9.7V5.6Z"/><path d="m9 12 2 2 4-4.4"/></svg></span>
+      <div class="v-title">Integrity</div>
+      <div class="v-sub">Our Foundation</div>
+    </div>
+    <div class="value-item">
+      <span class="v-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9Z"/></svg></span>
+      <div class="v-title">Excellence</div>
+      <div class="v-sub">Our Commitment</div>
+    </div>
+    <div class="value-item">
+      <span class="v-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11.4 7.4 8.6 10.2a2 2 0 0 0 0 2.8 2 2 0 0 0 2.8 0l1.4-1.4 3.4 3.4a1.9 1.9 0 0 1-2.7 2.7l-.7-.7"/><path d="M2.6 12.6 6.4 8.8a3 3 0 0 1 4.2 0"/><path d="M21.4 12.6 17.6 8.8a3 3 0 0 0-4.2 0"/><path d="m12.8 17 1.6 1.6a1.9 1.9 0 0 0 2.7-2.7"/></svg></span>
+      <div class="v-title">Trust</div>
+      <div class="v-sub">Our Strength</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span><strong>Batra Deepak &amp; Associates</strong> &middot; Chartered Accountants</span>
+  <span>&copy; <span id="year">2026</span> &middot; All rights reserved</span>
+</footer>
+
+<!-- ── CONTACT POPUP ── -->
+<div class="popup-overlay" id="popupOverlay" onclick="handleOverlayClick(event)">
+  <div class="popup">
+    <div class="popup-header">
+      <div>
+        <div class="popup-title">Get In Touch</div>
+        <div class="popup-sub">SEND US YOUR RESUME</div>
+      </div>
+      <button class="popup-close" onclick="closePopup()">✕</button>
+    </div>
+    <div class="popup-body">
+      <div class="popup-dept-name">
+        Applying for a role at <strong id="popupDeptName">Batra Deepak &amp; Associates</strong>
+      </div>
+
+      <form id="applyForm" novalidate>
+        <div class="form-group">
+          <label for="fld_name">Full Name *</label>
+          <input type="text" id="fld_name" name="name" required autocomplete="name" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_email">Gmail ID *</label>
+          <input type="email" id="fld_email" name="email" required autocomplete="email" placeholder="yourname@gmail.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_mobile">Mobile No. *</label>
+          <input type="tel" id="fld_mobile" name="mobile" required autocomplete="tel" maxlength="10" placeholder="10-digit mobile number" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_qualification">Qualification *</label>
+          <input type="text" id="fld_qualification" name="qualification" required placeholder="e.g. CA, CMA, MBA, CS, B.Com" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_role">Job Role *</label>
+          <select id="fld_role" name="jobRole" required>
+            <option value="" disabled selected>Select the role you're applying for</option>
+            <option>Articled Assistant — Finance, Audit, Tax, Litigation &amp; Corporate</option>
+            <option>Manager — Direct Taxation</option>
+            <option>Manager — Indirect Taxation (GST)</option>
+            <option>Manager — Audit &amp; Assurance</option>
+            <option>Manager — Financial Reporting</option>
+            <option>Manager — Financial Modelling &amp; Business Advisory</option>
+            <option>Manager — Corporate Compliances</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="fld_experience">Work Experience (Years) *</label>
+          <input type="number" id="fld_experience" name="experience" min="0" step="0.5" required placeholder="e.g. 0 for fresher, 2.5" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_ctc">Current CTC *</label>
+          <input type="text" id="fld_ctc" name="ctc" required placeholder="e.g. 6.5 LPA, or Fresher" />
+        </div>
+
+        <div class="form-group">
+          <label for="fld_resume">Upload Resume (PDF only, max 5MB) *</label>
+          <input type="file" id="fld_resume" name="resume" accept="application/pdf" required />
+        </div>
+
+        <div id="formStatus" class="form-status"></div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+      </form>
+
+      <div class="popup-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="1.5"/><path d="M9 3h6v3H9Z"/><path d="M8.6 11h6.8M8.6 15h4.4"/></svg>
+        <span>Having trouble with the form? You can also reach us at <strong>+91 88393 42250</strong> (call/WhatsApp) or <strong>jeetendra.eduvistaa@gmail.com</strong>.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ── Nav
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  menuBtn.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open', open);
+  });
+  document.addEventListener('click', e => {
+    const nav = document.getElementById('mainNav');
+    if (!nav.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+    }
+  });
+  const mainNav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    mainNav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── Popup
+  // PASTE your deployed Google Apps Script Web App URL below (see setup guide provided separately).
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJYd36e5OtOaP3yR3pM-w1nP27GqndU-RymS9Qt79Ybc7ybOsz4QxwaJt4N7_VyQPueQ/exec";
+
+  function openPopup(dept) {
+    const applyForm = document.getElementById('applyForm');
+    applyForm.reset();
+    setFormStatus('', '');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = 'Submit Application';
+
+    const roleSelect = document.getElementById('fld_role');
+    if (dept) {
+      let matched = false;
+      for (const opt of roleSelect.options) {
+        if (opt.value === dept) { roleSelect.value = dept; matched = true; break; }
+      }
+      if (!matched && dept !== 'Get In Touch') roleSelect.value = 'Other';
+    }
+
+    document.getElementById('popupOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePopup() {
+    document.getElementById('popupOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('popupOverlay')) closePopup();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+  function setFormStatus(message, type) {
+    const el = document.getElementById('formStatus');
+    el.textContent = message;
+    el.className = 'form-status' + (message ? ' show' : '') + (type ? ' ' + type : '');
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('applyForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const nameEl = document.getElementById('fld_name');
+    const emailEl = document.getElementById('fld_email');
+    const mobileEl = document.getElementById('fld_mobile');
+    const qualificationEl = document.getElementById('fld_qualification');
+    const roleEl = document.getElementById('fld_role');
+    const experienceEl = document.getElementById('fld_experience');
+    const ctcEl = document.getElementById('fld_ctc');
+    const resumeEl = document.getElementById('fld_resume');
+
+    [nameEl, emailEl, mobileEl, qualificationEl, roleEl, experienceEl, ctcEl, resumeEl].forEach(el => el.classList.remove('field-error'));
+
+    // Validation
+    if (!nameEl.value.trim()) { nameEl.classList.add('field-error'); setFormStatus('Please enter your full name.', 'error'); nameEl.focus(); return; }
+
+    const email = emailEl.value.trim();
+    if (!/^[^\s@]+@gmail\.com$/i.test(email)) {
+      emailEl.classList.add('field-error');
+      setFormStatus('Please enter a valid Gmail ID (must end with @gmail.com).', 'error');
+      emailEl.focus();
+      return;
+    }
+
+    const mobile = mobileEl.value.trim();
+    if (!/^[0-9]{10}$/.test(mobile)) {
+      mobileEl.classList.add('field-error');
+      setFormStatus('Please enter a valid 10-digit mobile number.', 'error');
+      mobileEl.focus();
+      return;
+    }
+
+    if (!qualificationEl.value.trim()) { qualificationEl.classList.add('field-error'); setFormStatus('Please enter your qualification.', 'error'); qualificationEl.focus(); return; }
+    if (!roleEl.value) { roleEl.classList.add('field-error'); setFormStatus('Please select the job role.', 'error'); roleEl.focus(); return; }
+    if (experienceEl.value === '' || Number(experienceEl.value) < 0) { experienceEl.classList.add('field-error'); setFormStatus('Please enter your work experience in years.', 'error'); experienceEl.focus(); return; }
+    if (!ctcEl.value.trim()) { ctcEl.classList.add('field-error'); setFormStatus('Please enter your current estimated CTC.', 'error'); ctcEl.focus(); return; }
+
+    const file = resumeEl.files[0];
+    if (!file) { resumeEl.classList.add('field-error'); setFormStatus('Please upload your resume.', 'error'); resumeEl.focus(); return; }
+    if (file.type !== 'application/pdf') { resumeEl.classList.add('field-error'); setFormStatus('Resume must be a PDF file.', 'error'); resumeEl.focus(); return; }
+    if (file.size > 5 * 1024 * 1024) { resumeEl.classList.add('field-error'); setFormStatus('Resume must be under 5MB.', 'error'); resumeEl.focus(); return; }
+
+    if (!SCRIPT_URL || SCRIPT_URL.indexOf('PASTE_YOUR') === 0) {
+      setFormStatus('Form is not connected yet. Please contact us directly using the details below.', 'error');
+      return;
+    }
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+    setFormStatus('Uploading your application, please wait…', 'info');
+
+    try {
+      const resumeBase64 = await fileToBase64(file);
+
+      const payload = {
+        name: nameEl.value.trim(),
+        email: email,
+        mobile: mobile,
+        qualification: qualificationEl.value.trim(),
+        jobRole: roleEl.value,
+        experience: experienceEl.value,
+        ctc: ctcEl.value.trim(),
+        resumeFileName: file.name,
+        resumeMimeType: file.type,
+        resumeBase64: resumeBase64
+      };
+
+      const response = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+
+      const rawText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(rawText);
+      } catch (parseErr) {
+        console.error('Server did not return JSON. Raw response:', rawText);
+        throw { code: 'ERR-PARSE', detail: 'Server returned a non-JSON response.' };
+      }
+
+      if (result && result.status === 'success') {
+        setFormStatus('Application submitted successfully. We will get back to you soon.', 'success');
+        submitBtn.textContent = 'Submitted';
+        setTimeout(closePopup, 2500);
+      } else {
+        throw { code: 'ERR-SERVER', detail: (result && result.message) || 'Unknown server error' };
+      }
+    } catch (err) {
+      const code = (err && err.code) || 'ERR-NETWORK';
+      const detail = (err && err.detail) || (err && err.message) || String(err);
+      console.error('Application submit error [' + code + ']:', detail);
+      setFormStatus('We couldn\'t submit your application right now. Please try again in a moment, or contact us directly using the details below. (Ref: ' + code + ')', 'error');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Application';
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect Us — Batra Deepak &amp; Associates | Chartered Accountants, Delhi &amp; Raipur</title>
+  <meta name="description" content="Office addresses, phone, WhatsApp and email for Batra Deepak &amp; Associates, Chartered Accountants. Head office in Shakarpur, Delhi, with offices across seven cities in India." />
+  <link rel="canonical" href="https://bdaca.com/connect-us.html" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Connect Us — Batra Deepak &amp; Associates" />
+  <meta property="og:description" content="Our offices across seven cities in India, with direct phone, WhatsApp and email contact." />
+  <meta property="og:url" content="https://bdaca.com/connect-us.html" />
+  <meta property="og:image" content="https://bdaca.com/assets/connect-hero-bg.jpg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D7XWQZYL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D7XWQZYL6');
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TOKENS — oxblood burgundy + graphite. No gold, no navy, no green.
+       Identical to knowledge-centre.html. When this moves to a shared
+       brand.css, this whole block is the file.
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      /* Text — all dark */
+      --ink:        #1B1B19;   /* headings, primary text */
+      --ink-2:      #33332F;   /* body copy            */
+      --ink-3:      #5A5A54;   /* meta, captions       */
+
+      /* ── ACCENT — change these four lines to reskin the page ── */
+      --accent:      #6E2436;   /* rules, labels, buttons — 10.7:1 on white */
+      --accent-2:    #8A3247;   /* hover / lighter        */
+      --accent-wash: rgba(110,36,54,.07);
+      --accent-line: rgba(110,36,54,.26);
+
+      /* Surfaces */
+      --white:      #ffffff;
+      --paper:      #F2F2EF;
+      --paper-2:    #E7E7E2;
+
+      --line:       rgba(27,27,25,.14);
+      --line-2:     rgba(27,27,25,.24);
+
+      --shadow-1:   0 1px 2px rgba(27,27,25,.06);
+      --shadow-2:   0 6px 20px rgba(27,27,25,.11);
+
+      /* Full-bleed gutter — the only horizontal constraint.
+         Kept as a plain length and stepped up by media query below.
+         clamp() is deliberately NOT used inside this custom property:
+         if a browser cannot compute it, padding falls back to 0, not to
+         a previous declaration. Media queries have no such failure mode. */
+      --pad:        20px;
+      --nav-h:      64px;
+    }
+
+    @media (min-width: 600px)  { :root { --pad: 32px; } }
+    @media (min-width: 1000px) { :root { --pad: 44px; } }
+    @media (min-width: 1400px) { :root { --pad: 56px; } }
+
+    /* Vertical rhythm opens up with the viewport */
+    @media (min-width: 800px) {
+      .page-hero { padding: 64px var(--pad) 52px; }
+      .band { padding: 52px var(--pad); }
+    }
+    @media (min-width: 1200px) {
+      .page-hero { padding: 76px var(--pad) 60px; }
+      .band { padding: 60px var(--pad); }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+
+    body {
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink-2);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    button, input, select, textarea { font-family: inherit; }
+
+    /* ── Justified prose ──
+       Word-style justification: lines are flushed by stretching the spaces
+       between words only. No hyphenation, so words are never split. */
+    .page-hero p,
+    .section-desc,
+        .note-line {
+      text-align: justify;
+      text-justify: inter-word;
+      -webkit-hyphens: none;
+      hyphens: none;
+      overflow-wrap: break-word;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HEADER — full bleed
+       ══════════════════════════════════════════════════════════ */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(27,27,25,.05);
+    }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      height: var(--nav-h);
+    }
+    .logo-block { display: flex; align-items: center; line-height: 1; }
+
+    .nav-strip-wrapper { border-top: 1px solid var(--line); background: var(--white); }
+    .nav-strip {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap;
+      gap: 2px; padding: 4px var(--pad);
+    }
+    .nav-strip a {
+      color: var(--ink-2);
+      text-decoration: none;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px;
+      white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-strip a:hover { color: var(--accent); background: var(--accent-wash); }
+    .nav-strip a.active {
+      color: var(--accent);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    .hamburger-btn {
+      display: none;
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--line-2);
+      background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: 4px;
+      transition: background .2s, border-color .2s;
+    }
+    .hamburger-btn:hover { background: var(--accent-wash); border-color: var(--accent); }
+    .hamburger-btn span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--ink);
+      transition: transform .25s, opacity .2s;
+    }
+    .hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+    .hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed; top: var(--nav-h); right: 0;
+      width: 280px;
+      width: min(280px, 82vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(27,27,25,.16);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      z-index: 1200;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 6px 0; }
+    .slide-menu li + li { border-top: 1px solid var(--line); }
+    .slide-menu a {
+      display: block; padding: 15px 22px;
+      text-decoration: none; color: var(--ink-2);
+      font-size: 14.5px;
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+    .slide-menu a:hover { background: var(--accent-wash); color: var(--accent); padding-left: 27px; }
+    .slide-menu a.active {
+      color: var(--accent); font-weight: 700;
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    @media (max-width: 980px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger-btn { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    main { padding-top: calc(var(--nav-h) + 33px); }
+    @media (max-width: 980px) { main { padding-top: var(--nav-h); } }
+
+    .page-hero {
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.86) 46%, rgba(255,255,255,.62) 100%),
+        url('assets/connect-hero-bg.jpg') center/cover no-repeat;
+      border-bottom: 2px solid var(--accent);
+      padding: 46px var(--pad) 40px;
+    }
+    .kicker {
+      font-size: 12px; letter-spacing: .22em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-size: 38px;
+      font-size: clamp(30px, 4.6vw, 49px);
+      font-weight: 700; line-height: 1.15;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      max-width: 20ch;
+    }
+    .hero-rule { width: 52px; height: 3px; background: var(--accent); margin: 18px 0; }
+    .page-hero p {
+      font-size: 17px;
+      font-size: clamp(15.5px, 1.4vw, 17.5px);
+      line-height: 1.75;
+      color: var(--ink-2);
+      max-width: 66ch;
+    }
+
+    .hero-jump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .hero-jump a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--line-2);
+      padding: 10px 18px;
+      font-size: 13.5px; font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      transition: border-color .18s, color .18s, background .18s;
+    }
+    .hero-jump a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+    .hero-jump svg { width: 15px; height: 15px; color: var(--accent); }
+
+    /* ══════════════════════════════════════════════════════════
+       SECTIONS
+       ══════════════════════════════════════════════════════════ */
+    .band { padding: 40px var(--pad); }
+    .band-a { background: var(--paper); }
+    .band-b { background: var(--paper-2); border-top: 1px solid var(--line); }
+
+    .section-head { margin-bottom: 28px; }
+    .section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .section-label::before {
+      content: ''; display: block;
+      width: 26px; height: 2px; background: var(--accent);
+    }
+    .section-label span {
+      font-size: 11.5px; letter-spacing: .18em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .section-title {
+      font-size: 27px;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .section-desc {
+      font-size: 15.5px; color: var(--ink-2); line-height: 1.72;
+      max-width: 70ch;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       ICON TILES
+       ══════════════════════════════════════════════════════════ */
+    .ico {
+      flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-wash);
+      color: var(--accent);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .ico svg { display: block; }
+    .ico-lg { width: 56px; height: 56px; }
+    .ico-lg svg { width: 28px; height: 28px; }
+    .ico-sm { width: 42px; height: 42px; }
+    .ico-sm svg { width: 23px; height: 23px; }
+
+    /* ══════════════════════════════════════════════════════════
+       INTERACTIVE OFFICE MAP
+       Details open on hover on pointer devices, and on tap on touch
+       devices. Each pin is a real <button>, so it also opens from the
+       keyboard. Cities with more than one office share a single pin and
+       list them all, which keeps any two pins from covering each other.
+       ══════════════════════════════════════════════════════════ */
+    .map-figure {
+      margin: 0;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 20px;
+      box-shadow: var(--shadow-1);
+    }
+    .map-holder {
+      position: relative;
+      max-width: 470px;
+      margin: 0 auto;
+    }
+    .map-holder img { width: 100%; height: auto; display: block; }
+
+    /* Pin — 34px hit area, 14px visible dot */
+    .pin {
+      position: absolute;
+      width: 34px; height: 34px;
+      margin: -17px 0 0 -17px;
+    }
+    .pin-btn {
+      width: 100%; height: 100%;
+      padding: 0; border: none; background: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pin-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 3px rgba(110,36,54,.22);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .pin:hover .pin-dot,
+    .pin.open .pin-dot,
+    .pin:focus-within .pin-dot {
+      transform: scale(1.32);
+      box-shadow: 0 0 0 6px rgba(110,36,54,.24);
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      width: 262px;
+      background: var(--white);
+      border: 1px solid var(--line-2);
+      border-top: 3px solid var(--accent);
+      box-shadow: 0 12px 34px rgba(27,27,25,.24);
+      padding: 14px 15px;
+      text-align: left;
+      opacity: 0; visibility: hidden;
+      transition: opacity .18s, transform .18s, visibility .18s;
+      z-index: 40;
+    }
+    /* Hover only where there is a real pointer, so a tap on a phone does
+       not leave a pin stuck in its hover state. */
+    @media (hover: hover) {
+      .pin:hover .tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    }
+    .pin.open .tooltip,
+    .pin:focus-within .tooltip {
+      opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+      z-index: 60;
+    }
+    .pin.open { z-index: 60; }
+
+    .tooltip .city-name {
+      font-size: 14px; font-weight: 700; color: var(--ink);
+      padding-bottom: 8px; margin-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+    .tt-office + .tt-office { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .tt-office .tt-name { font-size: 12.5px; font-weight: 700; color: var(--accent); margin-bottom: 3px; }
+    .tt-office .address { font-size: 12.5px; line-height: 1.6; color: var(--ink-2); }
+    .tt-badge {
+      display: inline-block; margin-left: 6px;
+      font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      background: var(--accent); color: var(--white);
+      padding: 2px 6px; vertical-align: 1px;
+    }
+    .tt-links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--line); }
+    .tt-links a {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11.5px; font-weight: 700; text-decoration: none;
+      color: var(--accent);
+      border: 1px solid var(--accent-line);
+      padding: 6px 10px;
+    }
+    .tt-links a:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .tt-links svg { width: 12px; height: 12px; }
+    .tt-close { display: none; }
+
+    .map-figure figcaption {
+      text-align: center;
+      font-size: 13px; color: var(--ink-3);
+      margin-top: 18px;
+    }
+
+    /* On a phone the tooltip is a sheet at the foot of the screen, so it
+       can never be clipped by the edge of the map. */
+    @media (max-width: 760px) {
+      .tooltip {
+        position: fixed;
+        left: 12px; right: 12px; bottom: 12px;
+        top: auto;
+        width: auto;
+        transform: translateY(10px);
+        padding: 18px 18px 16px;
+        z-index: 1500;
+      }
+      .pin.open .tooltip, .pin:focus-within .tooltip { transform: translateY(0); }
+      .tooltip .city-name { font-size: 15.5px; padding-right: 34px; }
+      .tt-office .address, .tt-office .tt-name { font-size: 13.5px; }
+      .tt-close {
+        display: block;
+        position: absolute; top: 10px; right: 10px;
+        width: 30px; height: 30px;
+        border: 1px solid var(--line-2); background: var(--white);
+        color: var(--ink); font-size: 15px; line-height: 1; cursor: pointer;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       CONTACT CARDS
+       ══════════════════════════════════════════════════════════ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
+      gap: 16px;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 22px 20px;
+      box-shadow: var(--shadow-1);
+      display: flex; flex-direction: column; gap: 13px;
+    }
+    .contact-card .cc-label {
+      font-size: 11.5px; letter-spacing: .14em; font-weight: 700;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .contact-card .cc-body { font-size: 14.5px; line-height: 1.7; color: var(--ink-2); }
+    .contact-card .cc-body a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--accent-line); }
+    .contact-card .cc-body a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .contact-card .cc-note { font-size: 12.5px; color: var(--ink-3); }
+
+    /* ══════════════════════════════════════════════════════════
+       APPOINTMENT CTA
+       ══════════════════════════════════════════════════════════ */
+    .cta-strip {
+      margin-top: 26px;
+      background: var(--ink);
+      padding: 26px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 16px 24px;
+    }
+    .cta-strip h3 { color: var(--white); font-size: 19px; font-weight: 700; line-height: 1.4; }
+    .cta-strip p { color: rgba(255,255,255,.66); font-size: 14px; margin-top: 5px; }
+    .btn-appt {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--white); color: var(--ink);
+      border: none; cursor: pointer;
+      font-size: 13px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      transition: background .2s, color .2s;
+    }
+    .btn-appt:hover { background: var(--accent-2); color: var(--white); }
+    .btn-appt svg { width: 16px; height: 16px; }
+
+    /* ══════════════════════════════════════════════════════════
+       SOCIAL
+       ══════════════════════════════════════════════════════════ */
+    .social-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .social-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 12px 20px;
+      font-size: 14px; font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: var(--shadow-1);
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .social-pill:hover { border-color: var(--accent); box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .social-pill svg { flex-shrink: 0; }
+
+    /* ══════════════════════════════════════════════════════════
+       DIALOG
+       ══════════════════════════════════════════════════════════ */
+    /* Browsers without <dialog> support treat it as a plain block and would
+       render the panel inline in the page. This hides it until it is opened,
+       using only an attribute selector, which every browser understands. */
+    dialog.appt:not([open]) { display: none; }
+
+    dialog.appt {
+      border: none; padding: 0;
+      background: transparent;
+      max-width: 460px; width: calc(100% - 32px);
+    }
+    dialog.appt::backdrop { background: rgba(27,27,25,.62); }
+    .appt-box {
+      background: var(--white);
+      border-top: 3px solid var(--accent);
+      padding: 26px 24px 24px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .appt-close {
+      position: absolute; top: 12px; right: 12px;
+      width: 34px; height: 34px;
+      border: 1px solid var(--line-2);
+      background: var(--white); color: var(--ink);
+      cursor: pointer; font-size: 17px; line-height: 1;
+    }
+    .appt-close:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .appt-box h3 { font-size: 19px; color: var(--ink); margin-bottom: 6px; padding-right: 40px; }
+    .appt-box .sub { font-size: 13.5px; color: var(--ink-3); margin-bottom: 18px; }
+    .contact-btn {
+      display: flex; align-items: center; gap: 14px;
+      border: 1px solid var(--line);
+      padding: 13px 15px;
+      text-decoration: none; color: var(--ink);
+      margin-bottom: 10px;
+      transition: border-color .18s, background .18s;
+    }
+    .contact-btn:hover { border-color: var(--accent); background: var(--accent-wash); }
+    .contact-btn:last-child { margin-bottom: 0; }
+    .cb-label { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; color: var(--accent); }
+    .cb-value { font-size: 14px; color: var(--ink-2); margin-top: 3px; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER — compact bar
+       ══════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      border-top: 2px solid var(--accent);
+      padding: 12px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 6px 20px;
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(255,255,255,.62);
+    }
+    footer strong { color: var(--white); font-weight: 700; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(27,27,25,.3); }
+
+    .reveal { opacity: 0; transform: translateY(14px); }
+    .reveal.in-view {
+      opacity: 1; transform: none;
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .reveal.in-view { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .band { padding: 34px var(--pad); }
+      .office-grid { grid-template-columns: 1fr; }
+      .map-figure { padding: 14px; }
+      .cta-strip { flex-direction: column; align-items: flex-start; }
+      .btn-appt { width: 100%; justify-content: center; }
+      .social-pill { flex: 1 1 100%; justify-content: center; }
+      footer { justify-content: center; text-align: center; }
+    }
+    @media (max-width: 420px) {
+      .hero-jump a { flex: 1 1 100%; justify-content: center; }
+      .office-actions a { flex: 1 1 100%; justify-content: center; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HIRING ALERT BELL
+       Amber is used deliberately here and nowhere else on the site,
+       so it reads as a notice rather than as part of the brand palette.
+       Desktop: a pill in the right of the logo row.
+       Mobile:  a floating circle under the header (the logo row's right
+                corner is already taken by the hamburger).
+       ══════════════════════════════════════════════════════════ */
+    .hiring-bell {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #FBE7A1;
+      color: #4A3708;
+      border: 1px solid #E0BE4E;
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(224,190,78,.34);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .hiring-bell:hover {
+      background: #FDF3CB;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224,190,78,.5);
+    }
+    .hiring-bell:focus-visible { outline: 2px solid #4A3708; outline-offset: 3px; }
+
+    .hiring-bell svg {
+      width: 18px; height: 18px;
+      transform-origin: 50% 10%;
+      animation: bell-ring 2.8s ease-in-out infinite;
+    }
+    /* Expanding ring, to catch the eye without moving the button itself */
+    .hiring-bell::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
+      border: 2px solid #E0BE4E;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      animation: bell-pulse 2.8s ease-out infinite;
+    }
+
+    @keyframes bell-ring {
+      0%, 40%, 100% { transform: rotate(0deg); }
+      45% { transform: rotate(-13deg); }
+      50% { transform: rotate(11deg); }
+      55% { transform: rotate(-8deg); }
+      60% { transform: rotate(6deg); }
+      65% { transform: rotate(-3deg); }
+      70% { transform: rotate(0deg); }
+    }
+    @keyframes bell-pulse {
+      0%   { transform: scale(1);    opacity: .75; }
+      65%  { transform: scale(1.16); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hiring-bell {
+        position: fixed;
+        top: calc(var(--nav-h) + 12px);
+        right: 12px;
+        z-index: 900;
+        width: 54px; height: 54px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        gap: 0;
+      }
+      .hiring-bell .hb-text { display: none; }
+      .hiring-bell svg { width: 23px; height: 23px; }
+      .hiring-bell::after { border-radius: 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hiring-bell svg, .hiring-bell::after { animation: none; }
+      .hiring-bell::after { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="nav-logo-row">
+    <a href="index.html" class="logo-block" aria-label="Batra Deepak &amp; Associates — home">
+      <img src="assets/logo.png" alt="Batra Deepak &amp; Associates" width="150" height="44" style="height:44px; width:auto; display:block;" />
+    </a>
+    <a class="hiring-bell" href="career_options.html" aria-label="We are hiring — see open positions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.1-2.3 7.6-2.3 7.6h16.6S18 14.7 18 8.6Z"/><path d="M13.7 19.8a2 2 0 0 1-3.4 0"/></svg><span class="hb-text">We're Hiring</span></a>
+    <button class="hamburger-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="slideMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-strip-wrapper">
+    <nav class="nav-strip" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html">Industries We Serve</a>
+      <a href="utilities.html">Utilities</a>
+      <a href="career_options.html">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="voices-of-bda.html">Voices of BDA</a>
+      <a href="connect-us.html" class="active" aria-current="page">Connect Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════════════ SLIDE MENU ═══════════════ -->
+<div class="slide-menu" id="slideMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="industries-we-serve.html">Industries We Serve</a></li>
+    <li><a href="utilities.html">Utilities</a></li>
+    <li><a href="career_options.html">Career Options</a></li>
+    <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+    <li><a href="voices-of-bda.html">Voices of BDA</a></li>
+    <li><a href="connect-us.html" class="active" aria-current="page">Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main>
+
+  <!-- ─── HERO ─── -->
+  <div class="page-hero">
+    <div class="kicker">Connect Us</div>
+    <h1>Seven cities. One standard.</h1>
+    <div class="hero-rule"></div>
+    <p>Our head office is in Shakarpur, Delhi, with further offices in Raipur, Mumbai, Durg, Jagdalpur, Giridih and Bhopal. Every address, phone number and map link is set out below, so you can reach the office nearest to you directly.</p>
+
+    <div class="hero-jump">
+      <a href="#offices">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>
+        Our offices
+      </a>
+      <a href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>
+        Phone, email &amp; WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── SECTION 1 · OFFICES ─── -->
+  <section class="band band-a" id="offices">
+
+    <div class="section-head">
+      <div class="section-label"><span>Our presence</span></div>
+      <h2 class="section-title">Where we operate</h2>
+      <p class="section-desc">Ten offices across seven cities, from the head office in Delhi to Chhattisgarh, Maharashtra, Madhya Pradesh and Jharkhand. Open a pin to see the address, call the office or get directions.</p>
+    </div>
+
+    <figure class="map-figure reveal">
+      <div class="map-holder">
+        <img src="assets/india_map.jpg" alt="Map of India marking the cities where the firm has offices" width="470" height="530" />
+
+        <div class="pin" style="left:36%; top:33%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt1" aria-label="Delhi office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt1" role="group" aria-label="Delhi">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Delhi</div>
+            <div class="tt-office">
+              <div class="tt-name">Shakarpur<span class="tt-badge">Head Office</span></div>
+              <div class="address">Batra Deepak and Associates,<br>S-517, 2nd Floor, Shakarpur,<br>Delhi – 110 092</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.google.com/?q=S-517,+2nd+Floor,+Shakarpur,+Delhi+110092" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+            <div class="tt-office">
+              <div class="tt-name">Netaji Subhash Place</div>
+              <div class="address">904, Aggarwal Millennium Tower-1,<br>Netaji Subhash Place,<br>Delhi – 110 034</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/3uEA6CigMQMkgpuW6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+            <div class="tt-office">
+              <div class="tt-name">Laxmi Nagar</div>
+              <div class="address">1-B 1/17, Lalita Park,<br>Laxmi Nagar, Vikas Marg,<br>Delhi – 110 092</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/q1GZDsQBwvwUgqNB6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:52%; top:52.5%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt2" aria-label="Raipur office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt2" role="group" aria-label="Raipur">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Raipur</div>
+            <div class="tt-office">
+              <div class="tt-name">Byron Bazar</div>
+              <div class="address">1st Floor, Ashirwad Bhawan,<br>Byron Bazar, Raipur – 492 001,<br>Chhattisgarh</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/rewvCxr8iiMGycELA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+            <div class="tt-office">
+              <div class="tt-name">Vidhan Sabha Road</div>
+              <div class="address">Office No. 28, 2nd Floor, Ashoka Plaza Complex,<br>Near Ashoka Ratan, Khamardih,<br>Vidhan Sabha Road, Raipur – 492 001</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/iMABgxew6g9e8qLu6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:24%; top:61%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt3" aria-label="Mumbai office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt3" role="group" aria-label="Mumbai">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Mumbai</div>
+            <div class="tt-office">
+              <div class="tt-name">BKC Annex</div>
+              <div class="address">A 219, Kanakia Zillion,<br>Junction of SCLR &amp; LBS Road,<br>BKC Annex, Mumbai – 400 070, Maharashtra</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/y8CS58nEnpTnkjce8" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:47.5%; top:49.5%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt4" aria-label="Durg office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt4" role="group" aria-label="Durg">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Durg</div>
+            <div class="tt-office">
+              <div class="tt-name">Supela</div>
+              <div class="address">303-306, Chauhan Towers,<br>Near Chandra Maurya Theatre, G E Road,<br>Supela, Durg – 490 001, Chhattisgarh</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.google.com/?q=Chauhan+Towers,Supela,Durg,Chhattisgarh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:48%; top:60%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt5" aria-label="Jagdalpur office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt5" role="group" aria-label="Jagdalpur">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Jagdalpur</div>
+            <div class="tt-office">
+              <div class="tt-name">Moti Talab Para</div>
+              <div class="address">C/O Trilok Chand Jain, Moti Talab Para,<br>Rammaiyya Ward, Near Anil Provision Stores,<br>Jagdalpur – 494 004, Chhattisgarh</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.google.com/?q=Moti+Talab+Para,Jagdalpur,Chhattisgarh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:63%; top:45%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt6" aria-label="Giridih office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt6" role="group" aria-label="Giridih">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Giridih</div>
+            <div class="tt-office">
+              <div class="tt-name">Buxidih Road</div>
+              <div class="address">1st Floor, Near Khalsa Lodge,<br>Buxidih Road, Giridih – 815 301,<br>Jharkhand</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/XFyFuvWVWhm99FkQA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pin" style="left:37%; top:48%;">
+          <button class="pin-btn" aria-expanded="false" aria-controls="tt7" aria-label="Bhopal office details"><span class="pin-dot" aria-hidden="true"></span></button>
+          <div class="tooltip" id="tt7" role="group" aria-label="Bhopal">
+            <button class="tt-close" aria-label="Close">&#10005;</button>
+            <div class="city-name">Bhopal</div>
+            <div class="tt-office">
+              <div class="tt-name">Bag Mugalia</div>
+              <div class="address">Plot No. 2, Khasra No. 398/1/6,<br>Near BHEL Sangam Square,<br>Bag Mugalia, Bhopal – 462 043, Madhya Pradesh</div>
+              <div class="tt-links"><a href="tel:+917828780780"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>Call</a><a href="https://maps.app.goo.gl/2hExNLwyRXQVwb8o6" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Google Maps</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Hover over a pin for office details — on a phone, tap it. Delhi and Raipur pins list every office in that city.</figcaption>
+    </figure>
+
+  </section>
+
+  <!-- ─── SECTION 2 · CONTACT ─── -->
+  <section class="band band-b" id="contact">
+
+    <div class="section-head">
+      <div class="section-label"><span>Reach us</span></div>
+      <h2 class="section-title">Contact information</h2>
+      <p class="section-desc">Call, message or email us. We aim to respond to every enquiry within one working day.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-card reveal">
+        <span class="ico ico-sm" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21.4h18"/><path d="M5 21.4V6.4l7-3.8 7 3.8v15"/>
+            <path d="M9.4 21.4v-5.2h5.2v5.2"/><path d="M9.4 9.4h1.6M13 9.4h1.6M9.4 12.6h1.6M13 12.6h1.6"/>
+          </svg>
+        </span>
+        <div class="cc-label">Head Office</div>
+        <div class="cc-body">Batra Deepak and Associates,<br>S-517, 2nd Floor, Shakarpur,<br>Delhi – 110 092</div>
+      </div>
+
+      <div class="contact-card reveal">
+        <span class="ico ico-sm" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>
+        </span>
+        <div class="cc-label">Phone / WhatsApp</div>
+        <div class="cc-body"><a href="tel:+917828780780">+91 78287 80780</a></div>
+        <div class="cc-note">One central number for all offices.</div>
+      </div>
+
+      <div class="contact-card reveal">
+        <span class="ico ico-sm" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1.6"/><path d="m2.6 6 9.4 6.6L21.4 6"/></svg>
+        </span>
+        <div class="cc-label">Email</div>
+        <div class="cc-body"><a href="mailto:frontdesk0.bda@gmail.com">frontdesk0.bda@gmail.com</a></div>
+      </div>
+
+    </div>
+
+    <div class="cta-strip">
+      <div>
+        <h3>Ready to get started?</h3>
+        <p>Choose a time that suits you and we will arrange a partner to speak with.</p>
+      </div>
+      <button class="btn-appt" id="apptBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="4.8" width="17.6" height="16" rx="1.6"/><path d="M3.2 9.4h17.6M8.2 2.8v4M15.8 2.8v4"/></svg>
+        Book Appointment
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ─── SECTION 3 · SOCIAL ─── -->
+  <section class="band band-a" id="social">
+
+    <div class="section-head">
+      <div class="section-label"><span>Elsewhere</span></div>
+      <h2 class="section-title">Our social presence</h2>
+      <p class="section-desc">Updates, briefings and firm news on the channels below.</p>
+    </div>
+
+    <div class="social-links">
+
+      <a class="social-pill reveal" href="https://youtube.com/@batradeepakassociates?si=-gQNJqCAhhSKyFrC" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#FF0000" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        YouTube
+      </a>
+
+      <a class="social-pill reveal" href="https://www.linkedin.com/in/deepak-batra-67730a98" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.57V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.21 24 24 23.23 24 22.27V1.73C24 .77 23.21 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+
+      <a class="social-pill reveal" href="https://www.facebook.com/batradeepak" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.69 4.55-4.69 1.32 0 2.7.24 2.7.24v2.97h-1.52c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        Facebook
+      </a>
+
+      <a class="social-pill reveal" href="https://www.instagram.com/batradeepak" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.86 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+        Instagram
+      </a>
+
+      <a class="social-pill reveal" href="https://wa.me/917828780780" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════ APPOINTMENT DIALOG ═══════════════ -->
+<dialog class="appt" id="apptDialog" aria-labelledby="apptTitle">
+  <div class="appt-box">
+    <button class="appt-close" id="apptClose" aria-label="Close">&#10005;</button>
+    <h3 id="apptTitle">Book an appointment</h3>
+    <p class="sub">Choose how you would like to reach us.</p>
+
+    <a class="contact-btn" href="tel:+917828780780">
+      <span class="ico ico-sm" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>
+      </span>
+      <span>
+        <span class="cb-label">Call us</span>
+        <span class="cb-value" style="display:block;">+91 78287 80780</span>
+      </span>
+    </a>
+
+    <a class="contact-btn" href="mailto:frontdesk0.bda@gmail.com?subject=Appointment%20request">
+      <span class="ico ico-sm" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1.6"/><path d="m2.6 6 9.4 6.6L21.4 6"/></svg>
+      </span>
+      <span>
+        <span class="cb-label">Email us</span>
+        <span class="cb-value" style="display:block;">frontdesk0.bda@gmail.com</span>
+      </span>
+    </a>
+
+    <a class="contact-btn" href="https://wa.me/917828780780?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">
+      <span class="ico ico-sm" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </span>
+      <span>
+        <span class="cb-label">WhatsApp</span>
+        <span class="cb-value" style="display:block;">Message us on +91 78287 80780</span>
+      </span>
+    </a>
+  </div>
+</dialog>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <span><strong>Batra Deepak &amp; Associates</strong> · Chartered Accountants</span>
+  <span>General guidance only — verify due dates on the official portals and consult your CA.</span>
+</footer>
+
+<script>
+  /* ── Mobile menu ── */
+  const menuBtn = document.getElementById('menuBtn');
+  const slideMenu = document.getElementById('slideMenu');
+
+  function setMenu(open) {
+    menuBtn.classList.toggle('open', open);
+    slideMenu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  menuBtn.addEventListener('click', () => setMenu(!slideMenu.classList.contains('open')));
+  document.addEventListener('click', e => {
+    if (!menuBtn.contains(e.target) && !slideMenu.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    setMenu(false);
+    document.querySelectorAll('.pin.open').forEach(pin => {
+      pin.classList.remove('open');
+      pin.querySelector('.pin-btn').setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Appointment dialog ──
+     Native <dialog> handles focus trapping, Escape and the backdrop.
+     showModal() is guarded for older browsers that lack it. */
+  const dlg = document.getElementById('apptDialog');
+  const apptBtn = document.getElementById('apptBtn');
+  const apptClose = document.getElementById('apptClose');
+
+  apptBtn.addEventListener('click', () => {
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    else dlg.setAttribute('open', '');
+  });
+  apptClose.addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+  /* ── Office map pins ──
+     Pointer devices get the details on hover (CSS). Every device can also
+     open a pin by tapping or by keyboard, which is what makes the addresses
+     reachable on a phone, where there is no hover state at all. */
+  const pins = Array.from(document.querySelectorAll('.pin'));
+
+  function closeAllPins(except) {
+    pins.forEach(pin => {
+      if (pin === except) return;
+      pin.classList.remove('open');
+      pin.querySelector('.pin-btn').setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  pins.forEach(pin => {
+    const btn = pin.querySelector('.pin-btn');
+    const closeBtn = pin.querySelector('.tt-close');
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = !pin.classList.contains('open');
+      closeAllPins(pin);
+      pin.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    closeBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      pin.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.focus();
+    });
+
+    // Clicks on the phone and Maps links must not bubble up and close the pin
+    pin.querySelectorAll('.tooltip a').forEach(a => a.addEventListener('click', e => e.stopPropagation()));
+  });
+
+  document.addEventListener('click', () => closeAllPins(null));
+
+  /* ── One quiet reveal on scroll ── */
+  const items = document.querySelectorAll('.reveal');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(el => el.classList.add('in-view'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i * 0.05) + 's';
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(el => io.observe(el));
+  }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "Batra Deepak & Associates",
+  "alternateName": "BDA",
+  "url": "https://bdaca.com",
+  "telephone": "+91-78287-80780",
+  "email": "frontdesk0.bda@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "S-517, 2nd Floor, Shakarpur",
+    "addressLocality": "Delhi",
+    "postalCode": "110092",
+    "addressCountry": "IN"
+  },
+  "areaServed": ["Delhi", "Raipur", "Mumbai", "Durg", "Jagdalpur", "Giridih", "Bhopal"]
+}
+</script>
+
+</body>
+</html>

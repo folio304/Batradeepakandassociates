@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities — Batra Deepak &amp; Associates | Chartered Accountants, Delhi &amp; Raipur</title>
+  <meta name="description" content="Free financial tools from Batra Deepak &amp; Associates: loan repayment schedule builder, EMI, FD and SIP calculators, a financial ratio analyser and a full statutory compliance calendar." />
+  <link rel="canonical" href="https://bdaca.com/utilities.html" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Utilities — Batra Deepak &amp; Associates" />
+  <meta property="og:description" content="Loan schedules, EMI, FD and SIP calculators, ratio analysis and a full compliance calendar." />
+  <meta property="og:url" content="https://bdaca.com/utilities.html" />
+  <meta property="og:image" content="https://bdaca.com/assets/utilities-hero.jpg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D7XWQZYL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D7XWQZYL6');
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TOKENS — oxblood burgundy + graphite.
+       Identical to knowledge-centre.html and connect-us.html.
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --ink:        #1B1B19;
+      --ink-2:      #33332F;
+      --ink-3:      #5A5A54;
+
+      /* ── ACCENT — change these four lines to reskin the page ── */
+      --accent:      #6E2436;
+      --accent-2:    #8A3247;
+      --accent-wash: rgba(110,36,54,.07);
+      --accent-line: rgba(110,36,54,.26);
+
+      --white:      #ffffff;
+      --paper:      #F2F2EF;
+      --paper-2:    #E7E7E2;
+
+      --line:       rgba(27,27,25,.14);
+      --line-2:     rgba(27,27,25,.24);
+
+      --shadow-1:   0 1px 2px rgba(27,27,25,.06);
+      --shadow-2:   0 6px 20px rgba(27,27,25,.11);
+
+      /* Verdicts — kept deliberately muted so the page stays professional */
+      --good:       #1F5134;
+      --good-bg:    #E8F0EA;
+      --caution:    #8A5A12;
+      --caution-bg: #F6EFE2;
+      --poor:       #96271F;
+      --poor-bg:    #F8E9E7;
+
+      /* Legacy aliases — the JS and some inline styles still reference these */
+      --navy:   #1B1B19;
+      --gold:   #6E2436;
+      --gold-lt:#8A3247;
+      --cream:  #F2F2EF;
+      --text:   #33332F;
+      --muted:  #5A5A54;
+      --border: rgba(27,27,25,.14);
+
+      --pad:    20px;
+      --nav-h:  64px;
+    }
+
+    @media (min-width: 600px)  { :root { --pad: 32px; } }
+    @media (min-width: 1000px) { :root { --pad: 44px; } }
+    @media (min-width: 1400px) { :root { --pad: 56px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+
+    body {
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink-2);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible, button:focus-visible,
+    input:focus-visible, select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Word-style justification — spaces stretch, words are never split */
+    .page-hero p, .calc-sub, .result-note, .rp-modal-sub { 
+      text-align: justify; text-justify: inter-word;
+      -webkit-hyphens: none; hyphens: none; overflow-wrap: break-word;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HEADER
+       ══════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(27,27,25,.05);
+    }
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad); height: var(--nav-h);
+    }
+    .logo-block { display: flex; align-items: center; gap: 11px; line-height: 1; }
+    .logo-circle {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--ink); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+    }
+    .logo-text .brand { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .logo-text .sub { font-size: 10.5px; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); margin-top: 3px; }
+
+    .nav-strip-wrapper { border-top: 1px solid var(--line); background: var(--white); }
+    .nav-strip {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 2px; padding: 4px var(--pad);
+    }
+    .nav-strip a {
+      color: var(--ink-2); text-decoration: none;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px; white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-strip a:hover { color: var(--accent); background: var(--accent-wash); }
+    .nav-strip a.active { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+    .hamburger {
+      display: none;
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--line-2); background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: 4px;
+      transition: background .2s, border-color .2s;
+    }
+    .hamburger:hover { background: var(--accent-wash); border-color: var(--accent); }
+    .hamburger span {
+      display: block; width: 18px; height: 1.5px; background: var(--ink);
+      transition: transform .25s, opacity .2s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed; top: var(--nav-h); right: 0;
+      width: 280px; width: min(280px, 82vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(27,27,25,.16);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      z-index: 1200;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 6px 0; }
+    .slide-menu li + li { border-top: 1px solid var(--line); }
+    .slide-menu a {
+      display: block; padding: 15px 22px;
+      text-decoration: none; color: var(--ink-2); font-size: 14.5px;
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+    .slide-menu a:hover { background: var(--accent-wash); color: var(--accent); padding-left: 27px; }
+    .slide-menu a.active { color: var(--accent); font-weight: 700; box-shadow: inset 3px 0 0 var(--accent); }
+    .slide-menu .num { display: none; }
+
+    @media (max-width: 980px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    .page-hero {
+      margin-top: calc(var(--nav-h) + 33px);
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.86) 46%, rgba(255,255,255,.62) 100%),
+        url('assets/utilities-hero.jpg') center/cover no-repeat;
+      border-bottom: 2px solid var(--accent);
+      padding: 46px var(--pad) 40px;
+    }
+    @media (max-width: 980px) { .page-hero { margin-top: var(--nav-h); } }
+    @media (min-width: 800px)  { .page-hero { padding: 64px var(--pad) 52px; } }
+    @media (min-width: 1200px) { .page-hero { padding: 76px var(--pad) 60px; } }
+
+    .page-hero h1 {
+      font-size: 38px;
+      font-size: clamp(30px, 4.6vw, 49px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -.01em;
+      color: var(--ink);
+      max-width: 20ch;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 span { color: var(--accent); }
+    .page-hero p {
+      font-size: 17px;
+      font-size: clamp(15.5px, 1.4vw, 17.5px);
+      line-height: 1.75; color: var(--ink-2); max-width: 66ch;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SECTION
+       ══════════════════════════════════════════════════════════ */
+    .section { padding: 40px var(--pad); background: var(--paper); }
+    @media (min-width: 800px)  { .section { padding: 52px var(--pad); } }
+    @media (min-width: 1200px) { .section { padding: 60px var(--pad); } }
+
+    .section-label {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      font-size: 11.5px; letter-spacing: .18em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .section-label::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); }
+    .section-title {
+      font-size: 27px;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; line-height: 1.25; color: var(--ink); margin-bottom: 8px;
+    }
+    .divider { width: 52px; height: 3px; background: var(--accent); margin: 14px 0 26px; }
+
+    /* ══════════════════════════════════════════════════════════
+       TOOL SWITCHER
+       ══════════════════════════════════════════════════════════ */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .tool-btn {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 18px 12px 15px;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: var(--shadow-1);
+      transition: border-color .18s, box-shadow .18s, transform .18s, background .18s;
+    }
+    .tool-btn:hover { border-color: var(--accent); box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .tool-btn.active { background: var(--ink); border-color: var(--ink); }
+    .tool-btn.active .tb-label { color: var(--white); }
+    .tool-btn.active .tb-icon { border-color: rgba(255,255,255,.34); background: rgba(255,255,255,.10); color: var(--white); }
+
+    .tb-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; margin-bottom: 10px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-wash);
+      color: var(--accent);
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .tb-icon svg { width: 23px; height: 23px; display: block; }
+    .tb-label { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+
+    /* Hint text: a floating tip where there is a pointer, a plain caption
+       on touch devices. The old build hid it entirely on touch, which left
+       phone users with eight icons and no explanation of any of them. */
+    .tool-btn[data-tip]::after {
+      content: attr(data-tip);
+      position: absolute; left: 50%; bottom: calc(100% + 9px);
+      transform: translateX(-50%);
+      width: 210px;
+      background: var(--ink); color: var(--white);
+      font-size: 11.5px; line-height: 1.5; font-weight: 400;
+      padding: 9px 11px; text-align: left;
+      opacity: 0; visibility: hidden;
+      transition: opacity .18s, visibility .18s;
+      z-index: 50;
+      pointer-events: none;
+    }
+    @media (hover: hover) {
+      .tool-btn[data-tip]:hover::after { opacity: 1; visibility: visible; }
+    }
+    @media (hover: none) {
+      .tool-btn[data-tip]::after {
+        position: static; transform: none; width: auto;
+        background: none; color: var(--ink-3);
+        font-size: 11px; line-height: 1.45; padding: 6px 0 0;
+        text-align: center;
+        opacity: 1; visibility: visible;
+      }
+      .tool-btn.active[data-tip]::after { color: rgba(255,255,255,.66); }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       CALCULATOR PANELS
+       ══════════════════════════════════════════════════════════ */
+    .calc-panel {
+      display: none;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      padding: 26px 24px;
+      box-shadow: var(--shadow-1);
+    }
+    .calc-panel.active { display: block; }
+    .calc-panel h2 {
+      font-size: 22px; font-weight: 700; color: var(--ink);
+      line-height: 1.3; margin-bottom: 6px;
+    }
+    .calc-panel h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 14px; }
+    .calc-sub { font-size: 14px; color: var(--ink-3); line-height: 1.65; margin-bottom: 22px; }
+
+    /* ── Forms ── */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .form-group { display: flex; flex-direction: column; }
+    .form-group label, .ratio-selector-card label {
+      font-size: 11.5px; font-weight: 700; letter-spacing: .09em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 7px;
+    }
+    .form-group input, .form-group select,
+    .ratio-selector-card select, .ratio-field input,
+    #cal-filter, #cal-month {
+      font-size: 15px; color: var(--ink);
+      padding: 11px 13px;
+      border: 1px solid var(--line-2);
+      background: var(--white);
+      width: 100%;
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .form-group input:focus, .form-group select:focus,
+    .ratio-selector-card select:focus, .ratio-field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-wash);
+      outline: none;
+    }
+    .form-group input::placeholder { color: #A5A29B; }
+
+    .rp-radio-row { display: flex; flex-wrap: wrap; gap: 9px; }
+    .rp-radio-opt {
+      flex: 1 1 auto;
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--line-2);
+      padding: 10px 14px;
+      font-size: 13.5px; font-weight: 700; color: var(--ink-2);
+      cursor: pointer; text-transform: none; letter-spacing: 0;
+      margin-bottom: 0;
+      transition: border-color .18s, background .18s, color .18s;
+    }
+    .rp-radio-opt.active { border-color: var(--accent); background: var(--accent-wash); color: var(--accent); }
+    .rp-radio-opt input { accent-color: var(--accent); }
+
+    /* ── Buttons ── */
+    .btn-calc, .btn-reset, .btn-redirect {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+      text-transform: none;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      cursor: pointer; text-decoration: none;
+      margin: 0 8px 8px 0;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn-calc svg, .btn-reset svg, .btn-redirect svg { width: 14px; height: 14px; }
+    .btn-calc { background: var(--accent); color: var(--white); }
+    .btn-calc:hover { background: var(--ink); }
+    .btn-reset { background: var(--white); color: var(--ink); border-color: var(--line-2); }
+    .btn-reset:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+    .btn-redirect { background: var(--ink); color: var(--white); }
+    .btn-redirect:hover { background: var(--accent); }
+
+    /* ── Result boxes ── */
+    .result-box, .age-result-cards, .ratio-result-box { display: none; }
+    .result-box.show, .ratio-result-box.show { display: block; }
+    .result-box {
+      margin-top: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 22px 20px;
+    }
+    .rb-title {
+      font-size: 12px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .result-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); }
+    .result-item { background: var(--white); padding: 15px 16px; }
+    .result-item.highlight { background: var(--ink); }
+    .result-item.highlight .ri-label { color: rgba(255,255,255,.66); }
+    .result-item.highlight .ri-val { color: var(--white); }
+    .ri-label { font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+    .ri-val { font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .result-note { font-size: 12.5px; color: var(--ink-3); line-height: 1.65; margin-top: 16px; }
+
+    .age-result-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); }
+    .age-card { background: var(--white); padding: 18px 16px; text-align: center; }
+    .a-val { font-size: 30px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+    .a-lbl { font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: 7px; }
+
+    /* ══════════════════════════════════════════════════════════
+       REPAYMENT SCHEDULE
+       ══════════════════════════════════════════════════════════ */
+    .rp-summary-strip {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 1px; background: var(--line);
+      margin-top: 24px;
+    }
+    .rp-summary-strip.show { display: grid; }
+    .rp-summary-strip .cell { background: var(--white); padding: 15px 16px; }
+    .rp-summary-strip .lbl { font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+    .rp-summary-strip .val { font-size: 18px; font-weight: 700; color: var(--ink); }
+    .rp-summary-strip .cell.full { grid-column: 1 / -1; }
+    .rp-badge {
+      display: inline-block; margin-left: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      background: var(--accent); color: var(--white); padding: 3px 8px;
+    }
+    .rp-moratorium { background: var(--accent-wash) !important; }
+
+    .rp-section-title {
+      font-size: 13px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 30px 0 12px;
+      padding-bottom: 9px; border-bottom: 1px solid var(--line);
+    }
+    .rp-table-wrap, .reg-table-wrap {
+      display: none;
+      overflow-x: auto; overflow-y: auto;
+      max-height: 520px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      -webkit-overflow-scrolling: touch;
+    }
+    .rp-table-wrap.show, .reg-table-wrap { display: block; }
+    .reg-table-wrap { max-height: none; }
+    .rp-table, .reg-table, .slab-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .rp-table th, .reg-table th, .slab-table th {
+      position: sticky; top: 0; z-index: 2;
+      background: var(--ink); color: var(--white);
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      font-weight: 700; text-align: left;
+      padding: 11px 12px; white-space: nowrap;
+    }
+    .rp-table td, .reg-table td, .slab-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-2); white-space: nowrap;
+    }
+    .rp-table tbody tr:hover td, .reg-table tbody tr:hover td { background: var(--accent-wash); }
+    .rp-table tfoot td {
+      position: sticky; bottom: 0;
+      background: var(--paper-2); font-weight: 700; color: var(--ink);
+      border-top: 2px solid var(--accent);
+    }
+    .reg-table td:first-child, .reg-due { font-weight: 700; color: var(--accent); }
+
+    .reg-monthly-section { margin-top: 34px; }
+    .reg-monthly-title {
+      font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4;
+    }
+    .reg-monthly-sub { font-size: 12.5px; color: var(--ink-3); margin: 6px 0 14px; }
+
+    /* ── EMI confirm modal ── */
+    .rp-modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(27,27,25,.62);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .rp-modal-overlay.show { display: flex; }
+    .rp-modal-box {
+      background: var(--white);
+      border-top: 3px solid var(--accent);
+      padding: 26px 24px;
+      width: 100%; max-width: 440px;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .rp-modal-box h3 { font-size: 19px; color: var(--ink); margin-bottom: 8px; }
+    .rp-modal-sub { font-size: 13px; color: var(--ink-3); line-height: 1.65; margin-bottom: 18px; }
+    .rp-modal-computed { background: var(--paper); border-left: 3px solid var(--accent); padding: 14px 16px; margin-bottom: 18px; }
+    .rp-modal-lbl { font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+    .rp-modal-val { font-size: 23px; font-weight: 700; color: var(--ink); }
+    .rp-modal-range { font-size: 12px; color: var(--ink-3); margin-top: 7px; }
+    .rp-modal-warn { display: none; font-size: 12.5px; color: var(--poor); margin-top: 7px; font-weight: 700; }
+    .rp-modal-warn.show { display: block; }
+    .rp-modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+    .rp-modal-actions .btn-calc, .rp-modal-actions .btn-reset { margin: 0; flex: 1; justify-content: center; }
+
+    /* ══════════════════════════════════════════════════════════
+       COMPLIANCE CALENDAR
+       ══════════════════════════════════════════════════════════ */
+    .cal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+    .cal-card { background: var(--white); border: 1px solid var(--line); box-shadow: var(--shadow-1); }
+    .cal-card-head { background: var(--ink); padding: 12px 16px; }
+    .month-label { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--white); }
+    .cal-card-body { padding: 6px 16px 14px; }
+    .cal-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .cal-item:last-child { border-bottom: none; }
+    .cal-date {
+      flex-shrink: 0; min-width: 38px;
+      font-size: 17px; font-weight: 700; color: var(--accent); line-height: 1.2;
+    }
+    .cal-desc { font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+    .cal-tag {
+      display: inline-block; margin-top: 7px;
+      font-size: 9.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px;
+    }
+    /* Muted category colours — distinguishable without turning the page into confetti */
+    .tag-it    { background: #EFE4E7; color: #6E2436; }
+    .tag-gst   { background: #E4EAEA; color: #24484A; }
+    .tag-tds   { background: #EDE9E0; color: #5C4A1C; }
+    .tag-audit { background: #E8E7EF; color: #38356B; }
+    .tag-roc   { background: #E9EEE9; color: #2C4A2E; }
+    .tag-misc, .tag-other { background: #EAE8E4; color: #4A453E; }
+
+    /* ══════════════════════════════════════════════════════════
+       RATIO ANALYZER
+       ══════════════════════════════════════════════════════════ */
+    .ratio-selector-card, .ratio-inputs-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+    .ratio-inputs-card { display: none; }
+    .ratio-inputs-card.show { display: block; }
+    .ratio-desc-pill {
+      display: none;
+      margin-top: 14px;
+      background: var(--white);
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      font-size: 13px; line-height: 1.65; color: var(--ink-2);
+    }
+    .ratio-desc-pill.show { display: block; }
+    .ratio-fields-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 15px; }
+    .ratio-field { display: flex; flex-direction: column; }
+    .ratio-field label {
+      font-size: 11.5px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 7px;
+    }
+    .rf-hint { font-size: 11.5px; color: var(--ink-3); margin-top: 6px; line-height: 1.5; }
+    .ratio-error {
+      display: none;
+      background: var(--poor-bg); color: var(--poor);
+      border-left: 3px solid var(--poor);
+      padding: 11px 14px; font-size: 13px; font-weight: 700;
+      margin: 14px 0;
+    }
+    .ratio-error.show { display: block; }
+
+    .ratio-result-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 22px 20px;
+      margin-top: 20px;
+    }
+    .ratio-result-top {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px; align-items: start;
+      padding-bottom: 18px; margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .ratio-result-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+    .ratio-result-value { font-size: 36px; font-weight: 700; color: var(--ink); line-height: 1.05; }
+    .ratio-result-name { font-size: 13px; color: var(--ink-3); margin-top: 7px; line-height: 1.5; }
+    .ratio-verdict {
+      display: inline-block;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 8px 14px;
+    }
+    .ratio-verdict.good    { background: var(--good-bg);    color: var(--good); }
+    .ratio-verdict.caution { background: var(--caution-bg); color: var(--caution); }
+    .ratio-verdict.poor    { background: var(--poor-bg);    color: var(--poor); }
+
+    .ratio-benchmarks { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+    .rb-item { background: var(--white); border: 1px solid var(--line); padding: 14px 15px; }
+    .rbi-label { font-size: 10.5px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); margin-bottom: 7px; }
+    .rbi-val { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .rbi-note { font-size: 12px; color: var(--ink-3); line-height: 1.55; margin-top: 6px; }
+    .ratio-formula {
+      margin-top: 16px; padding: 14px 15px;
+      background: var(--ink); color: rgba(255,255,255,.86);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 12.5px; line-height: 1.6;
+    }
+
+    /* Legacy / unused-but-referenced helpers */
+    .regime-toggle { display: flex; gap: 9px; margin-bottom: 18px; flex-wrap: wrap; }
+    .regime-btn {
+      border: 1px solid var(--line-2); background: var(--white);
+      padding: 10px 18px; font-size: 13px; font-weight: 700; cursor: pointer; color: var(--ink-2);
+    }
+    .regime-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .loading-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+    .jpg { max-width: 100%; height: auto; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER — compact bar
+       ══════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      border-top: 2px solid var(--accent);
+      padding: 12px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 6px 20px;
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(255,255,255,.62);
+      text-align: left;
+    }
+    footer strong { color: var(--white); font-weight: 700; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(27,27,25,.3); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .section { padding: 30px var(--pad); }
+      .calc-panel { padding: 20px 16px; }
+      .tools-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+      .cal-grid { grid-template-columns: 1fr; }
+      .rp-modal-actions .btn-calc, .rp-modal-actions .btn-reset { width: auto; }
+      #cal-filter, #cal-month { width: 100%; }
+      .ratio-result-value { font-size: 30px; }
+      footer { justify-content: center; text-align: center; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HIRING ALERT BELL
+       Amber is used deliberately here and nowhere else on the site,
+       so it reads as a notice rather than as part of the brand palette.
+       Desktop: a pill in the right of the logo row.
+       Mobile:  a floating circle under the header (the logo row's right
+                corner is already taken by the hamburger).
+       ══════════════════════════════════════════════════════════ */
+    .hiring-bell {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #FBE7A1;
+      color: #4A3708;
+      border: 1px solid #E0BE4E;
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(224,190,78,.34);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .hiring-bell:hover {
+      background: #FDF3CB;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224,190,78,.5);
+    }
+    .hiring-bell:focus-visible { outline: 2px solid #4A3708; outline-offset: 3px; }
+
+    .hiring-bell svg {
+      width: 18px; height: 18px;
+      transform-origin: 50% 10%;
+      animation: bell-ring 2.8s ease-in-out infinite;
+    }
+    /* Expanding ring, to catch the eye without moving the button itself */
+    .hiring-bell::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
+      border: 2px solid #E0BE4E;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      animation: bell-pulse 2.8s ease-out infinite;
+    }
+
+    @keyframes bell-ring {
+      0%, 40%, 100% { transform: rotate(0deg); }
+      45% { transform: rotate(-13deg); }
+      50% { transform: rotate(11deg); }
+      55% { transform: rotate(-8deg); }
+      60% { transform: rotate(6deg); }
+      65% { transform: rotate(-3deg); }
+      70% { transform: rotate(0deg); }
+    }
+    @keyframes bell-pulse {
+      0%   { transform: scale(1);    opacity: .75; }
+      65%  { transform: scale(1.16); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hiring-bell {
+        position: fixed;
+        top: calc(var(--nav-h) + 12px);
+        right: 12px;
+        z-index: 900;
+        width: 54px; height: 54px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        gap: 0;
+      }
+      .hiring-bell .hb-text { display: none; }
+      .hiring-bell svg { width: 23px; height: 23px; }
+      .hiring-bell::after { border-radius: 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hiring-bell svg, .hiring-bell::after { animation: none; }
+      .hiring-bell::after { opacity: 0; }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo-row">
+    <a href="index.html">
+      <img src="assets/logo.png" alt="Batra Deepak & Associates" style="height:44px;width:auto;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="logo-block" style="display:none;">
+        <div class="logo-circle">BDA</div>
+        <div class="logo-text">
+          <div class="brand">Batra Deepak</div>
+          <div class="sub">Chartered Accountants</div>
+        </div>
+      </div>
+    </a>
+    <!-- Hamburger: mobile only -->
+    <a class="hiring-bell" href="career_options.html" aria-label="We are hiring — see open positions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.1-2.3 7.6-2.3 7.6h16.6S18 14.7 18 8.6Z"/><path d="M13.7 19.8a2 2 0 0 1-3.4 0"/></svg><span class="hb-text">We're Hiring</span></a>
+    <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="slideMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Desktop horizontal nav strip -->
+  <div class="nav-strip-wrapper">
+    <div class="nav-strip">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html">Industries We Serve</a>
+      <a href="utilities.html" class="active" aria-current="page">Utilities</a>
+      <a href="career_options.html">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="voices-of-bda.html">Voices of BDA</a>
+      <a href="connect-us.html">Connect Us</a>
+    </div>
+  </div>
+</nav>
+
+<div class="slide-menu" id="slideMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="industries-we-serve.html">Industries We Serve</a></li>
+    <li><a href="utilities.html" class="active" aria-current="page">Utilities</a></li>
+    <li><a href="career_options.html">Career Options</a></li>
+    <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+    <li><a href="voices-of-bda.html">Voices of BDA</a></li>
+    <li><a href="connect-us.html">Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- ── HERO ── -->
+<div class="page-hero">
+  <h1>Tools for the numbers you work with</h1>
+  <p>Loan schedules, EMI, deposit and investment calculators, a credit ratio analyser and a full statutory compliance calendar. Built for the questions our clients ask most often, and free to use.</p>
+</div>
+
+<!-- ── TOOLS ── -->
+<div class="section">
+  <div class="section-label">Tools &amp; Calculators</div>
+  <h2 class="section-title">Choose a Utility</h2>
+  <div class="divider"></div>
+
+  <div class="tools-grid">
+    <button class="tool-btn active" data-tool="income-tax" data-tip="Redirects to the official Income Tax Dept. calculator" onclick="showTool('income-tax')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.6h8.2L19 7.4v14a1.2 1.2 0 0 1-1.2 1.2H6a1.2 1.2 0 0 1-1.2-1.2V3.8A1.2 1.2 0 0 1 6 2.6Z"/><path d="M14 2.6v5h5"/><path d="M9 11.4h5.4M9 14h5.4M9 11.4c2.4 0 3.4 1 3.4 2.3s-1 2.3-3.4 2.3h-.2l4.2 3.6"/></svg></span>
+      <div class="tb-label">Income Tax</div>
+    </button>
+    <button class="tool-btn" data-tool="repayment" data-tip="Build a full loan amortisation schedule — EMI or Fixed Principal, with moratorium" onclick="showTool('repayment')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.4" width="18" height="16.2" rx="1.5"/><path d="M3 9.2h18M8 2.8v3.4M16 2.8v3.4"/><path d="M7.2 12.8h3M13.8 12.8h3M7.2 16.6h3M13.8 16.6h3"/></svg></span>
+      <div class="tb-label">Repayment Schedule</div>
+    </button>
+    <button class="tool-btn" data-tool="emi" data-tip="Calculate monthly EMI for home, car, personal or education loans" onclick="showTool('emi')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 21.4h18.8"/><path d="M4.4 21.4V9.8M9.4 21.4V9.8M14.6 21.4V9.8M19.6 21.4V9.8"/><path d="M3 9.8h18L12 3.4Z"/></svg></span>
+      <div class="tb-label">EMI Calculator</div>
+    </button>
+    <button class="tool-btn" data-tool="fd" data-tip="Calculate Fixed Deposit maturity value and interest earned" onclick="showTool('fd')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="6.2" width="18.8" height="12.4" rx="1.6"/><circle cx="12" cy="12.4" r="3.1"/><path d="M6 9.6h.02M18 15.2h.02"/></svg></span>
+      <div class="tb-label">FD Maturity</div>
+    </button>
+    <button class="tool-btn" data-tool="sip" data-tip="Estimate SIP investment corpus and returns over time" onclick="showTool('sip')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 3.4v17h17"/><path d="m6.6 15.6 4-4.4 3.2 2.4 4.6-6"/><path d="M15.2 7.6h3.2v3.2"/></svg></span>
+      <div class="tb-label">SIP Calculator</div>
+    </button>
+    <button class="tool-btn" data-tool="compliance" data-tip="Browse GST, TDS, ITR, ROC and other statutory due dates" onclick="showTool('compliance')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="3.4" width="15.2" height="18.2" rx="1.5"/><path d="M8.8 2.2h6.4v3.2H8.8Z"/><path d="m9 12 2 2 4-4.4"/><path d="M9 17.4h6"/></svg></span>
+      <div class="tb-label">Compliance Calendar</div>
+    </button>
+    <button class="tool-btn" data-tool="age" data-tip="Calculate precise age in years, months and days" onclick="showTool('age')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M12 6.6V12l3.6 2.2"/></svg></span>
+      <div class="tb-label">Age Calculator</div>
+    </button>
+    <button class="tool-btn" data-tool="ratio" data-tip="Analyze DSCR, ICR, Debt-Equity and other credit ratios" onclick="showTool('ratio')">
+      <span class="tb-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 20.6h17.2"/><path d="M6.6 20.6v-6.2M11 20.6V7.4M15.4 20.6v-9M19.8 20.6V4.2"/></svg></span>
+      <div class="tb-label">Ratio Analyzer</div>
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════
+       1. INCOME TAX — REDIRECT
+  ══════════════════════════════ -->
+  <div class="calc-panel active" id="tool-income-tax">
+    <h2>Income Tax Calculator</h2>
+    <p class="calc-sub">Official calculator provided by the Income Tax Department of India</p>
+    <p style="font-family:'Arial',sans-serif;font-size:14px;color:var(--text);line-height:1.7;margin-bottom:24px;">
+      For accurate and up-to-date income tax calculations under the Old &amp; New Tax Regimes, we recommend using the 
+      <strong>official Income Tax Calculator</strong> on the Income Tax Department's e-filing portal. It is maintained by the 
+      Government of India and always reflects the latest slabs, surcharges, and rebates.
+    </p>
+    <a class="btn-redirect" href="https://www.incometaxindia.gov.in/income-tax-calculator" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>Open the Income Tax Calculator
+    </a>
+    <p style="font-family:'Arial',sans-serif;font-size:11px;color:var(--muted);margin-top:16px;">Opens in a new tab on incometax.gov.in — the official portal of the Income Tax Department, Government of India.</p>
+  </div>
+
+  <!-- ══════════════════════════════
+       2. LOAN REPAYMENT SCHEDULE BUILDER
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-repayment">
+    <h2>Loan Repayment Schedule Builder</h2>
+    <p class="calc-sub">Amortisation &amp; Interest Schedule — Fixed EMI or Fixed Principal, with Moratorium support</p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Loan Amount (₹)</label>
+        <input type="number" id="rp-loanAmount" placeholder="e.g. 5000000" min="0" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Interest Rate (% p.a.)</label>
+        <input type="number" id="rp-intRate" placeholder="e.g. 9.5" min="0" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Disbursement Date</label>
+        <input type="date" id="rp-disbDate" />
+      </div>
+      <div class="form-group">
+        <label>Total Tenure (Months)</label>
+        <input type="number" id="rp-tenure" placeholder="e.g. 60" min="1" step="1" />
+      </div>
+      <div class="form-group">
+        <label>Moratorium Period (Months)</label>
+        <input type="number" id="rp-moratorium" placeholder="0 if none" min="0" step="1" value="0" />
+      </div>
+      <div class="form-group">
+        <label>Repayment Option</label>
+        <div class="rp-radio-row">
+          <label class="rp-radio-opt active" id="rp-optEmiLabel">
+            <input type="radio" name="rp-opt" value="emi" checked /> Fixed EMI
+          </label>
+          <label class="rp-radio-opt" id="rp-optPrinLabel">
+            <input type="radio" name="rp-opt" value="principal" /> Fixed Principal
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-calc" id="rp-buildBtn">Build Schedule</button>
+    <button class="btn-reset" id="rp-resetBtn">Reset</button>
+    <button class="btn-reset" id="rp-pdfBtn" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.6v12"/><path d="m7.4 11.4 4.6 4.6 4.6-4.6"/><path d="M4.4 20.4h15.2"/></svg>Download PDF</button>
+    <button class="btn-reset" id="rp-xlsBtn" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.6v12"/><path d="m7.4 11.4 4.6 4.6 4.6-4.6"/><path d="M4.4 20.4h15.2"/></svg>Download Excel</button>
+    <div class="ratio-error" id="rp-err" style="margin-top:16px;"></div>
+
+    <div class="rp-summary-strip" id="rp-summaryStrip"></div>
+
+    <div class="rp-section-title" id="rp-scheduleTitle" style="display:none;">Repayment Schedule</div>
+    <div class="rp-table-wrap" id="rp-scheduleWrap">
+      <table class="rp-table" id="rp-scheduleTable">
+        <thead>
+          <tr><th>Date</th><th>Opening Balance</th><th>Payable Amount</th><th>Principal Repayment</th><th>Interest Paid</th><th>Closing Balance</th></tr>
+        </thead>
+        <tbody id="rp-scheduleBody"></tbody>
+        <tfoot id="rp-scheduleFoot"></tfoot>
+      </table>
+    </div>
+
+    <div class="rp-section-title" id="rp-yearwiseTitle" style="display:none;">Year-wise Summary</div>
+    <div class="rp-table-wrap" id="rp-yearwiseWrap">
+      <table class="rp-table" id="rp-yearwiseTable">
+        <thead>
+          <tr><th>Financial Year</th><th>Principal Repaid</th><th>Interest Paid</th><th>Total Paid</th></tr>
+        </thead>
+        <tbody id="rp-yearwiseBody"></tbody>
+        <tfoot id="rp-yearwiseFoot"></tfoot>
+      </table>
+    </div>
+
+    <p style="font-family:'Arial',sans-serif;font-size:11px;color:var(--muted);margin-top:18px;">Interest is computed on a reducing monthly balance basis. During the moratorium period only interest is payable; principal repayment commences thereafter.</p>
+  </div>
+
+  <!-- ══════════════════════════════
+       3. EMI CALCULATOR
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-emi">
+    <h2>EMI Calculator</h2>
+    <p class="calc-sub">Home Loan · Car Loan · Personal Loan · Education Loan</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Loan Amount (₹)</label>
+        <input type="number" id="emi-principal" placeholder="e.g. 5000000" />
+      </div>
+      <div class="form-group">
+        <label>Annual Interest Rate (%)</label>
+        <input type="number" id="emi-rate" placeholder="e.g. 8.5" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Loan Tenure (Years)</label>
+        <input type="number" id="emi-tenure" placeholder="e.g. 20" />
+      </div>
+      <div class="form-group">
+        <label>Processing Fee (%)</label>
+        <input type="number" id="emi-fee" placeholder="0" step="0.01" />
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcEMI()">Calculate EMI →</button>
+    <button class="btn-reset" onclick="resetPanel('emi')">Reset</button>
+    <div class="result-box" id="emi-result">
+      <div class="rb-title">Loan Summary</div>
+      <div class="result-items" id="emi-items"></div>
+      <p class="result-note" id="emi-note"></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       4. FD MATURITY CALCULATOR
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-fd">
+    <h2>FD Maturity Calculator</h2>
+    <p class="calc-sub">Calculate maturity amount for Fixed Deposits</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Principal Amount (₹)</label>
+        <input type="number" id="fd-principal" placeholder="e.g. 100000" />
+      </div>
+      <div class="form-group">
+        <label>Annual Interest Rate (%)</label>
+        <input type="number" id="fd-rate" placeholder="e.g. 7.1" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Tenure (Years)</label>
+        <input type="number" id="fd-years" placeholder="e.g. 3" />
+      </div>
+      <div class="form-group">
+        <label>Compounding Frequency</label>
+        <select id="fd-freq">
+          <option value="4">Quarterly (Default)</option>
+          <option value="12">Monthly</option>
+          <option value="2">Half-Yearly</option>
+          <option value="1">Annually</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Investor Type</label>
+        <select id="fd-investor">
+          <option value="general">General Public</option>
+          <option value="senior">Senior Citizen (+0.5%)</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcFD()">Calculate</button>
+    <button class="btn-reset" onclick="resetPanel('fd')">Reset</button>
+    <div class="result-box" id="fd-result">
+      <div class="rb-title">FD Maturity Summary</div>
+      <div class="result-items" id="fd-items"></div>
+      <p class="result-note">TDS @ 10% is deducted on interest if it exceeds ₹40,000 (₹50,000 for senior citizens) in a financial year. Submit Form 15G/15H if income is below taxable limit.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       5. SIP CALCULATOR
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-sip">
+    <h2>SIP Calculator</h2>
+    <p class="calc-sub">Systematic Investment Plan — estimate corpus &amp; returns</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Monthly SIP Amount (₹)</label>
+        <input type="number" id="sip-amount" placeholder="e.g. 10000" />
+      </div>
+      <div class="form-group">
+        <label>Expected Annual Return (%)</label>
+        <input type="number" id="sip-rate" placeholder="e.g. 12" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Investment Period (Years)</label>
+        <input type="number" id="sip-years" placeholder="e.g. 10" />
+      </div>
+      <div class="form-group">
+        <label>Annual Step-Up (%)</label>
+        <input type="number" id="sip-stepup" placeholder="0 (optional)" step="0.5" />
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcSIP()">Calculate</button>
+    <button class="btn-reset" onclick="resetPanel('sip')">Reset</button>
+    <div class="result-box" id="sip-result">
+      <div class="rb-title">SIP Projection</div>
+      <div class="result-items" id="sip-items"></div>
+      <p class="result-note">Returns are illustrative and based on assumed constant rate. Mutual Fund returns are market-linked and not guaranteed. Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       6. COMPLIANCE CALENDAR
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-compliance">
+    <h2>Compliance Calendar</h2>
+    <p class="calc-sub">Comprehensive list of Compliances and Due Dates — FY 2025–26 | AY 2026–27</p>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+      <select id="cal-filter" onchange="renderCalendar(); renderRegularMonthly();" style="font-family:'Arial',sans-serif;font-size:13px;padding:9px 14px;border:1.5px solid var(--border);border-radius:6px;background:var(--cream);color:var(--text);">
+        <option value="all">All Categories</option>
+        <option value="itr">ITR Filing</option>
+        <option value="advtax">Advance Tax</option>
+        <option value="tds">TDS / TCS</option>
+        <option value="gst">GST</option>
+        <option value="audit">Audit Reports</option>
+        <option value="mca">MCA / ROC</option>
+        <option value="other">Other Compliances</option>
+      </select>
+      <select id="cal-month" onchange="renderCalendar(); renderRegularMonthly();" style="font-family:'Arial',sans-serif;font-size:13px;padding:9px 14px;border:1.5px solid var(--border);border-radius:6px;background:var(--cream);color:var(--text);">
+        <option value="all">All Months</option>
+        <option value="Apr">April</option>
+        <option value="May">May</option>
+        <option value="Jun">June</option>
+        <option value="Jul">July</option>
+        <option value="Aug">August</option>
+        <option value="Sep">September</option>
+        <option value="Oct">October</option>
+        <option value="Nov">November</option>
+        <option value="Dec">December</option>
+        <option value="Jan">January</option>
+        <option value="Feb">February</option>
+        <option value="Mar">March</option>
+      </select>
+      <button class="btn-calc" id="cal-pdf-btn" onclick="downloadCompliancePDF()" style="margin-left:auto;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.6v12"/><path d="m7.4 11.4 4.6 4.6 4.6-4.6"/><path d="M4.4 20.4h15.2"/></svg>Download PDF</button>
+    </div>
+
+    <div class="cal-grid" id="cal-output"></div>
+
+    <div class="reg-monthly-section">
+      <div class="reg-monthly-title">Regular Monthly Compliances (Applicable Throughout the Financial Year)</div>
+      <div class="reg-monthly-sub">Recurring statutory filings &amp; payments due every month, as applicable</div>
+      <div class="reg-table-wrap">
+        <table class="reg-table" id="reg-monthly-table">
+          <thead>
+            <tr><th>Due Date</th><th>Compliance</th><th>Applicable To</th></tr>
+          </thead>
+          <tbody id="reg-monthly-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       7. AGE CALCULATOR
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-age">
+    <h2>Age Calculator</h2>
+    <p class="calc-sub">Calculate precise age in years, months, days — useful for tax &amp; legal purposes</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="age-dob" />
+      </div>
+      <div class="form-group">
+        <label>Calculate Age As Of</label>
+        <input type="date" id="age-asof" />
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcAge()">Calculate</button>
+    <button class="btn-reset" onclick="resetPanel('age')">Reset</button>
+    <div class="result-box" id="age-result">
+      <div class="rb-title">Age Details</div>
+      <div class="age-result-cards" id="age-items"></div>
+      <p class="result-note" id="age-note" style="margin-top:16px;"></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       8. RATIO ANALYZER
+  ══════════════════════════════ -->
+  <div class="calc-panel" id="tool-ratio">
+    <h2>Financial Ratio Analyzer</h2>
+    <p class="calc-sub">Credit Analysis &amp; Business Health Metrics — DSCR, ICR, D/E, Current Ratio &amp; more</p>
+
+    <div class="ratio-selector-card">
+      <label for="ratioSelect">Select Ratio</label>
+      <select id="ratioSelect" onchange="onRatioChange()">
+        <option value="">— Choose a ratio —</option>
+        <option value="dscr">Debt Service Coverage Ratio (DSCR)</option>
+        <option value="icr">Interest Coverage Ratio (ICR)</option>
+        <option value="der">Debt-Equity Ratio</option>
+        <option value="toltnw">TOL / TNW (Total Outside Liabilities to Net Worth)</option>
+        <option value="cr">Current Ratio</option>
+        <option value="ebitda">EBITDA Margin</option>
+        <option value="roce">Return on Capital Employed (ROCE)</option>
+        <option value="facr">Fixed Asset Coverage Ratio (FACR)</option>
+        <option value="nwc">Net Working Capital (NWC)</option>
+        <option value="hold">Inventory &amp; Debtor Holding Period</option>
+      </select>
+      <div class="ratio-desc-pill" id="ratioPill"></div>
+    </div>
+
+    <div class="ratio-inputs-card" id="ratioInputsCard">
+      <h3 id="ratioInputsTitle">Enter Values</h3>
+      <div class="ratio-fields-grid" id="ratioFieldsGrid"></div>
+      <p style="font-family:'Arial',sans-serif;font-size:11px;color:var(--muted);margin-top:12px;">Enter all monetary values in the same unit (₹ Lakhs, Crores, etc.) — the ratio is unit-neutral.</p>
+      <div class="ratio-error" id="ratioError">Please fill in all fields with valid positive numbers.</div>
+      <button class="btn-calc" onclick="calcRatio()">Calculate Ratio</button>
+      <button class="btn-reset" onclick="resetRatio()">Reset</button>
+    </div>
+
+    <div class="ratio-result-box" id="ratioResultBox">
+      <div class="ratio-result-top">
+        <div>
+          <div class="ratio-result-label">Calculated Result</div>
+          <div class="ratio-result-value" id="ratioResultValue">—</div>
+          <div class="ratio-result-name" id="ratioResultName"></div>
+        </div>
+        <div>
+          <div class="ratio-result-label">Assessment</div>
+          <div class="ratio-verdict" id="ratioVerdict"></div>
+        </div>
+      </div>
+      <div class="ratio-benchmarks" id="ratioBenchmarks"></div>
+      <div class="ratio-formula" id="ratioFormula"></div>
+    </div>
+  </div>
+
+</div><!-- /section -->
+
+<!-- ── REPAYMENT SCHEDULE: EMI CONFIRM MODAL ── -->
+<div class="rp-modal-overlay" id="rp-emiModalOverlay">
+  <div class="rp-modal-box">
+    <h3>Confirm EMI Amount</h3>
+    <p class="rp-modal-sub">This is the calculated EMI based on your inputs. Banks sometimes lock the EMI to a round figure — you may adjust it by up to ±5%. The final installment will absorb any resulting difference.</p>
+    <div class="rp-modal-computed">
+      <div class="rp-modal-lbl">Calculated EMI</div>
+      <div class="rp-modal-val" id="rp-modalCalcEmi">₹0.00</div>
+    </div>
+    <div class="form-group">
+      <label>EMI to Use (₹)</label>
+      <input type="number" id="rp-modalEmiInput" step="0.01" />
+      <div class="rp-modal-range" id="rp-modalRangeText"></div>
+      <div class="rp-modal-warn" id="rp-modalWarnText">EMI must be within ±5% of the calculated amount.</div>
+    </div>
+    <div class="rp-modal-actions">
+      <button class="btn-reset" id="rp-modalCancelBtn">Cancel</button>
+      <button class="btn-calc" id="rp-modalConfirmBtn">Confirm &amp; Build</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span><strong>Batra Deepak &amp; Associates</strong> · Chartered Accountants</span>
+  <span>Calculators are illustrative only — verify figures on the official portals and consult your CA.</span>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+/* ── nav ── */
+const menuBtn = document.getElementById('menuBtn');
+const slideMenu = document.getElementById('slideMenu');
+menuBtn.addEventListener('click', () => { menuBtn.classList.toggle('open'); slideMenu.classList.toggle('open'); });
+document.addEventListener('click', e => {
+  if (!menuBtn.contains(e.target) && !slideMenu.contains(e.target)) {
+    menuBtn.classList.remove('open'); slideMenu.classList.remove('open');
+  }
+});
+
+/* ── tool switcher ── */
+function showTool(id) {
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[data-tool="${id}"]`).classList.add('active');
+  document.getElementById(`tool-${id}`).classList.add('active');
+  document.getElementById(`tool-${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+  // Open utility from URL parameter
+window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const tool = params.get("tool");
+
+    if (tool && document.querySelector(`[data-tool="${tool}"]`)) {
+        showTool(tool);
+    }
+});
+
+function resetPanel(id) {
+  const panel = document.getElementById(`tool-${id}`);
+  panel.querySelectorAll('input').forEach(i => { i.value = ''; });
+  panel.querySelectorAll('.result-box').forEach(r => r.classList.remove('show'));
+}
+
+/* ── helpers ── */
+const fmt = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const fmtN = n => Math.round(n).toLocaleString('en-IN');
+const pct = n => n.toFixed(1) + '%';
+
+function ri(label, val, highlight = false) {
+  return `<div class="result-item"><div class="ri-label">${label}</div><div class="ri-val${highlight?' highlight':''}">${val}</div></div>`;
+}
+
+/* ══════════════════════════════════════
+   3. EMI CALCULATOR
+══════════════════════════════════════ */
+function calcEMI() {
+  const P = parseFloat(document.getElementById('emi-principal').value) || 0;
+  const r = (parseFloat(document.getElementById('emi-rate').value) || 0) / 12 / 100;
+  const n = (parseFloat(document.getElementById('emi-tenure').value) || 0) * 12;
+  const fee = (parseFloat(document.getElementById('emi-fee').value) || 0) / 100;
+
+  if (!P || !r || !n) return alert('Please fill all required fields.');
+
+  const emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  const total = emi * n;
+  const interest = total - P;
+  const processingFee = P * fee;
+  const effectiveCost = total + processingFee;
+
+  document.getElementById('emi-items').innerHTML =
+    ri('Monthly EMI', fmt(emi), true) +
+    ri('Total Amount Payable', fmt(total)) +
+    ri('Total Interest', fmt(interest)) +
+    ri('Processing Fee', fmt(processingFee)) +
+    ri('Effective Total Cost', fmt(effectiveCost)) +
+    ri('Interest to Principal', pct((interest/P)*100));
+
+  document.getElementById('emi-note').textContent = `Loan: ${fmt(P)} | Rate: ${(r*12*100).toFixed(2)}% p.a. | Tenure: ${n/12} years (${n} months)`;
+  document.getElementById('emi-result').classList.add('show');
+}
+
+/* ══════════════════════════════════════
+   4. FD MATURITY
+══════════════════════════════════════ */
+function calcFD() {
+  const P    = parseFloat(document.getElementById('fd-principal').value) || 0;
+  let r      = parseFloat(document.getElementById('fd-rate').value) || 0;
+  const t    = parseFloat(document.getElementById('fd-years').value) || 0;
+  const n    = parseInt(document.getElementById('fd-freq').value);
+  const type = document.getElementById('fd-investor').value;
+
+  if (!P || !r || !t) return alert('Please fill all required fields.');
+  if (type === 'senior') r += 0.5;
+
+  const A = P * Math.pow(1 + (r/100)/n, n * t);
+  const interest = A - P;
+
+  document.getElementById('fd-items').innerHTML =
+    ri('Principal', fmt(P)) +
+    ri('Interest Earned', fmt(interest), true) +
+    ri('Maturity Amount', fmt(A), true) +
+    ri('Effective Annual Yield', pct(((Math.pow(1+(r/100)/n, n) - 1)) * 100));
+
+  document.getElementById('fd-result').classList.add('show');
+}
+
+/* ══════════════════════════════════════
+   5. SIP CALCULATOR
+══════════════════════════════════════ */
+function calcSIP() {
+  const monthlyAmt = parseFloat(document.getElementById('sip-amount').value) || 0;
+  const annualRate = parseFloat(document.getElementById('sip-rate').value) || 0;
+  const years      = parseFloat(document.getElementById('sip-years').value) || 0;
+  const stepUp     = parseFloat(document.getElementById('sip-stepup').value) || 0;
+
+  if (!monthlyAmt || !annualRate || !years) return alert('Please fill all required fields.');
+
+  const r = annualRate / 100 / 12;
+  let corpus = 0, invested = 0, sip = monthlyAmt;
+  let totalCorpus = 0, totalInvested = 0;
+
+  if (stepUp === 0) {
+    const n = years * 12;
+    corpus = sip * ((Math.pow(1+r,n) - 1) / r) * (1 + r);
+    invested = sip * n;
+  } else {
+    for (let y = 0; y < years; y++) {
+      if (y > 0) sip = sip * (1 + stepUp/100);
+      for (let m = 0; m < 12; m++) {
+        corpus = (corpus + sip) * (1 + r);
+        invested += sip;
+      }
+    }
+  }
+
+  const gains = corpus - invested;
+
+  document.getElementById('sip-items').innerHTML =
+    ri('Total Invested', fmt(invested)) +
+    ri('Estimated Returns', fmt(gains), true) +
+    ri('Total Corpus', fmt(corpus), true) +
+    ri('Wealth Multiplier', (corpus/invested).toFixed(2) + 'x') +
+    ri('XIRR (approx.)', pct(annualRate));
+
+  document.getElementById('sip-result').classList.add('show');
+}
+
+/* ══════════════════════════════════════
+   6. COMPLIANCE CALENDAR — FY 2025-26 / AY 2026-27
+══════════════════════════════════════ */
+const COMPLIANCE = [
+  // ── INCOME TAX RETURNS (ITR) ──
+  { month:'Jul', date:'31', cat:'itr',     desc:'ITR-1 & ITR-2 — Salary & Capital Gains income (Sec 139(1))' },
+  { month:'Aug', date:'31', cat:'itr',     desc:'ITR-3 & ITR-4 — Business income, Non-audit cases (Sec 139(1))' },
+  { month:'Sep', date:'30', cat:'audit',   desc:'Tax Audit Report — Form 3CA/3CB/3CD u/s 44AB (Sec 44AB)' },
+  { month:'Sep', date:'30', cat:'audit',   desc:'Audit Report for specified professionals u/s 44ADA' },
+  { month:'Oct', date:'31', cat:'itr',     desc:'ITR-3 & ITR-4 — Business income, Audit cases (Sec 139(1))' },
+  { month:'Oct', date:'31', cat:'audit',   desc:'Transfer Pricing Report — Form 3CEB (Sec 92E)' },
+  { month:'Nov', date:'30', cat:'itr',     desc:'Transfer Pricing Cases — ITR filing (Sec 92E & 139(1))' },
+  { month:'Dec', date:'31', cat:'itr',     desc:'Belated Return u/s 139(4) — with late fee u/s 234F' },
+  { month:'Dec', date:'31', cat:'itr',     desc:'Revised Return u/s 139(5) — without late fee' },
+  { month:'Mar', date:'31', cat:'itr',     desc:'Revised Return u/s 139(5) — with late fee u/s 234F' },
+  { month:'Mar', date:'31', cat:'itr',     desc:'Updated Return ITR-U u/s 139(8A) — within 48 months (last date 31 Mar 2031 for AY 2026-27)' },
+
+  // ── ADVANCE TAX ──
+  { month:'Jun', date:'15', cat:'advtax',  desc:'Advance Tax — 1st Instalment: 15% of estimated liability' },
+  { month:'Sep', date:'15', cat:'advtax',  desc:'Advance Tax — 2nd Instalment: 45% cumulative' },
+  { month:'Dec', date:'15', cat:'advtax',  desc:'Advance Tax — 3rd Instalment: 75% cumulative' },
+  { month:'Mar', date:'15', cat:'advtax',  desc:'Advance Tax — 4th / Final Instalment: 100% balance' },
+  { month:'Mar', date:'15', cat:'advtax',  desc:'Advance Tax — Presumptive Taxpayers u/s 44AD/44ADA: 100% in single instalment' },
+
+  // ── TDS / TCS DEPOSIT ──
+  { month:'Apr', date:'7',  cat:'tds',    desc:'TDS/TCS deposit — April to February deductions: 7th of following month' },
+  { month:'May', date:'7',  cat:'tds',    desc:'TDS deposit for April' },
+  { month:'Jun', date:'7',  cat:'tds',    desc:'TDS deposit for May' },
+  { month:'Jul', date:'7',  cat:'tds',    desc:'TDS deposit for June' },
+  { month:'Aug', date:'7',  cat:'tds',    desc:'TDS deposit for July' },
+  { month:'Sep', date:'7',  cat:'tds',    desc:'TDS deposit for August' },
+  { month:'Oct', date:'7',  cat:'tds',    desc:'TDS deposit for September' },
+  { month:'Nov', date:'7',  cat:'tds',    desc:'TDS deposit for October' },
+  { month:'Dec', date:'7',  cat:'tds',    desc:'TDS deposit for November' },
+  { month:'Jan', date:'7',  cat:'tds',    desc:'TDS deposit for December' },
+  { month:'Feb', date:'7',  cat:'tds',    desc:'TDS deposit for January' },
+  { month:'Mar', date:'7',  cat:'tds',    desc:'TCS deposit for February (TCS — 7th April for March)' },
+  { month:'Apr', date:'7',  cat:'tds',    desc:'TCS deposit for March — 7th April of following year' },
+  { month:'Apr', date:'30', cat:'tds',    desc:'TDS deposit for March — 30th April of following year' },
+  { month:'Apr', date:'30', cat:'tds',    desc:'TDS u/s 194IA, 194IB & 194M — within 30 days from end of month of deduction' },
+
+  // ── TDS / TCS QUARTERLY RETURNS ──
+  { month:'Jul', date:'15', cat:'tds',    desc:'TCS Return — Q1 (Apr–Jun 2025)' },
+  { month:'Jul', date:'31', cat:'tds',    desc:'TDS Return — Q1 (Apr–Jun 2025): Forms 24Q / 26Q / 27Q' },
+  { month:'Oct', date:'15', cat:'tds',    desc:'TCS Return — Q2 (Jul–Sep 2025)' },
+  { month:'Oct', date:'31', cat:'tds',    desc:'TDS Return — Q2 (Jul–Sep 2025): Forms 24Q / 26Q / 27Q' },
+  { month:'Jan', date:'15', cat:'tds',    desc:'TCS Return — Q3 (Oct–Dec 2025)' },
+  { month:'Jan', date:'31', cat:'tds',    desc:'TDS Return — Q3 (Oct–Dec 2025): Forms 24Q / 26Q / 27Q' },
+  { month:'May', date:'15', cat:'tds',    desc:'TCS Return — Q4 (Jan–Mar 2026)' },
+  { month:'May', date:'31', cat:'tds',    desc:'TDS Return — Q4 (Jan–Mar 2026): Forms 24Q / 26Q / 27Q' },
+
+  // ── SFT / AIS ──
+  { month:'May', date:'31', cat:'other',   desc:'Statement of Financial Transactions (SFT) u/s 285BA — Form 61A' },
+  { month:'Jun', date:'30', cat:'other',   desc:'SFT Correction Statement — within 30 days of defect notice' },
+
+  // ── MCA / ROC — Private Limited Company ──
+  { month:'Apr', date:'30', cat:'mca',    desc:'MSME Form-I (Oct–Mar half-year) — Private Ltd Company' },
+  { month:'Jun', date:'30', cat:'mca',    desc:'DPT-3 — Private Ltd & Public Ltd Company' },
+  { month:'Sep', date:'30', cat:'mca',    desc:'Annual General Meeting (AGM) — on or before 30 September' },
+  { month:'Oct', date:'30', cat:'mca',    desc:'AOC-4 — Filing of Financial Statements (within 30 days of AGM)' },
+  { month:'Oct', date:'31', cat:'mca',    desc:'MSME Form-I (Apr–Sep half-year) — Private Ltd & Public Ltd' },
+  { month:'Nov', date:'29', cat:'mca',    desc:'MGT-7A / MGT-7 — Annual Return (within 60 days of AGM)' },
+  { month:'Oct', date:'15', cat:'mca',    desc:'ADT-1 — Auditor Appointment (within 15 days of AGM)' },
+  { month:'Oct', date:'30', cat:'mca',    desc:'BEN-2 — within 30 days of receipt of declaration' },
+
+  // ── MCA / ROC — LLP ──
+  { month:'May', date:'30', cat:'mca',    desc:'LLP Form 11 — Annual Return' },
+  { month:'Oct', date:'30', cat:'mca',    desc:'LLP Form 8 — Statement of Accounts & Solvency' },
+
+  // ── Listed Company (SEBI / LODR) ──
+  { month:'Mar', date:'31', cat:'mca',    desc:'Listed Entity: Secretarial Compliance Report (Annual)' },
+  { month:'Mar', date:'31', cat:'mca',    desc:'Listed Entity: Secretarial Audit Report (Annual)' },
+  { month:'Mar', date:'31', cat:'mca',    desc:'Listed Entity: Annual Report submission before AGM' },
+
+  // ── GST — MONTHLY (Regular Taxpayers) ──
+  { month:'Apr', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'May', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Jun', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Jul', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Aug', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Sep', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Oct', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Nov', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Dec', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Jan', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Feb', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+  { month:'Mar', date:'11', cat:'gst', desc:'GSTR-1 — Outward Supplies (Monthly filers)' },
+
+  { month:'Apr', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'May', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Jun', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Jul', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Aug', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Sep', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Oct', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Nov', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Dec', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Jan', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Feb', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+  { month:'Mar', date:'20', cat:'gst', desc:'GSTR-3B — Summary Return & Tax Payment (Monthly filers)' },
+
+  // ── GST — QRMP SCHEME (Turnover up to ₹5 cr) ──
+  { month:'Apr', date:'13', cat:'gst', desc:'GSTR-1 — QRMP Quarterly (Jan–Mar quarter)' },
+  { month:'Jul', date:'13', cat:'gst', desc:'GSTR-1 — QRMP Quarterly (Apr–Jun quarter)' },
+  { month:'Oct', date:'13', cat:'gst', desc:'GSTR-1 — QRMP Quarterly (Jul–Sep quarter)' },
+  { month:'Jan', date:'13', cat:'gst', desc:'GSTR-1 — QRMP Quarterly (Oct–Dec quarter)' },
+  { month:'Apr', date:'24', cat:'gst', desc:'GSTR-3B — QRMP Quarterly (Jan–Mar quarter; 22nd/24th by state category)' },
+  { month:'Jul', date:'24', cat:'gst', desc:'GSTR-3B — QRMP Quarterly (Apr–Jun quarter; 22nd/24th by state category)' },
+  { month:'Oct', date:'24', cat:'gst', desc:'GSTR-3B — QRMP Quarterly (Jul–Sep quarter; 22nd/24th by state category)' },
+  { month:'Jan', date:'24', cat:'gst', desc:'GSTR-3B — QRMP Quarterly (Oct–Dec quarter; 22nd/24th by state category)' },
+  { month:'May', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for April)' },
+  { month:'Jun', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for May)' },
+  { month:'Aug', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for July)' },
+  { month:'Sep', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for August)' },
+  { month:'Nov', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for October)' },
+  { month:'Dec', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for November)' },
+  { month:'Feb', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for January)' },
+  { month:'Mar', date:'25', cat:'gst', desc:'PMT-06 — QRMP Monthly Tax Payment (for February)' },
+
+  // ── GST — OTHER MONTHLY RETURNS ──
+  { month:'Jul', date:'10', cat:'gst', desc:'GSTR-7 — TDS under GST & GSTR-8 — TCS by E-commerce Operators' },
+  { month:'Jul', date:'13', cat:'gst', desc:'GSTR-5 (Non-resident taxpayers) & GSTR-6 (Input Service Distributors)' },
+  { month:'Jul', date:'20', cat:'gst', desc:'GSTR-5A — OIDAR Service Providers' },
+
+  // ── GST — ANNUAL RETURNS ──
+  { month:'Dec', date:'31', cat:'gst', desc:'GSTR-9 — Annual Return (FY 2025-26), all regular taxpayers' },
+  { month:'Dec', date:'31', cat:'gst', desc:'GSTR-9C — Reconciliation Statement (FY 2025-26), turnover above ₹5 cr' },
+  { month:'Apr', date:'18', cat:'gst', desc:'GSTR-4 — Composition Taxpayers Annual Return (for preceding FY)' },
+
+  // ── OTHER COMPLIANCES — QUARTERLY (NBFC / SEBI AIF / PMLA — quarter-end months) ──
+  { month:'Apr', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Complaint Data (Master Circular Para 17.4), for Jan–Mar quarter' },
+  { month:'Jul', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Complaint Data (Master Circular Para 17.4), for Apr–Jun quarter' },
+  { month:'Oct', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Complaint Data (Master Circular Para 17.4), for Jul–Sep quarter' },
+  { month:'Jan', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Complaint Data (Master Circular Para 17.4), for Oct–Dec quarter' },
+
+  { month:'Apr', date:'15', cat:'other', desc:'NBS-1/2/3, NBS-4A/4B, NBS-7, NBS-11/12/13/14 — Quarterly NBFC Supervisory Returns (RBI), for Jan–Mar quarter' },
+  { month:'Jul', date:'15', cat:'other', desc:'NBS-1/2/3, NBS-4A/4B, NBS-7, NBS-11/12/13/14 — Quarterly NBFC Supervisory Returns (RBI), for Apr–Jun quarter' },
+  { month:'Oct', date:'15', cat:'other', desc:'NBS-1/2/3, NBS-4A/4B, NBS-7, NBS-11/12/13/14 — Quarterly NBFC Supervisory Returns (RBI), for Jul–Sep quarter' },
+  { month:'Jan', date:'15', cat:'other', desc:'NBS-1/2/3, NBS-4A/4B, NBS-7, NBS-11/12/13/14 — Quarterly NBFC Supervisory Returns (RBI), for Oct–Dec quarter' },
+
+  { month:'Apr', date:'15', cat:'other', desc:'NDSI-500cr Return & Branch Information Return — Non-deposit/Deposit NBFCs (Quarterly, RBI), for Jan–Mar quarter' },
+  { month:'Jul', date:'15', cat:'other', desc:'NDSI-500cr Return & Branch Information Return — Non-deposit/Deposit NBFCs (Quarterly, RBI), for Apr–Jun quarter' },
+  { month:'Oct', date:'15', cat:'other', desc:'NDSI-500cr Return & Branch Information Return — Non-deposit/Deposit NBFCs (Quarterly, RBI), for Jul–Sep quarter' },
+  { month:'Jan', date:'15', cat:'other', desc:'NDSI-500cr Return & Branch Information Return — Non-deposit/Deposit NBFCs (Quarterly, RBI), for Oct–Dec quarter' },
+
+  { month:'Apr', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Activity Report & Limited Quarterly Activity Report, for Jan–Mar quarter' },
+  { month:'Jul', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Activity Report & Limited Quarterly Activity Report, for Apr–Jun quarter' },
+  { month:'Oct', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Activity Report & Limited Quarterly Activity Report, for Jul–Sep quarter' },
+  { month:'Jan', date:'15', cat:'other', desc:'SEBI AIF — Quarterly Activity Report & Limited Quarterly Activity Report, for Oct–Dec quarter' },
+
+  { month:'Apr', date:'15', cat:'other', desc:'SEBI AIF — PMLA Cross-border Wire Transfers above ₹5 lakh, report to FIU-IND, for Jan–Mar quarter' },
+  { month:'Jul', date:'15', cat:'other', desc:'SEBI AIF — PMLA Cross-border Wire Transfers above ₹5 lakh, report to FIU-IND, for Apr–Jun quarter' },
+  { month:'Oct', date:'15', cat:'other', desc:'SEBI AIF — PMLA Cross-border Wire Transfers above ₹5 lakh, report to FIU-IND, for Jul–Sep quarter' },
+  { month:'Jan', date:'15', cat:'other', desc:'SEBI AIF — PMLA Cross-border Wire Transfers above ₹5 lakh, report to FIU-IND, for Oct–Dec quarter' },
+
+  { month:'Jul', date:'10', cat:'other', desc:'SEZ-SERF / STPI-SERF — Quarterly Softex/export reconciliation for IT/ITES exporters in SEZ and STPI, for Apr–Jun quarter' },
+  { month:'Oct', date:'10', cat:'other', desc:'SEZ-SERF / STPI-SERF — Quarterly Softex/export reconciliation for IT/ITES exporters in SEZ and STPI, for Jul–Sep quarter' },
+  { month:'Jan', date:'10', cat:'other', desc:'SEZ-SERF / STPI-SERF — Quarterly Softex/export reconciliation for IT/ITES exporters in SEZ and STPI, for Oct–Dec quarter' },
+  { month:'Apr', date:'10', cat:'other', desc:'SEZ-SERF / STPI-SERF — Quarterly Softex/export reconciliation for IT/ITES exporters in SEZ and STPI, for Jan–Mar quarter' },
+
+  // ── OTHER COMPLIANCES — ANNUAL ──
+  { month:'Jul', date:'15', cat:'other', desc:'FLA Return (Unaudited basis) — Indian companies with FDI/ODI (Annual, FEMA)' },
+  { month:'Sep', date:'30', cat:'other', desc:'FLA Return (Audited basis revision, if applicable) — Indian companies with FDI/ODI (FEMA)' },
+  { month:'Dec', date:'31', cat:'other', desc:'Annual KYC update — NBFC customer due diligence records, as applicable' },
+
+
+  // ── Public Ltd — Additional ──
+  { month:'Mar', date:'31', cat:'mca',    desc:'Public Ltd: Cost Audit Report — within 180 days of FY closure' },
+];
+
+// ── REGULAR MONTHLY COMPLIANCES (Applicable Throughout the Financial Year) ──
+const REGULAR_MONTHLY = [
+  { due:'7th of every month',  compliance:'ECB-2 Return — External Commercial Borrowings (for preceding month)', applicable:'Entities with outstanding External Commercial Borrowings (RBI / FEMA)' },
+  { due:'15th of every month', compliance:'ESIC Payment & PF Payment (for preceding month)', applicable:'All employers registered under the ESI Act & EPF Act' },
+  { due:'15th of every month', compliance:'PTRC (Maharashtra) — Professional Tax Payment (for preceding month)', applicable:'Employers registered under Maharashtra Professional Tax' },
+  { due:'7th of every month',  compliance:'Equalisation Levy — Specified Digital Services & E-commerce Transactions (for preceding month)', applicable:'E-commerce operators / payers of specified digital services' },
+  { due:'5th of every month',  compliance:'SEZ — Monthly Performance Report (MPR)', applicable:'Entities/units located in Special Economic Zones (SEZ)' },
+  { due:'10th of every month', compliance:'NBS-ALM1 — Monthly Asset Liability Management Return', applicable:'NBFC-ND-SI (Systemically Important Non-Deposit NBFCs)' },
+  { due:'7th of every month',  compliance:'NBS-6 (Monthly) — Deposit-taking NBFCs / Monthly Return on Important Financial Parameters', applicable:'Deposit-taking NBFCs; Non-deposit NBFCs (asset size ≥ ₹100 cr)' },
+  { due:'7th of every month',  compliance:'SEBI AIF — TDS Payments by Investment Managers', applicable:'SEBI-registered Alternative Investment Fund (AIF) Investment Managers' },
+];
+
+function renderCalendar() {
+  const filterCat = document.getElementById('cal-filter').value;
+  const filterMon = document.getElementById('cal-month').value;
+  const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
+  const filtered = COMPLIANCE.filter(c =>
+    (filterCat === 'all' || c.cat === filterCat) &&
+    (filterMon === 'all' || c.month === filterMon)
+  );
+  const byMonth = {};
+  months.forEach(m => byMonth[m] = []);
+  filtered.forEach(c => { if (byMonth[c.month]) byMonth[c.month].push(c); });
+
+  const tagClass = { itr:'tag-it', advtax:'tag-it', tds:'tag-tds', gst:'tag-gst', audit:'tag-audit', mca:'tag-roc', other:'tag-other' };
+  const tagLabel = { itr:'ITR', advtax:'Advance Tax', tds:'TDS/TCS', gst:'GST', audit:'Audit', mca:'MCA/ROC', other:'Other Compliances' };
+  const fullMonth = { Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December',Jan:'January',Feb:'February',Mar:'March' };
+
+  let html = '';
+  months.forEach(m => {
+    const items = byMonth[m];
+    if (!items.length) return;
+    html += `<div class="cal-card">
+      <div class="cal-card-head"><span class="month-label">${fullMonth[m]}</span></div>
+      <div class="cal-card-body">`;
+    items.forEach(i => {
+      html += `<div class="cal-item">
+        <div class="cal-date">${i.date}</div>
+        <div class="cal-desc">${i.desc}<br><span class="cal-tag ${tagClass[i.cat]}">${tagLabel[i.cat]}</span></div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  document.getElementById('cal-output').innerHTML = html || '<p style="font-family:Arial,sans-serif;color:var(--muted);">No deadlines match the selected filter.</p>';
+}
+renderCalendar();
+
+function renderRegularMonthly() {
+  const tbody = document.getElementById('reg-monthly-tbody');
+  const section = document.querySelector('.reg-monthly-section');
+  if (!tbody || !section) return;
+  const filterCat = document.getElementById('cal-filter').value;
+  if (filterCat !== 'all' && filterCat !== 'other') {
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = '';
+  tbody.innerHTML = REGULAR_MONTHLY.map(r => `
+    <tr>
+      <td class="reg-due">${r.due}</td>
+      <td>${r.compliance}</td>
+      <td>${r.applicable}</td>
+    </tr>
+  `).join('');
+}
+renderRegularMonthly();
+
+function downloadCompliancePDF() {
+  const { jsPDF } = window.jspdf;
+  const filterCat = document.getElementById('cal-filter').value;
+  const filterMon = document.getElementById('cal-month').value;
+  const months = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
+  const fullMonth = { Apr:'April',May:'May',Jun:'June',Jul:'July',Aug:'August',Sep:'September',Oct:'October',Nov:'November',Dec:'December',Jan:'January',Feb:'February',Mar:'March' };
+  const tagLabel = { itr:'ITR', advtax:'Advance Tax', tds:'TDS/TCS', gst:'GST', audit:'Audit', mca:'MCA/ROC', other:'Other Compliances' };
+  const catLabel = { all:'All Categories', itr:'ITR Filing', advtax:'Advance Tax', tds:'TDS / TCS', gst:'GST', audit:'Audit Reports', mca:'MCA / ROC', other:'Other Compliances' };
+
+  const filtered = COMPLIANCE.filter(c =>
+    (filterCat === 'all' || c.cat === filterCat) &&
+    (filterMon === 'all' || c.month === filterMon)
+  );
+  // sort by financial year month order, then date
+  const monthOrder = {}; months.forEach((m,idx)=>monthOrder[m]=idx);
+  filtered.sort((a,b) => (monthOrder[a.month]-monthOrder[b.month]) || (parseInt(a.date)-parseInt(b.date)));
+
+  const NAVY = [26, 39, 68];
+  const GOLD = [184, 150, 46];
+  const CREAM = [245, 240, 232];
+  const BORDER = [229, 223, 208];
+  const TEXT = [26, 39, 68];
+  const MUTED = [107, 114, 128];
+
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const pageW = doc.internal.pageSize.getWidth();
+  const margin = 40;
+  let cursorY = 40;
+
+  function drawHeader() {
+    // Top navy bar
+    doc.setFillColor(...NAVY);
+    doc.rect(0, 0, pageW, 8, 'F');
+
+    cursorY = 30;
+    // Try logo
+    try {
+      const img = document.querySelector('.nav-logo-row img');
+      if (img && img.complete && img.naturalWidth > 0) {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const dataUrl = canvas.toDataURL('image/png');
+        const logoH = 40;
+        const logoW = (img.naturalWidth / img.naturalHeight) * logoH;
+        doc.addImage(dataUrl, 'PNG', margin, cursorY, logoW, logoH);
+      }
+    } catch (e) { /* logo unavailable, skip silently */ }
+
+    // Firm name top-right
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(...NAVY);
+    doc.text('Batra Deepak & Associates', pageW - margin, 42, { align: 'right' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(...MUTED);
+    doc.text('CHARTERED ACCOUNTANTS', pageW - margin, 54, { align: 'right' });
+
+    cursorY = 90;
+    doc.setDrawColor(...BORDER);
+    doc.setLineWidth(0.7);
+    doc.line(margin, cursorY, pageW - margin, cursorY);
+
+    cursorY += 28;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(20);
+    doc.setTextColor(...NAVY);
+    doc.text('Compliance Calendar', margin, cursorY);
+
+    cursorY += 18;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(...MUTED);
+    doc.text('Comprehensive list of Compliances and Due Dates  |  FY 2025-26  |  AY 2026-27', margin, cursorY);
+
+    cursorY += 16;
+    doc.setFontSize(9.5);
+    doc.setTextColor(...GOLD);
+    doc.setFont('helvetica', 'bold');
+    const monLabel = filterMon === 'all' ? 'All Months' : fullMonth[filterMon];
+    doc.text(`Category: ${catLabel[filterCat]}    •    Month: ${monLabel}`, margin, cursorY);
+
+    cursorY += 14;
+  }
+
+  drawHeader();
+
+  const tableBody = filtered.map(c => [
+    fullMonth[c.month] + ' ' + c.date,
+    c.desc,
+    tagLabel[c.cat]
+  ]);
+
+  doc.autoTable({
+    startY: cursorY + 8,
+    head: [['Due Date', 'Compliance Description', 'Category']],
+    body: tableBody.length ? tableBody : [['—', 'No deadlines match the selected filter.', '—']],
+    margin: { left: margin, right: margin },
+    styles: {
+      font: 'helvetica', fontSize: 9.5, cellPadding: 7,
+      lineColor: BORDER, lineWidth: 0.6, textColor: TEXT, valign: 'middle'
+    },
+    headStyles: { fillColor: NAVY, textColor: [255,255,255], fontStyle: 'bold', fontSize: 10 },
+    alternateRowStyles: { fillColor: CREAM },
+    columnStyles: {
+      0: { cellWidth: 80, fontStyle: 'bold' },
+      1: { cellWidth: 'auto' },
+      2: { cellWidth: 95, textColor: GOLD, fontStyle: 'bold', fontSize: 8.5 }
+    },
+    didDrawPage: function (data) {
+      if (data.pageNumber > 1) {
+        // lighter header repeat on subsequent pages
+        doc.setFillColor(...NAVY);
+        doc.rect(0, 0, pageW, 8, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.setTextColor(...NAVY);
+        doc.text('Compliance Calendar — Batra Deepak & Associates', margin, 30);
+        doc.setDrawColor(...BORDER);
+        doc.line(margin, 38, pageW - margin, 38);
+      }
+      // footer
+      const pageH = doc.internal.pageSize.getHeight();
+      doc.setDrawColor(...BORDER);
+      doc.setLineWidth(0.5);
+      doc.line(margin, pageH - 50, pageW - margin, pageH - 50);
+      doc.setFont('helvetica', 'italic');
+      doc.setFontSize(7.5);
+      doc.setTextColor(...MUTED);
+      doc.text('Page ' + data.pageNumber, pageW - margin, pageH - 36, { align: 'right' });
+    }
+  });
+
+  let finalY = doc.lastAutoTable.finalY + 24;
+  let pageH = doc.internal.pageSize.getHeight();
+
+  // ── Regular Monthly Compliances section (respects category filter) ──
+  if (filterCat === 'all' || filterCat === 'other') {
+    if (finalY > pageH - 140) {
+      doc.addPage();
+      finalY = 50;
+    }
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(...NAVY);
+    doc.text('Regular Monthly Compliances (Applicable Throughout the Financial Year)', margin, finalY);
+    finalY += 6;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(...MUTED);
+    doc.text('Recurring statutory filings & payments due every month, as applicable', margin, finalY + 10);
+
+    const regBody = REGULAR_MONTHLY.map(r => [r.due, r.compliance, r.applicable]);
+    doc.autoTable({
+      startY: finalY + 18,
+      head: [['Due Date', 'Compliance', 'Applicable To']],
+      body: regBody,
+      margin: { left: margin, right: margin },
+      styles: {
+        font: 'helvetica', fontSize: 9, cellPadding: 7,
+        lineColor: BORDER, lineWidth: 0.6, textColor: TEXT, valign: 'middle'
+      },
+      headStyles: { fillColor: NAVY, textColor: [255,255,255], fontStyle: 'bold', fontSize: 10 },
+      alternateRowStyles: { fillColor: CREAM },
+      columnStyles: {
+        0: { cellWidth: 95, fontStyle: 'bold', textColor: GOLD },
+        1: { cellWidth: 'auto' },
+        2: { cellWidth: 150 }
+      },
+      didDrawPage: function (data) {
+        if (data.pageNumber > 1) {
+          doc.setFillColor(...NAVY);
+          doc.rect(0, 0, pageW, 8, 'F');
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(12);
+          doc.setTextColor(...NAVY);
+          doc.text('Compliance Calendar — Batra Deepak & Associates', margin, 30);
+          doc.setDrawColor(...BORDER);
+          doc.line(margin, 38, pageW - margin, 38);
+        }
+        doc.setDrawColor(...BORDER);
+        doc.setLineWidth(0.5);
+        doc.line(margin, pageH - 50, pageW - margin, pageH - 50);
+        doc.setFont('helvetica', 'italic');
+        doc.setFontSize(7.5);
+        doc.setTextColor(...MUTED);
+        doc.text('Page ' + data.pageNumber, pageW - margin, pageH - 36, { align: 'right' });
+      }
+    });
+    finalY = doc.lastAutoTable.finalY + 24;
+  }
+
+  if (finalY > pageH - 110) {
+    doc.addPage();
+    finalY = 50;
+  }
+
+  // Disclaimer box
+  const discBoxH = 70;
+  doc.setFillColor(...CREAM);
+  doc.setDrawColor(...BORDER);
+  doc.setLineWidth(0.6);
+  doc.roundedRect(margin, finalY, pageW - margin * 2, discBoxH, 4, 4, 'FD');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(...NAVY);
+  doc.text('Disclaimer', margin + 12, finalY + 18);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8.3);
+  doc.setTextColor(...MUTED);
+  const disclaimerText = 'This compliance calendar is intended for general guidance and informational purposes only, based on statutory provisions prevailing as on the date of preparation. Due dates are subject to change by way of notifications, circulars, or extensions issued by the relevant authorities (Income Tax Department, GST Council, MCA/ROC, RBI, SEBI, etc.). This document does not constitute professional advice and should not be relied upon as a substitute for consultation with a qualified Chartered Accountant. Batra Deepak & Associates shall not be liable for any loss arising from reliance on this calendar without independent verification.';
+  const wrapped = doc.splitTextToSize(disclaimerText, pageW - margin * 2 - 24);
+  doc.text(wrapped, margin + 12, finalY + 32);
+
+  // generated-on note
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(7.5);
+  doc.setTextColor(...MUTED);
+  const genDate = new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+  doc.text('Generated on ' + genDate + '  |  www.bdaca.com', margin, pageH - 20);
+
+  doc.save('BDA_Compliance_Calendar.pdf');
+}
+
+/* ══════════════════════════════════════
+   7. AGE CALCULATOR
+══════════════════════════════════════ */
+document.getElementById('age-asof').valueAsDate = new Date();
+
+function calcAge() {
+  const dob   = new Date(document.getElementById('age-dob').value);
+  const asof  = new Date(document.getElementById('age-asof').value);
+
+  if (isNaN(dob) || isNaN(asof)) return alert('Please select dates.');
+  if (dob > asof) return alert('Date of birth cannot be after the reference date.');
+
+  let years = asof.getFullYear() - dob.getFullYear();
+  let months = asof.getMonth() - dob.getMonth();
+  let days = asof.getDate() - dob.getDate();
+
+  if (days < 0) { months--; days += new Date(asof.getFullYear(), asof.getMonth(), 0).getDate(); }
+  if (months < 0) { years--; months += 12; }
+
+  const totalDays = Math.floor((asof - dob) / 86400000);
+  const totalMonths = years * 12 + months;
+  const totalWeeks = Math.floor(totalDays / 7);
+
+  document.getElementById('age-items').innerHTML =
+    `<div class="age-card"><div class="a-val">${years}</div><div class="a-lbl">Years</div></div>` +
+    `<div class="age-card"><div class="a-val">${months}</div><div class="a-lbl">Months</div></div>` +
+    `<div class="age-card"><div class="a-val">${days}</div><div class="a-lbl">Days</div></div>` +
+    `<div class="age-card"><div class="a-val">${totalWeeks.toLocaleString('en-IN')}</div><div class="a-lbl">Total Weeks</div></div>` +
+    `<div class="age-card"><div class="a-val">${totalDays.toLocaleString('en-IN')}</div><div class="a-lbl">Total Days</div></div>`;
+
+  let taxNote = '';
+  if (years >= 80) taxNote = 'Super Senior Citizen — Exempt up to ₹5,00,000 (Old Regime).';
+  else if (years >= 60) taxNote = 'Senior Citizen — Exempt up to ₹3,00,000 (Old Regime).';
+  else taxNote = 'Individual — Standard exemption ₹2,50,000 (Old Regime).';
+
+  document.getElementById('age-note').textContent = taxNote;
+  document.getElementById('age-result').classList.add('show');
+}
+
+/* ══════════════════════════════════════
+   8. RATIO ANALYZER
+══════════════════════════════════════ */
+const RATIOS = {
+  dscr: {
+    name: "Debt Service Coverage Ratio",
+    desc: "Measures a borrower's ability to service debt from operating cash flows. A core metric for term loan appraisal by banks and financial institutions.",
+    fields: [
+      { id: "pat", label: "Net Profit After Tax (PAT)", hint: "₹" },
+      { id: "dep", label: "Depreciation", hint: "₹" },
+      { id: "interest", label: "Interest on Term Loan", hint: "₹" },
+      { id: "repayment", label: "Principal Repayment (Term Loan)", hint: "₹" }
+    ],
+    formula: "DSCR = (PAT + Depreciation + Interest) ÷ (Principal + Interest)",
+    unit: "x",
+    calc(v) { return (v.pat + v.dep + v.interest) / (v.repayment + v.interest); },
+    benchmarks: { standard: "≥ 1.50x", ideal: "1.75x – 2.25x", bankNote: "Most PSU banks require DSCR ≥ 1.50x for project finance; RBI NPA norms consider < 1.0x as stressed.", sectorNote: "Infrastructure projects may get concession at 1.20x; manufacturing typically 1.50–2.0x." },
+    verdict(v) { if (v >= 1.75) return { label: "Strong", cls: "good" }; if (v >= 1.5) return { label: "Adequate", cls: "caution" }; return { label: "Weak — Review", cls: "poor" }; }
+  },
+  icr: {
+    name: "Interest Coverage Ratio",
+    desc: "Indicates how comfortably a business can pay interest from its earnings before interest and taxes. Also called Times Interest Earned.",
+    fields: [
+      { id: "ebit", label: "EBIT (Earnings Before Interest & Tax)", hint: "₹" },
+      { id: "interest", label: "Interest Expense", hint: "₹" }
+    ],
+    formula: "ICR = EBIT ÷ Interest Expense",
+    unit: "x",
+    calc(v) { return v.ebit / v.interest; },
+    benchmarks: { standard: "≥ 2.0x", ideal: "3.0x – 5.0x", bankNote: "Below 1.5x is considered a warning sign. Below 1.0x means interest is not covered from operations.", sectorNote: "Capital-intensive sectors (power, telecom) may operate at lower ICR of 1.5–2x." },
+    verdict(v) { if (v >= 3) return { label: "Comfortable", cls: "good" }; if (v >= 2) return { label: "Adequate", cls: "caution" }; return { label: "Under Pressure", cls: "poor" }; }
+  },
+  der: {
+    name: "Debt-Equity Ratio",
+    desc: "Measures financial leverage — the proportion of debt used relative to shareholders' equity. Indicates the risk profile of the capital structure.",
+    fields: [
+      { id: "totaldebt", label: "Total Debt (Long + Short Term)", hint: "₹" },
+      { id: "equity", label: "Shareholders' Net Worth / Equity", hint: "₹" }
+    ],
+    formula: "D/E Ratio = Total Debt ÷ Net Worth",
+    unit: ":1",
+    calc(v) { return v.totaldebt / v.equity; },
+    benchmarks: { standard: "≤ 2:1", ideal: "1:1 – 1.5:1", bankNote: "Most banks restrict term loan exposure beyond D/E of 2:1 or 3:1 post project. Debt includes all interest-bearing liabilities.", sectorNote: "Infrastructure / real estate may accept up to 3:1. FMCG/IT firms often operate at < 0.5:1." },
+    verdict(v) { if (v <= 1.5) return { label: "Conservative", cls: "good" }; if (v <= 2.5) return { label: "Moderate", cls: "caution" }; return { label: "Highly Leveraged", cls: "poor" }; }
+  },
+  toltnw: {
+    name: "TOL / TNW Ratio",
+    desc: "Total Outside Liabilities to Total Net Worth. A broader leverage measure that includes trade creditors, provisions, and all non-equity liabilities.",
+    fields: [
+      { id: "tol", label: "Total Outside Liabilities (TOL)", hint: "All liabilities excl. equity ₹" },
+      { id: "tnw", label: "Total Net Worth (TNW)", hint: "Equity + Free Reserves ₹" }
+    ],
+    formula: "TOL/TNW = Total Outside Liabilities ÷ Total Net Worth",
+    unit: ":1",
+    calc(v) { return v.tol / v.tnw; },
+    benchmarks: { standard: "≤ 3:1", ideal: "1.5:1 – 2.5:1", bankNote: "DFIs and commercial banks typically cap TOL/TNW at 3:1 for working capital limits.", sectorNote: "Trading firms may have higher TOL/TNW due to creditors. Manufacturing ideal is ≤ 2.5:1." },
+    verdict(v) { if (v <= 2) return { label: "Healthy", cls: "good" }; if (v <= 3) return { label: "Acceptable", cls: "caution" }; return { label: "Over-leveraged", cls: "poor" }; }
+  },
+  cr: {
+    name: "Current Ratio",
+    desc: "Measures short-term liquidity — the ability to meet current obligations from current assets. A key metric for working capital assessment.",
+    fields: [
+      { id: "ca", label: "Total Current Assets", hint: "₹" },
+      { id: "cl", label: "Total Current Liabilities", hint: "₹" }
+    ],
+    formula: "Current Ratio = Current Assets ÷ Current Liabilities",
+    unit: ":1",
+    calc(v) { return v.ca / v.cl; },
+    benchmarks: { standard: "≥ 1.33:1", ideal: "1.33:1 – 2.0:1", bankNote: "RBI Tandon Committee norms require Current Ratio ≥ 1.33:1 for working capital finance.", sectorNote: "Retail/trading may sustain at 1.1–1.2x. Capital goods / engineering firms need 1.5–2.0x." },
+    verdict(v) { if (v >= 1.5) return { label: "Healthy", cls: "good" }; if (v >= 1.33) return { label: "Adequate (Tandon Norm Met)", cls: "caution" }; return { label: "Below Norm", cls: "poor" }; }
+  },
+  ebitda: {
+    name: "EBITDA Margin",
+    desc: "Earnings Before Interest, Tax, Depreciation & Amortisation as a percentage of revenue. Measures core operating profitability before financing and accounting choices.",
+    fields: [
+      { id: "ebitda", label: "EBITDA", hint: "₹" },
+      { id: "revenue", label: "Net Revenue / Net Sales", hint: "₹" }
+    ],
+    formula: "EBITDA Margin = (EBITDA ÷ Net Revenue) × 100",
+    unit: "%",
+    calc(v) { return (v.ebitda / v.revenue) * 100; },
+    benchmarks: { standard: "≥ 15%", ideal: "20% – 35%", bankNote: "Used extensively in credit rating models. An EBITDA Margin decline > 5% YoY is a watch signal.", sectorNote: "IT services: 25–35%. FMCG: 18–28%. Manufacturing: 10–20%. Trading: 2–8%." },
+    verdict(v) { if (v >= 20) return { label: "Strong Margins", cls: "good" }; if (v >= 12) return { label: "Moderate", cls: "caution" }; return { label: "Thin Margins", cls: "poor" }; }
+  },
+  roce: {
+    name: "Return on Capital Employed",
+    desc: "Measures how efficiently a business generates profit from its total capital deployed (equity + debt). Key indicator of management efficiency.",
+    fields: [
+      { id: "ebit", label: "EBIT (Operating Profit)", hint: "₹" },
+      { id: "capitalemployed", label: "Capital Employed", hint: "Total Assets − Current Liabilities ₹" }
+    ],
+    formula: "ROCE = (EBIT ÷ Capital Employed) × 100",
+    unit: "%",
+    calc(v) { return (v.ebit / v.capitalemployed) * 100; },
+    benchmarks: { standard: "≥ 15%", ideal: "20% – 30%", bankNote: "ROCE should ideally exceed the company's cost of capital (WACC). Below WACC implies value destruction.", sectorNote: "Asset-light businesses (IT, FMCG) achieve 35–50%+. Heavy industries (steel, power) may be 10–18%." },
+    verdict(v) { if (v >= 20) return { label: "Efficient", cls: "good" }; if (v >= 12) return { label: "Acceptable", cls: "caution" }; return { label: "Poor Returns", cls: "poor" }; }
+  },
+  facr: {
+    name: "Fixed Asset Coverage Ratio",
+    desc: "Assesses the security cover available for term loans — specifically, net fixed assets as a multiple of outstanding term loan. A collateral adequacy metric.",
+    fields: [
+      { id: "nfa", label: "Net Fixed Assets (NFA)", hint: "Gross FA − Accumulated Depreciation ₹" },
+      { id: "termloan", label: "Outstanding Term Loan", hint: "₹" }
+    ],
+    formula: "FACR = Net Fixed Assets ÷ Outstanding Term Loan",
+    unit: "x",
+    calc(v) { return v.nfa / v.termloan; },
+    benchmarks: { standard: "≥ 1.25x", ideal: "1.5x – 2.0x", bankNote: "Banks generally require FACR ≥ 1.25x. Below 1.0x means assets are less than the outstanding loan — security shortfall.", sectorNote: "Project finance at inception may have FACR at 1.1–1.2x, improving as depreciation reduces NFA vs. loan repayments." },
+    verdict(v) { if (v >= 1.5) return { label: "Well Covered", cls: "good" }; if (v >= 1.25) return { label: "Adequate Cover", cls: "caution" }; return { label: "Security Shortfall", cls: "poor" }; }
+  },
+  nwc: {
+    name: "Net Working Capital",
+    desc: "The surplus of current assets over current liabilities. Represents the liquid buffer available to run day-to-day operations without external borrowings.",
+    fields: [
+      { id: "ca", label: "Total Current Assets", hint: "₹" },
+      { id: "cl", label: "Total Current Liabilities", hint: "₹" }
+    ],
+    formula: "NWC = Current Assets − Current Liabilities",
+    unit: "₹",
+    calc(v) { return v.ca - v.cl; },
+    benchmarks: { standard: "Positive", ideal: "25–30% of Sales", bankNote: "Negative NWC indicates current liabilities exceed current assets — a sign of liquidity stress. Lenders view negative NWC unfavourably.", sectorNote: "Retail chains may operate with slightly negative NWC. Service firms need sufficient NWC buffer." },
+    verdict(v) { if (v > 0) return { label: "Positive NWC", cls: "good" }; return { label: "Negative NWC", cls: "poor" }; }
+  },
+  hold: {
+    name: "Inventory & Debtor Holding Period",
+    desc: "Operating cycle efficiency metrics — how many days stock is held (DIO) and how many days it takes to collect from debtors (DSO). Lower is generally better.",
+    fields: [
+      { id: "inventory", label: "Closing Inventory", hint: "₹" },
+      { id: "cogs", label: "Cost of Goods Sold (COGS)", hint: "₹" },
+      { id: "debtors", label: "Trade Debtors / Receivables", hint: "₹" },
+      { id: "sales", label: "Net Credit Sales", hint: "₹" }
+    ],
+    formula: "DIO = (Inventory ÷ COGS) × 365 | DSO = (Debtors ÷ Sales) × 365",
+    unit: "days",
+    multiResult: true,
+    calc(v) { const dio = (v.inventory / v.cogs) * 365; const dso = (v.debtors / v.sales) * 365; return { dio, dso, combined: dio + dso }; },
+    benchmarks: { standard: "DIO ≤ 60 days, DSO ≤ 45 days", ideal: "Operating Cycle ≤ 90 days", bankNote: "Banks use DIO + DSO (operating cycle) to determine the Maximum Permissible Bank Finance (MPBF) for CC limits.", sectorNote: "FMCG: DIO 15–30 days, DSO 15–30 days. Engineering/EPC: DIO 45–90 days, DSO 60–120 days." },
+    verdict(v) { const cycle = v.dio + v.dso; if (cycle <= 90) return { label: "Efficient Cycle", cls: "good" }; if (cycle <= 150) return { label: "Moderate", cls: "caution" }; return { label: "Long Cycle — Review", cls: "poor" }; }
+  }
+};
+
+let currentRatioKey = null;
+
+function onRatioChange() {
+  const sel = document.getElementById('ratioSelect').value;
+  const pill = document.getElementById('ratioPill');
+  const inputsCard = document.getElementById('ratioInputsCard');
+  const resultBox = document.getElementById('ratioResultBox');
+  const ratioError = document.getElementById('ratioError');
+
+  resultBox.classList.remove('show');
+  ratioError.classList.remove('show');
+
+  if (!sel) {
+    pill.classList.remove('show');
+    inputsCard.classList.remove('show');
+    currentRatioKey = null;
+    return;
+  }
+
+  const r = RATIOS[sel];
+  currentRatioKey = sel;
+  pill.textContent = r.desc;
+  pill.classList.add('show');
+
+  document.getElementById('ratioInputsTitle').textContent = `Enter Values — ${r.name}`;
+  const grid = document.getElementById('ratioFieldsGrid');
+  grid.innerHTML = '';
+  r.fields.forEach(f => {
+    grid.innerHTML += `<div class="ratio-field">
+      <label for="rf_${f.id}">${f.label}</label>
+      ${f.hint ? `<span class="rf-hint">${f.hint}</span>` : ''}
+      <input type="number" id="rf_${f.id}" placeholder="0.00" min="0" step="any" />
+    </div>`;
+  });
+  inputsCard.classList.add('show');
+  setTimeout(() => { const first = grid.querySelector('input'); if (first) first.focus(); }, 50);
+}
+
+function calcRatio() {
+  if (!currentRatioKey) return;
+  const r = RATIOS[currentRatioKey];
+  const err = document.getElementById('ratioError');
+  err.classList.remove('show');
+
+  const vals = {};
+  for (const f of r.fields) {
+    const el = document.getElementById(`rf_${f.id}`);
+    const val = parseFloat(el.value);
+    if (isNaN(val) || val < 0) {
+      err.textContent = `Please enter a valid number for "${f.label}".`;
+      err.classList.add('show');
+      el.focus();
+      return;
+    }
+    vals[f.id] = val;
+  }
+
+  let result;
+  try {
+    result = r.calc(vals);
+    if (!isFinite(result) && typeof result === 'number') throw new Error("Division by zero");
+  } catch(e) {
+    err.textContent = "Cannot divide by zero — please check your inputs.";
+    err.classList.add('show');
+    return;
+  }
+
+  let displayValue, verdictInput;
+  if (r.multiResult) {
+    displayValue = `${result.dio.toFixed(1)}d / ${result.dso.toFixed(1)}d`;
+    verdictInput = result;
+  } else {
+    const decimals = r.unit === '%' ? 2 : (r.unit === '₹' ? 0 : 2);
+    displayValue = (r.unit === '₹')
+      ? (result >= 0 ? '+' : '') + result.toLocaleString('en-IN', { maximumFractionDigits: 0 })
+      : result.toFixed(decimals);
+    if (r.unit === '%') displayValue += '%';
+    if (r.unit === ':1') displayValue += ':1';
+    if (r.unit === 'x') displayValue += 'x';
+    verdictInput = result;
+  }
+
+  document.getElementById('ratioResultValue').textContent = displayValue;
+  document.getElementById('ratioResultName').textContent = r.name;
+
+  const verdict = r.verdict(verdictInput);
+  const badge = document.getElementById('ratioVerdict');
+  badge.textContent = verdict.label;
+  badge.className = `ratio-verdict ${verdict.cls}`;
+
+  const b = r.benchmarks;
+  document.getElementById('ratioBenchmarks').innerHTML = `
+    <div class="rb-item"><div class="rbi-label">Industry Standard</div><div class="rbi-val">${b.standard}</div><div class="rbi-note">Minimum acceptable threshold</div></div>
+    <div class="rb-item"><div class="rbi-label">Ideal Range</div><div class="rbi-val">${b.ideal}</div><div class="rbi-note">Indicates healthy position</div></div>
+    <div class="rb-item" style="grid-column:1/-1"><div class="rbi-label">Banking / Lender Perspective</div><div class="rbi-note">${b.bankNote}</div></div>
+    <div class="rb-item" style="grid-column:1/-1"><div class="rbi-label">Sector Context</div><div class="rbi-note">${b.sectorNote}</div></div>
+  `;
+  document.getElementById('ratioFormula').innerHTML = `<span>Formula:</span> ${r.formula}`;
+
+  const resultBox = document.getElementById('ratioResultBox');
+  resultBox.classList.add('show');
+  resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function resetRatio() {
+  document.getElementById('ratioSelect').value = '';
+  onRatioChange();
+}
+
+/* ══════════════════════════════════════
+   9. LOAN REPAYMENT SCHEDULE BUILDER
+══════════════════════════════════════ */
+document.querySelectorAll('input[name="rp-opt"]').forEach(r => {
+  r.addEventListener('change', function() {
+    document.getElementById('rp-optEmiLabel').classList.remove('active');
+    document.getElementById('rp-optPrinLabel').classList.remove('active');
+    if (this.value === 'emi') document.getElementById('rp-optEmiLabel').classList.add('active');
+    else document.getElementById('rp-optPrinLabel').classList.add('active');
+  });
+});
+
+let rpScheduleData = [];
+let rpYearwiseData = [];
+let rpMeta = {};
+let rpPendingCtx = null;
+
+function rpFmtINR(n) {
+  n = Math.round(n * 100) / 100;
+  return n.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function rpFmtDate(d) {
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return String(d.getDate()).padStart(2, '0') + '-' + months[d.getMonth()] + '-' + d.getFullYear();
+}
+function rpAddMonths(date, n) {
+  const d = new Date(date.getTime());
+  const day = d.getDate();
+  d.setDate(1);
+  d.setMonth(d.getMonth() + n);
+  const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  d.setDate(Math.min(day, lastDay));
+  return d;
+}
+function rpFyLabel(date) {
+  const y = date.getFullYear();
+  const m = date.getMonth();
+  if (m >= 3) return 'FY ' + y + '-' + String(y + 1).slice(2);
+  return 'FY ' + (y - 1) + '-' + String(y).slice(2);
+}
+function rpShowError(msg) {
+  const e = document.getElementById('rp-err');
+  e.textContent = msg;
+  e.classList.toggle('show', !!msg);
+}
+
+document.getElementById('rp-buildBtn').addEventListener('click', rpBuildSchedule);
+document.getElementById('rp-pdfBtn').addEventListener('click', rpDownloadPDF);
+document.getElementById('rp-xlsBtn').addEventListener('click', rpDownloadExcel);
+document.getElementById('rp-resetBtn').addEventListener('click', rpResetPanel);
+
+function rpResetPanel() {
+  const panel = document.getElementById('tool-repayment');
+  panel.querySelectorAll('input[type="number"], input[type="date"]').forEach(i => { i.value = ''; });
+  document.getElementById('rp-moratorium').value = '0';
+  document.querySelector('input[name="rp-opt"][value="emi"]').checked = true;
+  document.getElementById('rp-optEmiLabel').classList.add('active');
+  document.getElementById('rp-optPrinLabel').classList.remove('active');
+  rpShowError('');
+  document.getElementById('rp-summaryStrip').style.display = 'none';
+  document.getElementById('rp-scheduleWrap').style.display = 'none';
+  document.getElementById('rp-scheduleTitle').style.display = 'none';
+  document.getElementById('rp-yearwiseWrap').style.display = 'none';
+  document.getElementById('rp-yearwiseTitle').style.display = 'none';
+  document.getElementById('rp-pdfBtn').style.display = 'none';
+  document.getElementById('rp-xlsBtn').style.display = 'none';
+  rpScheduleData = []; rpYearwiseData = []; rpMeta = {};
+}
+
+function rpBuildMoratoriumRows(balance, disbDate, moratorium, monthlyRate) {
+  let rows = [];
+  for (let i = 1; i <= moratorium; i++) {
+    const pmtDate = rpAddMonths(disbDate, i);
+    const interest = balance * monthlyRate;
+    rows.push({ date: pmtDate, opening: balance, payable: interest, principal: 0, interest: interest, closing: balance, isMoratorium: true });
+  }
+  return rows;
+}
+
+function rpBuildSchedule() {
+  rpShowError('');
+  const loanAmount = parseFloat(document.getElementById('rp-loanAmount').value);
+  const annualRate = parseFloat(document.getElementById('rp-intRate').value);
+  const disbDateVal = document.getElementById('rp-disbDate').value;
+  const tenure = parseInt(document.getElementById('rp-tenure').value);
+  const moratorium = parseInt(document.getElementById('rp-moratorium').value || '0');
+  const option = document.querySelector('input[name="rp-opt"]:checked').value;
+
+  if (!loanAmount || loanAmount <= 0) { rpShowError('Please enter a valid loan amount.'); return; }
+  if (annualRate === undefined || isNaN(annualRate) || annualRate < 0) { rpShowError('Please enter a valid interest rate.'); return; }
+  if (!disbDateVal) { rpShowError('Please select a disbursement date.'); return; }
+  if (!tenure || tenure <= 0) { rpShowError('Please enter a valid total tenure.'); return; }
+  if (moratorium < 0 || moratorium >= tenure) { rpShowError('Moratorium period must be less than total tenure.'); return; }
+
+  const disbDate = new Date(disbDateVal + 'T00:00:00');
+  const monthlyRate = annualRate / 12 / 100;
+  const repayMonths = tenure - moratorium;
+
+  rpPendingCtx = { loanAmount, annualRate, disbDate, tenure, moratorium, option, monthlyRate, repayMonths };
+
+  if (option === 'emi') {
+    let baseEmi;
+    if (monthlyRate === 0) {
+      baseEmi = loanAmount / repayMonths;
+    } else {
+      const r = monthlyRate;
+      baseEmi = loanAmount * r * Math.pow(1 + r, repayMonths) / (Math.pow(1 + r, repayMonths) - 1);
+    }
+    rpPendingCtx.baseEmi = baseEmi;
+    rpOpenEmiModal(baseEmi);
+  } else {
+    rpFinalizeSchedule(rpPendingCtx, null);
+  }
+}
+
+function rpOpenEmiModal(baseEmi) {
+  document.getElementById('rp-modalCalcEmi').textContent = '₹' + rpFmtINR(baseEmi);
+  const minEmi = baseEmi * 0.95;
+  const maxEmi = baseEmi * 1.05;
+  const input = document.getElementById('rp-modalEmiInput');
+  input.value = (Math.round(baseEmi * 100) / 100).toFixed(2);
+  input.dataset.min = minEmi;
+  input.dataset.max = maxEmi;
+  document.getElementById('rp-modalRangeText').textContent = `Allowed range (±5%): ₹${rpFmtINR(minEmi)} – ₹${rpFmtINR(maxEmi)}`;
+  document.getElementById('rp-modalWarnText').style.display = 'none';
+  document.getElementById('rp-modalConfirmBtn').disabled = false;
+  document.getElementById('rp-emiModalOverlay').classList.add('show');
+  input.focus();
+  input.select();
+}
+function rpCloseEmiModal() {
+  document.getElementById('rp-emiModalOverlay').classList.remove('show');
+}
+document.getElementById('rp-modalCancelBtn').addEventListener('click', rpCloseEmiModal);
+document.getElementById('rp-emiModalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'rp-emiModalOverlay') rpCloseEmiModal();
+});
+document.getElementById('rp-modalEmiInput').addEventListener('input', function() {
+  const min = parseFloat(this.dataset.min);
+  const max = parseFloat(this.dataset.max);
+  const val = parseFloat(this.value);
+  const warn = document.getElementById('rp-modalWarnText');
+  const confirmBtn = document.getElementById('rp-modalConfirmBtn');
+  if (isNaN(val) || val < min || val > max) { warn.style.display = 'block'; confirmBtn.disabled = true; }
+  else { warn.style.display = 'none'; confirmBtn.disabled = false; }
+});
+document.getElementById('rp-modalConfirmBtn').addEventListener('click', function() {
+  const val = parseFloat(document.getElementById('rp-modalEmiInput').value);
+  if (isNaN(val)) return;
+  rpCloseEmiModal();
+  rpFinalizeSchedule(rpPendingCtx, val);
+});
+
+function rpFinalizeSchedule(ctx, customEmi) {
+  const { loanAmount, disbDate, moratorium, monthlyRate, repayMonths, option } = ctx;
+  let balance = loanAmount;
+  let rows = rpBuildMoratoriumRows(balance, disbDate, moratorium, monthlyRate);
+
+  if (option === 'emi') {
+    const emi = customEmi !== null ? customEmi : ctx.baseEmi;
+    for (let i = 1; i <= repayMonths; i++) {
+      const pmtDate = rpAddMonths(disbDate, moratorium + i);
+      const interest = balance * monthlyRate;
+      let principal = emi - interest;
+      let payable = emi;
+      let closing = balance - principal;
+      if (i === repayMonths || closing <= 0) {
+        principal = balance; closing = 0; payable = principal + interest;
+      }
+      rows.push({ date: pmtDate, opening: balance, payable: payable, principal: principal, interest: interest, closing: closing, isMoratorium: false });
+      balance = closing;
+      if (balance <= 0) break;
+    }
+  } else {
+    const fixedPrincipal = loanAmount / repayMonths;
+    for (let i = 1; i <= repayMonths; i++) {
+      const pmtDate = rpAddMonths(disbDate, moratorium + i);
+      const interest = balance * monthlyRate;
+      let principal = fixedPrincipal;
+      let closing = balance - principal;
+      if (i === repayMonths) { principal = balance; closing = 0; }
+      const payable = principal + interest;
+      rows.push({ date: pmtDate, opening: balance, payable: payable, principal: principal, interest: interest, closing: closing, isMoratorium: false });
+      balance = closing;
+    }
+  }
+
+  rpScheduleData = rows;
+  rpMeta = { loanAmount: ctx.loanAmount, annualRate: ctx.annualRate, disbDate: ctx.disbDate, tenure: ctx.tenure, moratorium: ctx.moratorium, option: ctx.option, emiUsed: option === 'emi' ? (customEmi !== null ? customEmi : ctx.baseEmi) : null };
+
+  rpRenderScheduleTable(rows);
+  rpRenderYearwise(rows);
+  rpRenderSummary(rows);
+
+  document.getElementById('rp-scheduleWrap').style.display = 'block';
+  document.getElementById('rp-scheduleTitle').style.display = 'flex';
+  document.getElementById('rp-yearwiseWrap').style.display = 'block';
+  document.getElementById('rp-yearwiseTitle').style.display = 'flex';
+  document.getElementById('rp-summaryStrip').style.display = 'grid';
+  document.getElementById('rp-pdfBtn').style.display = 'inline-flex';
+  document.getElementById('rp-xlsBtn').style.display = 'inline-flex';
+  document.getElementById('rp-summaryStrip').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function rpRenderScheduleTable(rows) {
+  const body = document.getElementById('rp-scheduleBody');
+  body.innerHTML = '';
+  let totalPrincipal = 0, totalInterest = 0, totalPayable = 0;
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    if (r.isMoratorium) tr.className = 'rp-moratorium';
+    tr.innerHTML = `<td>${rpFmtDate(r.date)}${r.isMoratorium ? '<span class="rp-badge">Moratorium</span>' : ''}</td>
+      <td>${rpFmtINR(r.opening)}</td><td>${rpFmtINR(r.payable)}</td><td>${rpFmtINR(r.principal)}</td><td>${rpFmtINR(r.interest)}</td><td>${rpFmtINR(r.closing)}</td>`;
+    body.appendChild(tr);
+    totalPrincipal += r.principal; totalInterest += r.interest; totalPayable += r.payable;
+  });
+  document.getElementById('rp-scheduleFoot').innerHTML = `<tr><td>Total</td><td></td><td>${rpFmtINR(totalPayable)}</td><td>${rpFmtINR(totalPrincipal)}</td><td>${rpFmtINR(totalInterest)}</td><td></td></tr>`;
+}
+
+function rpRenderYearwise(rows) {
+  const map = {}; const order = [];
+  rows.forEach(r => {
+    const label = rpFyLabel(r.date);
+    if (!map[label]) { map[label] = { principal: 0, interest: 0 }; order.push(label); }
+    map[label].principal += r.principal; map[label].interest += r.interest;
+  });
+  rpYearwiseData = order.map(l => ({ year: l, principal: map[l].principal, interest: map[l].interest }));
+
+  const body = document.getElementById('rp-yearwiseBody');
+  body.innerHTML = '';
+  let totP = 0, totI = 0;
+  rpYearwiseData.forEach(y => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="text-align:left">${y.year}</td><td>${rpFmtINR(y.principal)}</td><td>${rpFmtINR(y.interest)}</td><td>${rpFmtINR(y.principal + y.interest)}</td>`;
+    body.appendChild(tr);
+    totP += y.principal; totI += y.interest;
+  });
+  document.getElementById('rp-yearwiseFoot').innerHTML = `<tr><td>Total</td><td>${rpFmtINR(totP)}</td><td>${rpFmtINR(totI)}</td><td>${rpFmtINR(totP + totI)}</td></tr>`;
+}
+
+function rpRenderSummary(rows) {
+  const totalPrincipal = rows.reduce((s, r) => s + r.principal, 0);
+  const totalInterest = rows.reduce((s, r) => s + r.interest, 0);
+  const totalPayable = totalPrincipal + totalInterest;
+  const strip = document.getElementById('rp-summaryStrip');
+  const emiCell = rpMeta.emiUsed ? `<div class="cell"><div class="lbl">EMI Used</div><div class="val">₹${rpFmtINR(rpMeta.emiUsed)}</div></div>` : '';
+  strip.innerHTML = `
+    <div class="cell"><div class="lbl">Loan Amount</div><div class="val">₹${rpFmtINR(rpMeta.loanAmount)}</div></div>
+    ${emiCell}
+    <div class="cell"><div class="lbl">Total Interest Payable</div><div class="val">₹${rpFmtINR(totalInterest)}</div></div>
+    <div class="cell"><div class="lbl">Total Amount Payable</div><div class="val">₹${rpFmtINR(totalPayable)}</div></div>
+    <div class="cell"><div class="lbl">Tenure</div><div class="val">${rpMeta.tenure} months</div></div>
+    <div class="cell"><div class="lbl">Moratorium</div><div class="val">${rpMeta.moratorium} months</div></div>
+  `;
+}
+
+function rpDownloadPDF() {
+  if (!rpScheduleData.length) return;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'landscape', unit: 'pt', format: 'a4' });
+  const navy = [26, 39, 68];
+  const gold = [184, 150, 46];
+
+  doc.setFillColor(...navy);
+  doc.rect(0, 0, doc.internal.pageSize.getWidth(), 55, 'F');
+  doc.setTextColor(...gold);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.text('Loan Repayment Schedule', 30, 34);
+
+  doc.setTextColor(60, 60, 60);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  const infoY = 70;
+  doc.text(`Loan Amount: Rs. ${rpFmtINR(rpMeta.loanAmount)}`, 30, infoY);
+  doc.text(`Interest Rate: ${rpMeta.annualRate}% p.a.`, 230, infoY);
+  doc.text(`Disbursement Date: ${rpFmtDate(rpMeta.disbDate)}`, 400, infoY);
+  doc.text(`Tenure: ${rpMeta.tenure} months (Moratorium: ${rpMeta.moratorium})`, 570, infoY);
+  doc.text(`Repayment Type: ${rpMeta.option === 'emi' ? 'Fixed EMI' : 'Fixed Principal'}${rpMeta.emiUsed ? (' (EMI: Rs. ' + rpFmtINR(rpMeta.emiUsed) + ')') : ''}`, 30, infoY + 14);
+
+  const body = rpScheduleData.map(r => [
+    rpFmtDate(r.date) + (r.isMoratorium ? ' (Moratorium)' : ''),
+    rpFmtINR(r.opening), rpFmtINR(r.payable), rpFmtINR(r.principal), rpFmtINR(r.interest), rpFmtINR(r.closing)
+  ]);
+  const totalPrincipal = rpScheduleData.reduce((s, r) => s + r.principal, 0);
+  const totalInterest = rpScheduleData.reduce((s, r) => s + r.interest, 0);
+  const totalPayable = totalPrincipal + totalInterest;
+
+  doc.autoTable({
+    startY: infoY + 26,
+    head: [['Date', 'Opening Balance', 'Payable Amount', 'Principal Repayment', 'Interest Paid', 'Closing Balance']],
+    body: body,
+    foot: [['Total', '', rpFmtINR(totalPayable), rpFmtINR(totalPrincipal), rpFmtINR(totalInterest), '']],
+    theme: 'grid',
+    headStyles: { fillColor: navy, textColor: gold, fontSize: 9, halign: 'right' },
+    footStyles: { fillColor: [238, 241, 246], textColor: navy, fontSize: 9, halign: 'right', fontStyle: 'bold' },
+    bodyStyles: { fontSize: 8.5, halign: 'right' },
+    columnStyles: { 0: { halign: 'left' } },
+    alternateRowStyles: { fillColor: [250, 248, 243] },
+    margin: { left: 30, right: 30 }
+  });
+
+  doc.addPage();
+  doc.setFillColor(...navy);
+  doc.rect(0, 0, doc.internal.pageSize.getWidth(), 55, 'F');
+  doc.setTextColor(...gold);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(16);
+  doc.text('Year-wise Repayment Summary', 30, 34);
+
+  const ybody = rpYearwiseData.map(y => [y.year, rpFmtINR(y.principal), rpFmtINR(y.interest), rpFmtINR(y.principal + y.interest)]);
+  const totP = rpYearwiseData.reduce((s, y) => s + y.principal, 0);
+  const totI = rpYearwiseData.reduce((s, y) => s + y.interest, 0);
+
+  doc.autoTable({
+    startY: 75,
+    head: [['Financial Year', 'Principal Repaid', 'Interest Paid', 'Total Paid']],
+    body: ybody,
+    foot: [['Total', rpFmtINR(totP), rpFmtINR(totI), rpFmtINR(totP + totI)]],
+    theme: 'grid',
+    headStyles: { fillColor: navy, textColor: gold, fontSize: 10, halign: 'right' },
+    footStyles: { fillColor: [238, 241, 246], textColor: navy, fontSize: 10, halign: 'right', fontStyle: 'bold' },
+    bodyStyles: { fontSize: 9.5, halign: 'right' },
+    columnStyles: { 0: { halign: 'left' } },
+    alternateRowStyles: { fillColor: [250, 248, 243] },
+    margin: { left: 30, right: 30 }
+  });
+
+  doc.save('Repayment_Schedule.pdf');
+}
+
+function rpDownloadExcel() {
+  if (!rpScheduleData.length) return;
+  const wb = XLSX.utils.book_new();
+
+  const header = ['Date', 'Opening Balance', 'Payable Amount', 'Principal Repayment', 'Interest Paid', 'Closing Balance'];
+  const aoa = [
+    ['Loan Repayment Schedule'],
+    [`Loan Amount: ${rpMeta.loanAmount}`, `Interest Rate (% p.a.): ${rpMeta.annualRate}`, `Disbursement Date: ${rpFmtDate(rpMeta.disbDate)}`],
+    [`Tenure (months): ${rpMeta.tenure}`, `Moratorium (months): ${rpMeta.moratorium}`, `Repayment Type: ${rpMeta.option === 'emi' ? 'Fixed EMI' : 'Fixed Principal'}${rpMeta.emiUsed ? (' (EMI: ' + rpFmtINR(rpMeta.emiUsed) + ')') : ''}`],
+    [],
+    header
+  ];
+  let totalPrincipal = 0, totalInterest = 0, totalPayable = 0;
+  rpScheduleData.forEach(r => {
+    aoa.push([rpFmtDate(r.date) + (r.isMoratorium ? ' (Moratorium)' : ''), Math.round(r.opening * 100) / 100, Math.round(r.payable * 100) / 100, Math.round(r.principal * 100) / 100, Math.round(r.interest * 100) / 100, Math.round(r.closing * 100) / 100]);
+    totalPrincipal += r.principal; totalInterest += r.interest; totalPayable += r.payable;
+  });
+  aoa.push(['Total', '', Math.round(totalPayable * 100) / 100, Math.round(totalPrincipal * 100) / 100, Math.round(totalInterest * 100) / 100, '']);
+
+  const ws1 = XLSX.utils.aoa_to_sheet(aoa);
+  ws1['!cols'] = [{ wch: 24 }, { wch: 18 }, { wch: 18 }, { wch: 20 }, { wch: 16 }, { wch: 18 }];
+  ws1['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 5 } }];
+  XLSX.utils.book_append_sheet(wb, ws1, 'Repayment Schedule');
+
+  const aoa2 = [
+    ['Year-wise Repayment Summary'],
+    [],
+    ['Financial Year', 'Principal Repaid', 'Interest Paid', 'Total Paid']
+  ];
+  let totP = 0, totI = 0;
+  rpYearwiseData.forEach(y => {
+    aoa2.push([y.year, Math.round(y.principal * 100) / 100, Math.round(y.interest * 100) / 100, Math.round((y.principal + y.interest) * 100) / 100]);
+    totP += y.principal; totI += y.interest;
+  });
+  aoa2.push(['Total', Math.round(totP * 100) / 100, Math.round(totI * 100) / 100, Math.round((totP + totI) * 100) / 100]);
+  const ws2 = XLSX.utils.aoa_to_sheet(aoa2);
+  ws2['!cols'] = [{ wch: 16 }, { wch: 18 }, { wch: 16 }, { wch: 16 }];
+  ws2['!merges'] = [{ s: { r: 0, c: 0 }, e: { r: 0, c: 3 } }];
+  XLSX.utils.book_append_sheet(wb, ws2, 'Year-wise Summary');
+
+  XLSX.writeFile(wb, 'Repayment_Schedule.xlsx');
+}
+</script>
+
+</body>
+</html>

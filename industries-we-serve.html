@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industries We Serve — Batra Deepak &amp; Associates | Chartered Accountants</title>
+  <meta name="description" content="Sector-focused audit, taxation and advisory from Batra Deepak &amp; Associates — banking and NBFC, healthcare, real estate, logistics, manufacturing, trading, education, startups, hospitality, IT, agriculture and NGOs." />
+  <link rel="canonical" href="https://bdaca.com/industries-we-serve.html" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Industries We Serve — Batra Deepak &amp; Associates" />
+  <meta property="og:description" content="Sector-specific compliance, financial reporting and advisory across twelve industries." />
+  <meta property="og:url" content="https://bdaca.com/industries-we-serve.html" />
+  <meta property="og:image" content="https://bdaca.com/assets/industries-hero-bg.jpg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D7XWQZYL6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D7XWQZYL6');
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TOKENS — oxblood burgundy + graphite.
+       Identical to index, knowledge-centre, connect-us and utilities.
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --ink:        #1B1B19;
+      --ink-2:      #33332F;
+      --ink-3:      #5A5A54;
+
+      /* ── ACCENT — change these four lines to reskin the site ── */
+      --accent:      #6E2436;
+      --accent-2:    #8A3247;
+      --accent-wash: rgba(110,36,54,.07);
+      --accent-line: rgba(110,36,54,.26);
+
+      --white:      #ffffff;
+      --paper:      #F2F2EF;
+      --paper-2:    #E7E7E2;
+
+      --line:       rgba(27,27,25,.14);
+      --line-2:     rgba(27,27,25,.24);
+
+      --shadow-1:   0 1px 2px rgba(27,27,25,.06);
+      --shadow-2:   0 6px 20px rgba(27,27,25,.11);
+
+      --pad:        20px;
+      --nav-h:      64px;
+      --strip-h:    33px;
+    }
+
+    @media (min-width: 600px)  { :root { --pad: 32px; } }
+    @media (min-width: 1000px) { :root { --pad: 44px; } }
+    @media (min-width: 1400px) { :root { --pad: 56px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+
+    body {
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink-2);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Word-style justification — spaces stretch, words are never split */
+    .page-hero p, .ind-desc, .m-text, .modal-subtitle {
+      text-align: justify; text-justify: inter-word;
+      -webkit-hyphens: none; hyphens: none; overflow-wrap: break-word;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(27,27,25,.05);
+    }
+    nav.scrolled { box-shadow: 0 2px 14px rgba(27,27,25,.10); }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad); height: var(--nav-h);
+    }
+    .logo-wrap { display: flex; align-items: center; line-height: 1; }
+
+    .nav-strip-wrapper { border-top: 1px solid var(--line); background: var(--white); }
+    .nav-strip {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 2px; padding: 4px var(--pad);
+    }
+    .nav-strip a {
+      color: var(--ink-2); text-decoration: none;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px; white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-strip a:hover { color: var(--accent); background: var(--accent-wash); }
+    .nav-strip a.active { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+    .hamburger {
+      display: none;
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--line-2); background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: 4px;
+      transition: background .2s, border-color .2s;
+    }
+    .hamburger:hover { background: var(--accent-wash); border-color: var(--accent); }
+    .hamburger span {
+      display: block; width: 18px; height: 1.5px; background: var(--ink);
+      transition: transform .25s, opacity .2s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .slide-menu {
+      position: fixed; top: var(--nav-h); right: 0;
+      width: 280px; width: min(280px, 82vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(27,27,25,.16);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      z-index: 1200;
+    }
+    .slide-menu.open { transform: translateX(0); }
+    .slide-menu ul { list-style: none; padding: 6px 0; }
+    .slide-menu li + li { border-top: 1px solid var(--line); }
+    .slide-menu a {
+      display: block; padding: 15px 22px;
+      text-decoration: none; color: var(--ink-2); font-size: 14.5px;
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+    .slide-menu a:hover { background: var(--accent-wash); color: var(--accent); padding-left: 27px; }
+    .slide-menu a.active { color: var(--accent); font-weight: 700; box-shadow: inset 3px 0 0 var(--accent); }
+    .slide-menu .num { display: none; }
+
+    @media (max-width: 980px) {
+      .nav-strip-wrapper { display: none; }
+      .hamburger { display: flex; }
+      :root { --strip-h: 0px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    .page-hero {
+      margin-top: calc(var(--nav-h) + var(--strip-h));
+      background:
+        linear-gradient(100deg, rgba(255,255,255,.95) 0%, rgba(255,255,255,.86) 46%, rgba(255,255,255,.62) 100%),
+        url('assets/industries-hero-bg.jpg') center/cover no-repeat;
+      border-bottom: 2px solid var(--accent);
+      padding: 46px var(--pad) 40px;
+    }
+    @media (min-width: 800px)  { .page-hero { padding: 64px var(--pad) 52px; } }
+    @media (min-width: 1200px) { .page-hero { padding: 76px var(--pad) 60px; } }
+
+    .eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+      font-size: 12px; letter-spacing: .22em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+    }
+    .eyebrow::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); }
+    .page-hero h1 {
+      font-size: 38px;
+      font-size: clamp(30px, 4.6vw, 49px);
+      font-weight: 700; line-height: 1.15; letter-spacing: -.01em;
+      color: var(--ink);
+      max-width: 20ch;
+      margin-bottom: 18px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--accent); }
+    .page-hero p {
+      font-size: 17px;
+      font-size: clamp(15.5px, 1.4vw, 17.5px);
+      line-height: 1.75; color: var(--ink-2); max-width: 66ch;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       FILTER BAR
+       ══════════════════════════════════════════════════════════ */
+    .filter-bar {
+      position: sticky;
+      top: calc(var(--nav-h) + var(--strip-h));
+      z-index: 900;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 14px var(--pad);
+      box-shadow: 0 2px 10px rgba(27,27,25,.05);
+    }
+    .search-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .search-input-row { flex: 1 1 260px; min-width: 0; }
+    .search-box {
+      width: 100%;
+      font-size: 14.5px; color: var(--ink);
+      padding: 11px 14px;
+      border: 1px solid var(--line-2);
+      background: var(--white);
+      transition: border-color .18s, box-shadow .18s;
+    }
+    .search-box:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-wash); outline: none; }
+    .search-box::placeholder { color: #A5A29B; }
+
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      border: 1px solid var(--line-2);
+      background: var(--white);
+      color: var(--ink-2);
+      font-size: 12.5px; font-weight: 700;
+      padding: 9px 15px;
+      cursor: pointer;
+      transition: border-color .18s, background .18s, color .18s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+    .chip.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+
+    /* ══════════════════════════════════════════════════════════
+       GRID
+       ══════════════════════════════════════════════════════════ */
+    main { padding: 34px var(--pad) 50px; }
+    @media (min-width: 800px) { main { padding: 46px var(--pad) 64px; } }
+
+    .results-info {
+      font-size: 13px; color: var(--ink-3);
+      letter-spacing: .04em;
+      margin-bottom: 20px;
+    }
+    .results-info span { color: var(--accent); font-weight: 700; }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .ind-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-1);
+      cursor: pointer;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow .22s, transform .22s, border-color .22s;
+    }
+    .ind-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); border-color: var(--accent-line); }
+    .ind-card.hidden { display: none; }
+
+    /* ── Photo banner ──
+       Drop a file into assets/industries/ named after the industry and it
+       appears here. Until then the SVG icon below shows instead, so the
+       card never looks broken. */
+    .ind-photo-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--accent-wash);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .ind-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .ind-photo-wrap.no-photo { aspect-ratio: auto; height: 92px; }
+    .ind-photo-wrap.no-photo .ind-photo { display: none; }
+
+    /* Icon: centred while there is no photo, tucked into the corner once
+       a photo is in place. */
+    .ind-icon {
+      position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+      pointer-events: none;
+    }
+    .ind-icon svg { width: 34px; height: 34px; }
+    .ind-photo-wrap:not(.no-photo) .ind-icon {
+      top: auto; right: 0; bottom: 0; left: auto;
+      width: 42px; height: 42px;
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .ind-photo-wrap:not(.no-photo) .ind-icon svg { width: 22px; height: 22px; }
+
+    .card-top { padding: 18px 20px 0; }
+    .card-title-area { min-width: 0; }
+    .ind-name {
+      font-size: 17px; font-weight: 700; color: var(--ink);
+      line-height: 1.35; margin-bottom: 9px;
+    }
+    .ind-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--accent-wash); color: var(--accent);
+      border: 1px solid var(--accent-line);
+      padding: 3px 9px;
+    }
+
+    .card-body { padding: 14px 20px 0; flex: 1; }
+    .ind-desc { font-size: 13.5px; line-height: 1.7; color: var(--ink-2); }
+
+    .services-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin: 16px 0 9px;
+    }
+    .service-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .s-pill {
+      font-size: 11.5px; font-weight: 700;
+      background: var(--paper); color: var(--ink-2);
+      border: 1px solid var(--line);
+      padding: 5px 10px;
+    }
+
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 14px 20px;
+      border-top: 1px solid var(--line);
+    }
+    .card-cta {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent); color: var(--white);
+      border: none; cursor: pointer;
+      font-size: 12px; font-weight: 700; letter-spacing: .05em;
+      padding: 10px 16px;
+      transition: background .2s;
+    }
+    .ind-card:hover .card-cta { background: var(--ink); }
+    .card-cta svg { width: 13px; height: 13px; }
+
+    .no-results {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 44px 24px;
+    }
+    .no-results.show { display: block; }
+    .no-results svg { width: 38px; height: 38px; color: var(--accent); margin-bottom: 14px; }
+    .no-results p { font-size: 14.5px; color: var(--ink-2); line-height: 1.7; }
+
+    /* ══════════════════════════════════════════════════════════
+       MODAL
+       ══════════════════════════════════════════════════════════ */
+    .modal-overlay, .contact-overlay {
+      display: none;
+      position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2000;
+      background: rgba(27,27,25,.62);
+      align-items: center; justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .modal-overlay.open, .contact-overlay.open { display: flex; }
+    .contact-overlay { z-index: 3000; }
+
+    .modal {
+      position: relative;
+      background: var(--white);
+      width: 100%; max-width: 620px;
+      max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .modal-header {
+      position: relative;
+      background: var(--ink);
+      padding: 26px 26px 22px;
+      border-bottom: 3px solid var(--accent);
+    }
+    .modal-close, .contact-box-close {
+      position: absolute; top: 13px; right: 13px;
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,.3);
+      background: transparent; color: var(--white);
+      font-size: 16px; line-height: 1; cursor: pointer;
+      z-index: 3;
+    }
+    .modal-close:hover, .contact-box-close:hover { background: var(--accent); border-color: var(--accent); }
+    .contact-box-close { border-color: var(--line-2); color: var(--ink); }
+
+    /* Modal photo banner — hidden automatically if the file is not there */
+    .modal-icon { margin-bottom: 16px; }
+    .modal-icon img {
+      width: 100%; height: auto; max-height: 220px;
+      object-fit: cover; display: block;
+    }
+    .modal-icon:empty { display: none; }
+    .modal-title { font-size: 21px; font-weight: 700; color: var(--white); line-height: 1.3; padding-right: 42px; }
+    .modal-subtitle { font-size: 13.5px; color: rgba(255,255,255,.66); line-height: 1.65; margin-top: 8px; }
+
+    .modal-body { padding: 24px 26px 26px; }
+    .modal-section { margin-bottom: 24px; }
+    .m-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .m-text { font-size: 14px; line-height: 1.75; color: var(--ink-2); }
+    .m-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .m-pill {
+      font-size: 12.5px; font-weight: 700;
+      background: var(--paper); color: var(--ink-2);
+      border: 1px solid var(--line);
+      padding: 7px 12px;
+    }
+    .m-pill.highlight { background: var(--accent); color: var(--white); border-color: var(--accent); }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: var(--white);
+      border: none; cursor: pointer;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .05em;
+      padding: 12px 20px;
+      transition: background .2s;
+    }
+    .cta-btn:hover { background: var(--ink); }
+
+    /* ── Contact popup ── */
+    .contact-box {
+      position: relative;
+      background: var(--white);
+      border-top: 3px solid var(--accent);
+      padding: 28px 24px 24px;
+      width: 100%; max-width: 460px;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .contact-box h3 { font-size: 20px; color: var(--ink); margin-bottom: 6px; padding-right: 42px; }
+    .sub-text { font-size: 13.5px; color: var(--ink-3); margin-bottom: 18px; }
+    .contact-btn {
+      display: flex; align-items: center; gap: 14px;
+      border: 1px solid var(--line);
+      padding: 13px 15px;
+      text-decoration: none; color: var(--ink);
+      margin-bottom: 10px;
+      transition: border-color .18s, background .18s;
+    }
+    .contact-btn:last-child { margin-bottom: 0; }
+    .contact-btn:hover { border-color: var(--accent); background: var(--accent-wash); }
+    .cb-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-wash);
+      color: var(--accent);
+    }
+    .cb-icon svg { width: 20px; height: 20px; }
+    .cb-phone, .cb-email { /* inherit the default .cb-icon treatment */ }
+    .cb-whatsapp { background: #25D366; border-color: #25D366; }
+    .chip.all { /* the "All Sectors" chip uses the shared .chip styling */ }
+    .cb-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+    .cb-value { font-size: 14px; color: var(--ink-2); margin-top: 3px; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER — compact bar
+       ══════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      border-top: 2px solid var(--accent);
+      padding: 12px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 6px 20px;
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(255,255,255,.62);
+    }
+    footer strong { color: var(--white); font-weight: 700; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(27,27,25,.3); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .industries-grid { grid-template-columns: 1fr; }
+      .filter-bar { padding: 12px var(--pad); }
+      .search-wrap { gap: 10px; }
+      .card-footer { flex-direction: column; align-items: stretch; }
+      .card-cta { justify-content: center; }
+      .modal-header { padding: 22px 20px 18px; }
+      .modal-body { padding: 20px; }
+      footer { justify-content: center; text-align: center; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HIRING ALERT BELL
+       Amber is used deliberately here and nowhere else on the site,
+       so it reads as a notice rather than as part of the brand palette.
+       Desktop: a pill in the right of the logo row.
+       Mobile:  a floating circle under the header (the logo row's right
+                corner is already taken by the hamburger).
+       ══════════════════════════════════════════════════════════ */
+    .hiring-bell {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #FBE7A1;
+      color: #4A3708;
+      border: 1px solid #E0BE4E;
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(224,190,78,.34);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .hiring-bell:hover {
+      background: #FDF3CB;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224,190,78,.5);
+    }
+    .hiring-bell:focus-visible { outline: 2px solid #4A3708; outline-offset: 3px; }
+
+    .hiring-bell svg {
+      width: 18px; height: 18px;
+      transform-origin: 50% 10%;
+      animation: bell-ring 2.8s ease-in-out infinite;
+    }
+    /* Expanding ring, to catch the eye without moving the button itself */
+    .hiring-bell::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
+      border: 2px solid #E0BE4E;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      animation: bell-pulse 2.8s ease-out infinite;
+    }
+
+    @keyframes bell-ring {
+      0%, 40%, 100% { transform: rotate(0deg); }
+      45% { transform: rotate(-13deg); }
+      50% { transform: rotate(11deg); }
+      55% { transform: rotate(-8deg); }
+      60% { transform: rotate(6deg); }
+      65% { transform: rotate(-3deg); }
+      70% { transform: rotate(0deg); }
+    }
+    @keyframes bell-pulse {
+      0%   { transform: scale(1);    opacity: .75; }
+      65%  { transform: scale(1.16); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hiring-bell {
+        position: fixed;
+        top: calc(var(--nav-h) + 12px);
+        right: 12px;
+        z-index: 900;
+        width: 54px; height: 54px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        gap: 0;
+      }
+      .hiring-bell .hb-text { display: none; }
+      .hiring-bell svg { width: 23px; height: 23px; }
+      .hiring-bell::after { border-radius: 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hiring-bell svg, .hiring-bell::after { animation: none; }
+      .hiring-bell::after { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <!-- Logo row -->
+  <div class="nav-logo-row">
+    <a href="index.html" class="logo-wrap">
+      <img src="assets/logo.png" alt="Batra Deepak & Associates" style="height:50px; width:auto; display:block;" />
+    </a>
+    <!-- Mobile hamburger -->
+    <a class="hiring-bell" href="career_options.html" aria-label="We are hiring — see open positions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.1-2.3 7.6-2.3 7.6h16.6S18 14.7 18 8.6Z"/><path d="M13.7 19.8a2 2 0 0 1-3.4 0"/></svg><span class="hb-text">We're Hiring</span></a>
+    <button class="hamburger" onclick="toggleMenu()" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Desktop nav strip -->
+  <div class="nav-strip-wrapper">
+    <div class="nav-strip">
+      <a href="index.html">Home</a>
+      <a href="industries-we-serve.html" class="active" aria-current="page">Industries We Serve</a>
+      <a href="utilities.html">Utilities</a>
+      <a href="career_options.html">Career Options</a>
+      <a href="knowledge-centre.html">Knowledge Centre</a>
+      <a href="voices-of-bda.html">Voices of BDA</a>
+      <a href="connect-us.html">Connect Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile slide-menu -->
+<div class="slide-menu" id="navMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="industries-we-serve.html" class="active" aria-current="page">Industries We Serve</a></li>
+    <li><a href="utilities.html">Utilities</a></li>
+    <li><a href="career_options.html">Career Options</a></li>
+    <li><a href="knowledge-centre.html">Knowledge Centre</a></li>
+    <li><a href="voices-of-bda.html">Voices of BDA</a></li>
+    <li><a href="connect-us.html">Connect Us</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="eyebrow">Industries We Serve</div>
+  <h1>Sector-Specific <em>Services</em><br>Across India</h1>
+  <p>Over three decades of domain-focused practice across India's most dynamic industries — delivering compliance, financial reporting and advisory wherever your business operates.</p>
+</section>
+
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="search-wrap">
+    <div class="search-input-row">
+      <input type="text" class="search-box" id="searchBox" placeholder="Search an industry…" oninput="handleSearch()"/>
+    </div>
+    <div class="filter-chips">
+      <button class="chip all active" onclick="filterSector('all', this)">All Sectors</button>
+      <button class="chip" onclick="filterSector('manufacturing', this)">Manufacturing</button>
+      <button class="chip" onclick="filterSector('services', this)">Services</button>
+      <button class="chip" onclick="filterSector('trade', this)">Trade &amp; Retail</button>
+      <button class="chip" onclick="filterSector('infra', this)">Infrastructure</button>
+      <button class="chip" onclick="filterSector('finance', this)">Finance</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div class="results-info" id="resultsInfo">Showing <span id="countSpan">12</span> industries</div>
+  <div class="industries-grid" id="grid">
+
+    <!-- 1. Banking & Financial Services (incl. NBFCs) -->
+    <div class="ind-card" data-sector="finance" data-name="banking nbfc finance insurance bank audit" onclick="openModal('finserv')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('finserv');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/banking-nbfc-financial-services.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 21.4h18.8"/><path d="M4.4 21.4V9.8M9.4 21.4V9.8M14.6 21.4V9.8M19.6 21.4V9.8"/><path d="M3 9.8h18L12 3.4Z"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Banking, NBFC &amp; Financial Services</div>
+          <span class="ind-tag">Finance</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Banks, NBFCs, microfinance institutions, insurance agencies and investment advisors operate under RBI, SEBI and IRDAI oversight. We conduct bank audits, statutory audits, regulatory compliance reviews, provisioning assessments and capital adequacy reporting.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Bank Audit</span>
+          <span class="s-pill">RBI Audit</span>
+          <span class="s-pill">Provisioning</span>
+          <span class="s-pill">Capital Adequacy</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 2. Healthcare -->
+    <div class="ind-card" data-sector="services" data-name="healthcare hospitals clinics medical" onclick="openModal('health')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('health');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/healthcare-pharmaceuticals.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="6.6" width="17.2" height="14.8" rx="1.5"/><path d="M8.6 6.6V3.4h6.8v3.2"/><path d="M12 10.6v6.4M8.8 13.8h6.4"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Healthcare &amp; Pharmaceuticals</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Hospitals, diagnostic centres, clinics and pharma firms operate under stringent regulatory norms. We support with audit, drug excise, GST exemptions and financial structuring for trust-run as well as private hospitals.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Trust Audit</span>
+          <span class="s-pill">GST Exemptions</span>
+          <span class="s-pill">Payroll</span>
+          <span class="s-pill">Drug Compliance</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 3. Real Estate -->
+    <div class="ind-card" data-sector="infra" data-name="real estate construction" onclick="openModal('realestate')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('realestate');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/real-estate-construction.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21.4h18"/><path d="M6 21.4V6.2h8.4v15.2"/><path d="M14.4 11h4.2v10.4"/><path d="M8.8 9.4h2.8M8.8 13h2.8M8.8 16.6h2.8"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Real Estate &amp; Construction</div>
+          <span class="ind-tag">Infrastructure</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Builders, developers and contractors face complex GST on under-construction projects, TDS obligations and project-specific P&L reporting. We provide end-to-end compliance and advisory for the real estate lifecycle.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">GST on Projects</span>
+          <span class="s-pill">TDS Compliance</span>
+          <span class="s-pill">Project Audit</span>
+          <span class="s-pill">CMA Data</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 4. Transport & Logistics -->
+    <div class="ind-card" data-sector="services" data-name="transport logistics fleet trucking" onclick="openModal('logistics')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('logistics');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/transport-logistics.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 6.6h11.2v10.2H2.6Z"/><path d="M13.8 10.2h4l3.6 3.4v3.2h-7.6Z"/><circle cx="7" cy="18.6" r="1.9"/><circle cx="17.4" cy="18.6" r="1.9"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Transport &amp; Logistics</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Trucking companies, courier firms and logistics aggregators benefit from our work in GTA GST provisions, vehicle depreciation planning, fuel ITC claims and cross-state compliance management.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">GTA GST</span>
+          <span class="s-pill">ITC Claims</span>
+          <span class="s-pill">Depreciation</span>
+          <span class="s-pill">Compliance</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 5. Manufacturing -->
+    <div class="ind-card" data-sector="manufacturing" data-name="manufacturing" onclick="openModal('mfg')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('mfg');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/manufacturing-production.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 21.4h18.8"/><path d="M3.6 21.4V10.6l5.2 3.4V10.6l5.2 3.4V10.6l5.2 3.4v7.4"/><path d="M3.6 10.6 4.4 3.4h3.6l.8 7.2"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Manufacturing &amp; Production</div>
+          <span class="ind-tag">Manufacturing</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">From small-scale units to mid-size manufacturers across steel, textiles, plastics, chemicals and engineering goods — we handle statutory audits, GST compliance, cost audits and working capital assessments.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Statutory Audit</span>
+          <span class="s-pill">Cost Audit</span>
+          <span class="s-pill">GST Advisory</span>
+          <span class="s-pill">Transfer Pricing</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 6. Trading -->
+    <div class="ind-card" data-sector="trade" data-name="trading retail wholesale" onclick="openModal('trading')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('trading');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/trading-retail-wholesale.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 3.6h2.8l2.4 11.6h9.8l2.2-8.4H6.2"/><circle cx="9.4" cy="19.4" r="1.6"/><circle cx="16.8" cy="19.4" r="1.6"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Trading, Retail &amp; Wholesale</div>
+          <span class="ind-tag">Trade &amp; Retail</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">From kirana stores to large-format retailers and wholesale distributors, we ensure accurate books, timely GST returns, stock reconciliations and structured tax compliance.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Bookkeeping</span>
+          <span class="s-pill">GST Filing</span>
+          <span class="s-pill">Stock Audit</span>
+          <span class="s-pill">Tax Planning</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 7. Education -->
+    <div class="ind-card" data-sector="services" data-name="education schools colleges coaching" onclick="openModal('edu')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('edu');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/education-coaching-institutes.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4 22 8.4l-10 5-10-5Z"/><path d="M6.4 10.8v5.4c0 1.6 2.5 3 5.6 3s5.6-1.4 5.6-3v-5.4"/><path d="M21 9v5.6"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Education &amp; Coaching Institutes</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Schools, universities, coaching academies and vocational institutes need audit under the Income Tax Act's provisions for educational trusts, FCRA compliance and fee-structure analysis.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Trust Audit</span>
+          <span class="s-pill">12A / 80G</span>
+          <span class="s-pill">FCRA</span>
+          <span class="s-pill">Fee Audit</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 8. Startups & MSMEs -->
+    <div class="ind-card" data-sector="services" data-name="startup msme small business" onclick="openModal('startup')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('startup');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/startups-msmes.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6c3.2 2.4 5 6 5 9.8l-2.4 4.4H9.4L7 12.4C7 8.6 8.8 5 12 2.6Z"/><circle cx="12" cy="10.2" r="2.1"/><path d="M9.4 16.8 7 21.4l3.6-1.4M14.6 16.8 17 21.4l-3.6-1.4"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Startups &amp; MSMEs</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Early-stage startups and growing MSMEs need lean, reliable financial systems. We handle Udyam registration, startup India tax benefits under Sec 80-IAC, pitch-deck financials and seed funding compliance.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Udyam Registration</span>
+          <span class="s-pill">Sec 80-IAC</span>
+          <span class="s-pill">Pitch Financials</span>
+          <span class="s-pill">ROC Filing</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 9. Hospitality -->
+    <div class="ind-card" data-sector="services" data-name="hotel hospitality restaurant tourism" onclick="openModal('hotel')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('hotel');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/hospitality-tourism.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 21.4h18.8"/><path d="M4.6 21.4V3.6h10.8v17.8"/><path d="M15.4 10.4h4v11"/><path d="M7.4 7h1.6M11 7h1.6M7.4 10.6h1.6M11 10.6h1.6M7.4 14.2h1.6M11 14.2h1.6"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Hospitality &amp; Tourism</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Hotels, resorts, restaurants and travel agencies deal with multi-rate GST slabs, seasonal cash flows and high payroll loads. We cover F&amp;B cost audits, revenue audits and hospitality-specific tax compliance.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Revenue Audit</span>
+          <span class="s-pill">F&amp;B Cost Audit</span>
+          <span class="s-pill">GST Multi-Rate</span>
+          <span class="s-pill">Payroll</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 10. IT & Technology -->
+    <div class="ind-card" data-sector="services" data-name="it software technology digital" onclick="openModal('it')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('it');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/it-technology-firms.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="4.4" width="18.4" height="12.4" rx="1.5"/><path d="M2 20.4h20"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">IT &amp; Technology Firms</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Software companies, SaaS platforms and IT service providers require transfer pricing documentation, export-related tax benefits under STPI/SEZ and ESOP accounting under Ind AS.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Transfer Pricing</span>
+          <span class="s-pill">SEZ / STPI</span>
+          <span class="s-pill">ESOP Accounting</span>
+          <span class="s-pill">Export Refunds</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 11. Agriculture & Agro-Processing -->
+    <div class="ind-card" data-sector="manufacturing" data-name="agriculture agro food processing" onclick="openModal('agri')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('agri');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/agriculture-agro-processing.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.4V8.6"/><path d="M12 12.4c-2.6 0-4.4-1.8-4.4-4.4 2.6 0 4.4 1.8 4.4 4.4ZM12 12.4c2.6 0 4.4-1.8 4.4-4.4-2.6 0-4.4 1.8-4.4 4.4Z"/><path d="M12 7c-2 0-3.4-1.4-3.4-3.4C10.6 3.6 12 5 12 7Zm0 0c2 0 3.4-1.4 3.4-3.4C13.4 3.6 12 5 12 7Z"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">Agriculture &amp; Agro-Processing</div>
+          <span class="ind-tag">Manufacturing</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Farmers, agro-processing units, food manufacturers and cold-chain operators benefit from our agricultural income tax planning, GST nil-rated goods compliance and subsidy accounting under government schemes.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">Agri Income Tax</span>
+          <span class="s-pill">Nil-Rate GST</span>
+          <span class="s-pill">Subsidy Accounts</span>
+          <span class="s-pill">Audit</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <!-- 12. NGOs & Trusts -->
+    <div class="ind-card" data-sector="services" data-name="ngo trust society charitable" onclick="openModal('ngo')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('ngo');}">
+      <div class="ind-photo-wrap no-photo">
+          <img class="ind-photo" src="assets/industries/ngos-trusts-societies.jpg" alt="" loading="lazy" onerror="indPhotoFallback(this)" onload="indPhotoLoaded(this)" />
+          <span class="ind-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11.4 7.4 8.6 10.2a2 2 0 0 0 0 2.8 2 2 0 0 0 2.8 0l1.4-1.4 3.4 3.4a1.9 1.9 0 0 1-2.7 2.7l-.7-.7"/><path d="M2.6 12.6 6.4 8.8a3 3 0 0 1 4.2 0"/><path d="M21.4 12.6 17.6 8.8a3 3 0 0 0-4.2 0"/><path d="m12.8 17 1.6 1.6a1.9 1.9 0 0 0 2.7-2.7"/></svg></span>
+        </div>
+        <div class="card-top"><div class="card-title-area">
+          <div class="ind-name">NGOs, Trusts &amp; Societies</div>
+          <span class="ind-tag">Services</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="ind-desc">Charitable trusts, welfare societies and NGOs must comply with strict fund utilisation norms and donor reporting. We handle 12A/80G registrations, FCRA annual returns, CSR fund audits and grant reconciliations.</div>
+        <div class="services-label">Key Services</div>
+        <div class="service-pills">
+          <span class="s-pill">12A / 80G</span>
+          <span class="s-pill">FCRA Returns</span>
+          <span class="s-pill">CSR Audit</span>
+          <span class="s-pill">Grant Reconciliation</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="card-cta" tabindex="-1">Know More<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+      </div>
+    </div>
+
+    <div class="no-results" id="noResults">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.6" cy="10.6" r="6.8"/><path d="m15.6 15.6 4.8 4.8"/></svg>
+      <p>No industries found for "<span id="searchTerm"></span>".<br>Try a different keyword or browse all sectors.</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-icon" id="mIcon"></div>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-subtitle" id="mSubtitle"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="m-label">Our Approach</div>
+        <div class="m-text" id="mApproach"></div>
+      </div>
+      <div class="modal-section">
+        <div class="m-label">Services We Offer</div>
+        <div class="m-pills" id="mServices"></div>
+      </div>
+      <div class="modal-section">
+        <div class="m-label">Typical Clients</div>
+        <div class="m-text" id="mClients"></div>
+      </div>
+      <button class="cta-btn" onclick="openContactPopup()">Book Appointment<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12h14"/><path d="m13 6.4 5.6 5.6L13 17.6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT POPUP -->
+<div class="contact-overlay" id="contactOverlay" onclick="closeContactOutside(event)">
+  <div class="contact-box">
+    <button class="contact-box-close" onclick="closeContactPopup()">✕</button>
+    <h3>Get in Touch</h3>
+    <p class="sub-text">Choose how you'd like to connect with us</p>
+
+    <a class="contact-btn" href="tel:+917828780780">
+      <div class="cb-icon cb-phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg></div>
+      <div>
+        <div class="cb-label">Call Us</div>
+        <div class="cb-value">+91 78287 80780</div>
+      </div>
+    </a>
+
+    <a class="contact-btn" href="https://wa.me/917828780780?text=Hello%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" rel="noopener">
+      <div class="cb-icon cb-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      </div>
+      <div>
+        <div class="cb-label">WhatsApp</div>
+        <div class="cb-value">+91 78287 80780 — Chat with us instantly</div>
+      </div>
+    </a>
+
+    <a class="contact-btn" href="mailto:frontdesk0.bda@gmail.com">
+      <div class="cb-icon cb-email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1.6"/><path d="m2.6 6 9.4 6.6L21.4 6"/></svg></div>
+      <div>
+        <div class="cb-label">Email Us</div>
+        <div class="cb-value">frontdesk0.bda@gmail.com</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span><strong>Batra Deepak &amp; Associates</strong> · Chartered Accountants</span>
+  <span>&copy; <span id="year">2026</span> · All rights reserved</span>
+</footer>
+
+<script>
+  /* ── NAV ── */
+  function toggleMenu() {
+    const m = document.getElementById('navMenu');
+    const b = document.getElementById('menuBtn');
+    const open = m.classList.toggle('open');
+    b.classList.toggle('open', open);
+  }
+  document.addEventListener('click', e => {
+    const navEl = document.getElementById('mainNav');
+    const menu = document.getElementById('navMenu');
+    const btn = document.getElementById('menuBtn');
+    if (!navEl.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+    }
+  });
+  /* Nav scroll shadow */
+  const mainNav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    mainNav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ── INDUSTRY PHOTOS ──
+     Drop a file into assets/industries/ named after the industry, e.g.
+     assets/industries/real-estate-construction.jpg
+     .jpg is tried first, then .png. If neither is there the card falls back
+     to its line icon, so the page never shows a broken image. */
+  function indSlug(name) {
+    return name.toLowerCase().replace(/&/g, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+  function indPhotoFallback(img) {
+    if (img.src.slice(-4) === '.jpg') { img.src = img.src.slice(0, -4) + '.png'; return; }
+    img.closest('.ind-photo-wrap').classList.add('no-photo');
+  }
+  function indPhotoLoaded(img) {
+    img.closest('.ind-photo-wrap').classList.remove('no-photo');
+  }
+
+  /* ── FILTER ── */
+  function filterSector(sector, btn) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('searchBox').value = '';
+    applyFilters(sector, '');
+  }
+  function handleSearch() {
+    const q = document.getElementById('searchBox').value.trim().toLowerCase();
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    document.querySelector('.chip.all').classList.add('active');
+    applyFilters('all', q);
+  }
+  function applyFilters(sector, query) {
+    const cards = document.querySelectorAll('.ind-card');
+    let visible = 0;
+    cards.forEach(c => {
+      const s = c.dataset.sector;
+      // Match the hidden keywords AND the visible text, so a search for a
+      // term that appears in the description (e.g. "FCRA") finds the card.
+      const n = (c.dataset.name + ' ' + c.textContent).toLowerCase();
+      const matchSector = sector === 'all' || s === sector;
+      const matchQuery  = !query || n.includes(query);
+      if (matchSector && matchQuery) { c.classList.remove('hidden'); visible++; }
+      else { c.classList.add('hidden'); }
+    });
+    document.getElementById('countSpan').textContent = visible;
+    const nr = document.getElementById('noResults');
+    if (visible === 0) { nr.classList.add('show'); document.getElementById('searchTerm').textContent = query || sector; }
+    else { nr.classList.remove('show'); }
+  }
+
+  /* ── MODAL DATA ── */
+  const modals = {
+    finserv: {
+      title: 'Banking, NBFC & Financial Services',
+      subtitle: 'Bank Audit · RBI Audit · Provisioning · SEBI · Capital Adequacy',
+      approach: 'Banks and NBFCs are subject to RBI\'s prudential norms including NPA provisioning, capital adequacy ratios and Know Your Customer compliance. We conduct bank audits, statutory audits under the Companies Act as well as RBI-specific compliance reviews, and assist with SEBI-mandated disclosures for financial intermediaries.',
+      services: ['Bank Audit','NBFC Statutory Audit','NPA Provisioning','Capital Adequacy','SEBI Compliance','KYC Audit','Insurance Broking Audit','MIS & Reporting'],
+      clients: 'Scheduled commercial banks (branch audits), NBFCs, microfinance companies, chit fund operators, insurance agents, mutual fund distributors and financial advisory firms.'
+    },
+    health: {
+      title: 'Healthcare & Pharmaceuticals',
+      subtitle: 'Trust Audit · GST · Payroll · Compliance',
+      approach: 'Healthcare entities operate in a partially GST-exempt environment with stringent drug licensing, TDS on professional fees and complex payroll for doctors and paramedics. We ensure exemption eligibility is correctly claimed, 12A/80G status is maintained and accounts are ready for NABH or bank scrutiny.',
+      services: ['Hospital Audit','Trust / Society Audit','GST Exemption Claims','Doctor Payroll','Drug Licence Compliance','12A / 80G','Health Sector Advisory'],
+      clients: 'Private hospitals, nursing homes, diagnostic labs, dental clinics, physiotherapy centres, pharma distributors and medical device dealers.'
+    },
+    realestate: {
+      title: 'Real Estate & Construction',
+      subtitle: 'GST · Project Audit · TDS · Advisory',
+      approach: 'Real estate is one of India\'s most compliance-intensive sectors. We handle GST on under-construction vs. ready-to-move properties, JDA taxation, builder-buyer agreement reviews, project-level P&L and construction contractor compliance — helping developers stay clean and bankable.',
+      services: ['GST on Projects','JDA Advisory','TDS on Property','Project Audit','Bank CMA Data','Valuation','Developer Compliance','ROC / RERA'],
+      clients: 'Residential builders, commercial developers, civil contractors, interior design firms, property management companies and colonisers.'
+    },
+    logistics: {
+      title: 'Transport & Logistics',
+      subtitle: 'GTA GST · ITC · Depreciation · Compliance',
+      approach: 'Goods Transport Agencies have unique GST treatment — RCM applicability, exemptions and ITC restrictions. We map every vehicle in a fleet for depreciation, handle cross-state e-way bill compliance and ensure fuel and repair ITC is correctly claimed or blocked as per rules.',
+      services: ['GTA GST Advisory','RCM Compliance','ITC Mapping','Fleet Depreciation','E-way Bill Compliance','Multi-state GST','Driver Payroll'],
+      clients: 'Road transport operators, courier companies, last-mile delivery startups, warehousing firms and goods brokers.'
+    },
+    mfg: {
+      title: 'Manufacturing & Production',
+      subtitle: 'Audit · Tax · Cost Compliance · Advisory',
+      approach: 'We work across the manufacturing cycle — from raw material procurement to finished goods — to ensure every GST credit is claimed, every cost is tracked and every statutory obligation is met. Our team handles COGS accounting, excise legacy credits and CMA data preparation for working capital financing.',
+      services: ['Statutory Audit','Internal Audit','Cost Audit','GST Advisory','Transfer Pricing','CMA Data','Factory Compliance','Depreciation Planning'],
+      clients: 'Steel re-rollers, textile mills, plastic moulders, chemical manufacturers, engineering goods units, food processing factories and packaging companies.'
+    },
+    trading: {
+      title: 'Trading, Retail & Wholesale',
+      subtitle: 'GST · Bookkeeping · Stock Audit · Tax',
+      approach: 'Traders need fast, accurate books and watertight GST compliance. We provide monthly bookkeeping, GST reconciliation between GSTR-2B and purchase registers, stock audit and turnover-based tax planning — keeping books clean and margins protected.',
+      services: ['Monthly Bookkeeping','GST Filing & Reconciliation','Stock Audit','Turnover Tax Planning','Trade Credit Advisory','Vendor TDS','Profitability Analysis'],
+      clients: 'FMCG distributors, electronics retailers, hardware wholesalers, auto parts traders, cloth merchants, online sellers and kirana chains.'
+    },
+    edu: {
+      title: 'Education & Coaching Institutes',
+      subtitle: '12A · 80G · FCRA · Fee Audit',
+      approach: 'Educational institutions, whether private schools or competitive exam coaching centres, have compliance needs around trust registration, GST exemption on educational services and regulated fee structures. We assist in 12A/80G status maintenance, FCRA returns for foreign-funded institutions and fee audits.',
+      services: ['Trust Registration','12A / 80G Filing','FCRA Annual Return','Fee Structure Audit','Employee Provident Fund','GST on Coaching','Income Tax Filing'],
+      clients: 'Schools, colleges, universities, CA / engineering coaching centres, vocational training institutes and skill development organisations.'
+    },
+    startup: {
+      title: 'Startups & MSMEs',
+      subtitle: 'Udyam · Sec 80-IAC · Funding Compliance',
+      approach: 'Growing businesses need financial systems that scale with them. We handle Udyam registration, equity and employee compensation structuring, pitch-deck financials for bank and investor submissions, and routine compliance — covering GST, ROC and statutory audit obligations.',
+      services: ['Udyam Registration','Sec 80-IAC Benefit','ROC Filings','ESOP Planning','Investor-ready Financials','GST Registration','Statutory Audit','Director KYC'],
+      clients: 'Tech startups, D2C brands, manufacturing MSMEs, service companies, first-time entrepreneurs and businesses seeking bank loans or equity funding.'
+    },
+    hotel: {
+      title: 'Hospitality & Tourism',
+      subtitle: 'Revenue Audit · F&B Cost · GST Multi-Rate',
+      approach: 'Multi-rate GST (5%, 12%, 18% depending on tariff and services), seasonal revenue swings and high payroll make hospitality one of the more complex sectors for compliance. We cover F&B cost audits, per-room-night revenue analysis and structured payroll management for hospitality clients.',
+      services: ['Revenue Audit','F&B Cost Audit','GST Multi-Rate Filing','Payroll Management','TDS on Rent','Hotel Licence Compliance','MIS Reporting'],
+      clients: 'Hotels, resorts, guesthouses, restaurants, cloud kitchens, travel agencies, tour operators and event management companies.'
+    },
+    it: {
+      title: 'IT & Technology Firms',
+      subtitle: 'Transfer Pricing · SEZ · ESOP · Export Refunds',
+      approach: 'Technology businesses exporting software services are eligible for significant tax benefits — but claiming them requires documentation. We handle STPI/SEZ-unit audits, transfer pricing documentation for group companies, ESOP accounting under Ind AS and GST export refunds on zero-rated supplies.',
+      services: ['Transfer Pricing','STPI / SEZ Audit','ESOP Accounting','GST Export Refunds','Form 15CA / CB','ROC Compliance','Startup Tax Benefits'],
+      clients: 'Software development firms, SaaS companies, IT outsourcing firms, app development agencies, digital marketing firms and e-commerce technology providers.'
+    },
+    agri: {
+      title: 'Agriculture & Agro-Processing',
+      subtitle: 'Agri Tax · NIL GST · Subsidy · Audit',
+      approach: 'Agricultural income enjoys tax exemption in India, but the boundary between agricultural and non-agricultural income is frequently contested. We assist farmers and agro-processors in correct income classification, nil-rated GST on raw produce, and accurate accounting of government subsidies and APMC levies.',
+      services: ['Agricultural Income Planning','NIL-Rated GST Filing','Subsidy Accounting','APMC Compliance','Food Processing Audit','FSSAI Advisory','Export Documentation'],
+      clients: 'Farmers, agro-processing units, cold chain operators, flour mills, oil mills, food packaging companies and agri-input dealers.'
+    },
+    ngo: {
+      title: 'NGOs, Trusts & Societies',
+      subtitle: '12A · 80G · FCRA · CSR Audit',
+      approach: 'Charitable organisations must demonstrate that 85% of income is applied to their stated objectives each year, failing which tax implications arise. We ensure fund utilisation reporting is correct, FCRA receipts and payments are meticulously tracked, and CSR fund utilisation certificates are issued for corporate donors.',
+      services: ['12A / 80G Registration','FCRA Annual Return','CSR Audit & Certificate','Utilisation Certification','Donor Reporting','Trust Deed Advisory','IT Exemption Filing'],
+      clients: 'Registered charities, welfare trusts, cooperative societies, clubs, religious institutions and companies receiving CSR funds.'
+    }
+  };
+
+  function openModal(id) {
+    const d = modals[id];
+    if (!d) return;
+    // Photo banner — falls back to .png, then hides itself if neither exists
+    const mIcon = document.getElementById('mIcon');
+    mIcon.innerHTML = '';
+    const slug = indSlug(d.title);
+    const img = document.createElement('img');
+    img.alt = '';
+    img.onerror = function () {
+      if (this.src.slice(-4) === '.jpg') { this.src = 'assets/industries/' + slug + '.png'; }
+      else { mIcon.innerHTML = ''; }
+    };
+    img.src = 'assets/industries/' + slug + '.jpg';
+    mIcon.appendChild(img);
+
+    document.getElementById('mTitle').textContent    = d.title;
+    document.getElementById('mSubtitle').textContent = d.subtitle;
+    document.getElementById('mApproach').textContent = d.approach;
+    document.getElementById('mClients').textContent  = d.clients;
+    const sp = document.getElementById('mServices');
+    sp.innerHTML = '';
+    d.services.forEach((s, i) => {
+      const p = document.createElement('span');
+      p.className = 'm-pill' + (i < 2 ? ' highlight' : '');
+      p.textContent = s;
+      sp.appendChild(p);
+    });
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+  /* ── CONTACT POPUP ── */
+  function openContactPopup() {
+    document.getElementById('contactOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeContactPopup() {
+    document.getElementById('contactOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeContactOutside(e) {
+    if (e.target === document.getElementById('contactOverlay')) closeContactPopup();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeContactPopup(); } });
+
+  /* Count the cards that are actually on the page rather than trusting a
+     hardcoded number, which drifts every time an industry is added. */
+  document.getElementById('countSpan').textContent =
+    document.querySelectorAll('.ind-card').length;
+
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

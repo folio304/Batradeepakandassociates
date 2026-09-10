@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Batra Deepak &amp; Associates | Chartered Accountants, Delhi &amp; Raipur</title>
+  <meta name="description" content="Chartered Accountants since 1989. Audit and assurance, taxation, corporate law, transaction advisory and management consulting, from offices across seven cities in India." />
+  <link rel="canonical" href="https://bdaca.com/" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Batra Deepak &amp; Associates | Chartered Accountants" />
+  <meta property="og:description" content="Chartered Accountants since 1989 — audit, taxation, corporate law and advisory across seven cities in India." />
+  <meta property="og:url" content="https://bdaca.com/" />
+  <meta property="og:image" content="https://bdaca.com/assets/hero_bg_3.jpg" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0D7XWQZYL6"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0D7XWQZYL6');
+  </script>
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       TOKENS — oxblood burgundy + graphite.
+       Identical to knowledge-centre, connect-us and utilities.
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      --ink:        #1B1B19;
+      --ink-2:      #33332F;
+      --ink-3:      #5A5A54;
+
+      /* ── ACCENT — change these four lines to reskin the site ── */
+      --accent:      #6E2436;
+      --accent-2:    #8A3247;
+      --accent-wash: rgba(110,36,54,.07);
+      --accent-line: rgba(110,36,54,.26);
+
+      --white:      #ffffff;
+      --paper:      #F2F2EF;
+      --paper-2:    #E7E7E2;
+
+      --line:       rgba(27,27,25,.14);
+      --line-2:     rgba(27,27,25,.24);
+
+      --shadow-1:   0 1px 2px rgba(27,27,25,.06);
+      --shadow-2:   0 6px 20px rgba(27,27,25,.11);
+
+      --pad:        20px;
+      --nav-h:      64px;
+    }
+
+    @media (min-width: 600px)  { :root { --pad: 32px; } }
+    @media (min-width: 1000px) { :root { --pad: 44px; } }
+    @media (min-width: 1400px) { :root { --pad: 56px; } }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 116px; }
+
+    body {
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--paper);
+      color: var(--ink-2);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    button, input, select, textarea { font-family: inherit; }
+
+    /* Word-style justification — spaces stretch, words are never split */
+    .section-desc, .service-desc, .pillar-desc, .why-desc, .modal-desc {
+      text-align: justify; text-justify: inter-word;
+      -webkit-hyphens: none; hyphens: none; overflow-wrap: break-word;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(27,27,25,.05);
+    }
+    nav.scrolled { box-shadow: 0 2px 14px rgba(27,27,25,.10); }
+
+    .nav-logo-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad); height: var(--nav-h);
+    }
+    .logo-wrap { display: flex; align-items: center; line-height: 1; }
+    .logo-image { height: 44px; width: auto; display: block; }
+
+    .nav-strip-wrapper { border-top: 1px solid var(--line); background: var(--white); }
+    .nav-strip {
+      display: flex; align-items: center; justify-content: center;
+      flex-wrap: wrap; gap: 2px; padding: 4px var(--pad);
+    }
+    .nav-strip a {
+      color: var(--ink-2); text-decoration: none;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 6px 14px; white-space: nowrap;
+      transition: color .18s, background .18s;
+    }
+    .nav-strip a:hover { color: var(--accent); background: var(--accent-wash); }
+    .nav-strip a.active { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
+
+    .menu-btn {
+      display: none;
+      width: 42px; height: 42px;
+      border: 1.5px solid var(--line-2); background: transparent; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      border-radius: 4px;
+      transition: background .2s, border-color .2s;
+    }
+    .menu-btn:hover { background: var(--accent-wash); border-color: var(--accent); }
+    .menu-btn span {
+      display: block; width: 18px; height: 1.5px; background: var(--ink);
+      transition: transform .25s, opacity .2s;
+    }
+    .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .menu-btn.open span:nth-child(2) { opacity: 0; }
+    .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-dropdown {
+      position: fixed; top: var(--nav-h); right: 0;
+      width: 280px; width: min(280px, 82vw);
+      background: var(--white);
+      box-shadow: -4px 0 24px rgba(27,27,25,.16);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+      z-index: 1200;
+    }
+    .nav-dropdown.open { transform: translateX(0); }
+    .nav-dropdown a {
+      display: block; padding: 15px 22px;
+      text-decoration: none; color: var(--ink-2); font-size: 14.5px;
+      border-bottom: 1px solid var(--line);
+      transition: background .15s, color .15s, padding-left .15s;
+    }
+    .nav-dropdown a:last-child { border-bottom: none; }
+    .nav-dropdown a:hover { background: var(--accent-wash); color: var(--accent); padding-left: 27px; }
+    .nav-icon { display: none; }
+
+    @media (max-width: 980px) {
+      .nav-strip-wrapper { display: none; }
+      .menu-btn { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    .hero {
+      margin-top: calc(var(--nav-h) + 33px);
+      background: var(--white);
+      border-bottom: 2px solid var(--accent);
+      position: relative;
+    }
+    @media (max-width: 980px) { .hero { margin-top: var(--nav-h); } }
+    .hero-grid { display: none; }
+
+    .hero-photo-wrap { width: 100%; line-height: 0; }
+    .hero-photo { width: 100%; height: auto; display: block; }
+
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      padding: 20px var(--pad);
+      background: var(--white);
+      border-top: 1px solid var(--line);
+    }
+
+    .btn-primary, .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .05em;
+      padding: 11px 20px;
+      border: 1px solid transparent;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: var(--ink); }
+    .btn-outline { background: var(--white); color: var(--ink); border-color: var(--line-2); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-wash); }
+
+    /* ══════════════════════════════════════════════════════════
+       TICKER
+       ══════════════════════════════════════════════════════════ */
+    .ticker-strip {
+      background: var(--ink);
+      overflow: hidden;
+      padding: 11px 0;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-flex; align-items: center;
+      animation: ticker 34s linear infinite;
+    }
+    .ticker-inner span {
+      color: rgba(255,255,255,.72);
+      font-size: 11.5px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      position: relative;
+      padding: 0 26px;
+    }
+    .ticker-inner span::after {
+      content: ''; position: absolute; right: -2px; top: 50%;
+      width: 4px; height: 4px; margin-top: -2px;
+      background: var(--accent-2);
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .ticker-inner { animation: none; } }
+
+    /* ══════════════════════════════════════════════════════════
+       SHARED SECTION FURNITURE
+       ══════════════════════════════════════════════════════════ */
+    .about, .services, .why { padding: 44px var(--pad); }
+    @media (min-width: 800px)  { .about, .services, .why { padding: 58px var(--pad); } }
+    @media (min-width: 1200px) { .about, .services, .why { padding: 68px var(--pad); } }
+
+    .about    { background: var(--paper); }
+    .services { background: var(--paper-2); border-top: 1px solid var(--line); }
+    .why      { background: var(--paper); border-top: 1px solid var(--line); }
+
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+      font-size: 11.5px; letter-spacing: .18em; font-weight: 700;
+      color: var(--accent); text-transform: uppercase;
+      min-height: 14px;
+    }
+    .section-eyebrow::before { content: ''; display: block; width: 26px; height: 2px; background: var(--accent); }
+    .section-title {
+      font-size: 27px;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700; line-height: 1.25; color: var(--ink);
+    }
+    .section-title span { color: var(--accent); }
+    .gold-rule { width: 52px; height: 3px; background: var(--accent); margin: 16px 0 0; }
+    .section-desc {
+      font-size: 15.5px; color: var(--ink-2); line-height: 1.72;
+      max-width: 74ch;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       ABOUT
+       ══════════════════════════════════════════════════════════ */
+    .about-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .about-inner { grid-template-columns: 1fr; gap: 32px; } }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .pillar {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      padding: 17px 18px;
+      box-shadow: var(--shadow-1);
+    }
+    .pillar-title { font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 7px; line-height: 1.4; }
+    .pillar-desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+
+    .about-text { min-width: 0; }
+    .about-visual { position: relative; }
+    .about-img-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 12px;
+      box-shadow: var(--shadow-1);
+    }
+    .about-img { width: 100%; height: auto; display: block; }
+    .about-monogram {
+      display: none;
+      align-items: center; justify-content: center;
+      min-height: 230px;
+      background: var(--ink); color: var(--white);
+      font-size: 46px; font-weight: 700; letter-spacing: .12em;
+    }
+    .about-badge {
+      background: var(--accent); color: var(--white);
+      padding: 16px 20px;
+      margin-top: -1px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .about-badge-num { font-size: 30px; font-weight: 700; line-height: 1; }
+    .about-badge-label { font-size: 12px; line-height: 1.45; letter-spacing: .05em; }
+
+    /* ══════════════════════════════════════════════════════════
+       SERVICES
+       ══════════════════════════════════════════════════════════ */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--accent);
+      padding: 22px 21px 19px;
+      cursor: pointer;
+      box-shadow: var(--shadow-1);
+      display: flex; flex-direction: column;
+      transition: box-shadow .22s, transform .22s, border-color .22s;
+    }
+    .service-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+    .service-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .service-num {
+      font-size: 11.5px; font-weight: 700; letter-spacing: .12em;
+      color: var(--accent); margin-bottom: 11px;
+    }
+    .service-title { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 10px; }
+    .service-desc { font-size: 14px; color: var(--ink-2); line-height: 1.7; flex: 1; }
+    .service-arrow {
+      display: inline-block; margin-top: 16px; padding-top: 13px;
+      border-top: 1px solid var(--line);
+      font-size: 12px; font-weight: 700; letter-spacing: .06em;
+      color: var(--accent);
+    }
+    .service-card:hover .service-arrow { color: var(--ink); }
+
+    /* ══════════════════════════════════════════════════════════
+       WHY US
+       ══════════════════════════════════════════════════════════ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 24px 22px;
+      box-shadow: var(--shadow-1);
+    }
+    .why-num { font-size: 38px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .why-title { font-size: 15.5px; font-weight: 700; color: var(--ink); margin: 12px 0 8px; }
+    .why-desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════ */
+    .footer-nav { background: var(--ink); border-top: 2px solid var(--accent); }
+    .footer-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+      gap: 34px;
+      padding: 40px var(--pad) 32px;
+    }
+    @media (max-width: 1000px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; } }
+    @media (max-width: 620px)  { .footer-top { grid-template-columns: 1fr; gap: 26px; } }
+
+    .footer-brand h4, .footer-col h4 {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 14px;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,.62);
+      font-size: 12.5px; line-height: 1.75;
+      text-align: justify; text-justify: inter-word;
+      -webkit-hyphens: none; hyphens: none;
+    }
+    .footer-brand p + p { margin-top: 12px; }
+
+    .footer-col a, .footer-link {
+      display: block;
+      color: rgba(255,255,255,.66);
+      font-size: 13px; line-height: 1.6;
+      text-decoration: none;
+      padding: 5px 0;
+      cursor: pointer;
+      transition: color .16s, padding-left .16s;
+    }
+    .footer-col a:hover, .footer-link:hover { color: var(--white); padding-left: 4px; }
+    .footer-col a svg { vertical-align: middle; margin-right: 7px; }
+    .footer-col a .f-ico {
+      width: 14px; height: 14px; vertical-align: -2px; margin-right: 7px;
+      color: var(--accent-2);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.13);
+      padding: 12px var(--pad);
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 6px 20px;
+      font-size: 12.5px; line-height: 1.55;
+      color: rgba(255,255,255,.55);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       MODALS
+       ══════════════════════════════════════════════════════════ */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(27,27,25,.62);
+      align-items: center; justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      position: relative;
+      background: var(--white);
+      border-top: 3px solid var(--accent);
+      padding: 28px 26px 26px;
+      width: 100%; max-width: 520px;
+      max-height: 88vh; overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(27,27,25,.3);
+    }
+    .modal-close {
+      position: absolute; top: 13px; right: 13px;
+      width: 34px; height: 34px;
+      border: 1px solid var(--line-2); background: var(--white);
+      color: var(--ink); font-size: 16px; line-height: 1; cursor: pointer;
+    }
+    .modal-close:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .modal-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 9px;
+    }
+    .modal-title { font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 10px; padding-right: 40px; }
+    .modal-desc { font-size: 14px; color: var(--ink-2); line-height: 1.7; margin-bottom: 20px; }
+
+    .modal-list { list-style: none; }
+    .modal-list li {
+      position: relative;
+      padding: 10px 0 10px 22px;
+      font-size: 14px; line-height: 1.65; color: var(--ink-2);
+      border-bottom: 1px solid var(--line);
+    }
+    .modal-list li:last-child { border-bottom: none; }
+    .modal-list li::before {
+      content: ''; position: absolute; left: 0; top: 18px;
+      width: 7px; height: 7px; background: var(--accent);
+    }
+
+    .contact-rows { display: flex; flex-direction: column; gap: 10px; }
+    .contact-row {
+      display: flex; align-items: center; gap: 14px;
+      border: 1px solid var(--line);
+      padding: 13px 15px;
+      text-decoration: none; color: var(--ink);
+      transition: border-color .18s, background .18s;
+    }
+    .contact-row:hover { border-color: var(--accent); background: var(--accent-wash); }
+    .contact-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-wash);
+      color: var(--accent);
+    }
+    .contact-icon svg { width: 20px; height: 20px; }
+    .contact-text-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .contact-text-value { font-size: 14px; color: var(--ink-2); margin-top: 3px; }
+
+    /* ══════════════════════════════════════════════════════════
+       REVEAL
+       ══════════════════════════════════════════════════════════ */
+    .fade-up { opacity: 0; transform: translateY(16px); }
+    .fade-up.visible {
+      opacity: 1; transform: none;
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .stagger-1 { transition-delay: .05s; }
+    .stagger-2 { transition-delay: .10s; }
+    .stagger-3 { transition-delay: .15s; }
+    .stagger-4 { transition-delay: .20s; }
+    .stagger-5 { transition-delay: .25s; }
+    .stagger-6 { transition-delay: .30s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up, .fade-up.visible { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--paper-2); }
+    ::-webkit-scrollbar-thumb { background: rgba(27,27,25,.3); }
+
+    /* ══════════════════════════════════════════════════════════
+       MOBILE
+       ══════════════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .about, .services, .why { padding: 34px var(--pad); }
+      .services-grid, .why-grid, .about-pillars { grid-template-columns: 1fr; }
+      .footer-bottom { justify-content: center; text-align: center; }
+      .modal-box { padding: 24px 18px 22px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       HIRING ALERT BELL
+       Amber is used deliberately here and nowhere else on the site,
+       so it reads as a notice rather than as part of the brand palette.
+       Desktop: a pill in the right of the logo row.
+       Mobile:  a floating circle under the header (the logo row's right
+                corner is already taken by the hamburger).
+       ══════════════════════════════════════════════════════════ */
+    .hiring-bell {
+      position: relative;
+      display: inline-flex; align-items: center; gap: 9px;
+      background: #FBE7A1;
+      color: #4A3708;
+      border: 1px solid #E0BE4E;
+      border-radius: 100px;
+      padding: 9px 18px;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .04em;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(224,190,78,.34);
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .hiring-bell:hover {
+      background: #FDF3CB;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(224,190,78,.5);
+    }
+    .hiring-bell:focus-visible { outline: 2px solid #4A3708; outline-offset: 3px; }
+
+    .hiring-bell svg {
+      width: 18px; height: 18px;
+      transform-origin: 50% 10%;
+      animation: bell-ring 2.8s ease-in-out infinite;
+    }
+    /* Expanding ring, to catch the eye without moving the button itself */
+    .hiring-bell::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px; bottom: -1px; left: -1px;
+      border: 2px solid #E0BE4E;
+      border-radius: 100px;
+      opacity: 0;
+      pointer-events: none;
+      animation: bell-pulse 2.8s ease-out infinite;
+    }
+
+    @keyframes bell-ring {
+      0%, 40%, 100% { transform: rotate(0deg); }
+      45% { transform: rotate(-13deg); }
+      50% { transform: rotate(11deg); }
+      55% { transform: rotate(-8deg); }
+      60% { transform: rotate(6deg); }
+      65% { transform: rotate(-3deg); }
+      70% { transform: rotate(0deg); }
+    }
+    @keyframes bell-pulse {
+      0%   { transform: scale(1);    opacity: .75; }
+      65%  { transform: scale(1.16); opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (max-width: 980px) {
+      .hiring-bell {
+        position: fixed;
+        top: calc(var(--nav-h) + 12px);
+        right: 12px;
+        z-index: 900;
+        width: 54px; height: 54px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+        gap: 0;
+      }
+      .hiring-bell .hb-text { display: none; }
+      .hiring-bell svg { width: 23px; height: 23px; }
+      .hiring-bell::after { border-radius: 50%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hiring-bell svg, .hiring-bell::after { animation: none; }
+      .hiring-bell::after { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav id="mainNav">
+    <!-- Logo row (always visible) -->
+    <div class="nav-logo-row">
+      <a href="index.html" class="logo-wrap" aria-label="Batra Deepak &amp; Associates — home">
+        <img src="assets/logo.png" alt="Batra Deepak & Associates" class="logo-image">
+      </a>
+      <!-- Mobile hamburger -->
+      <a class="hiring-bell" href="career_options.html" aria-label="We are hiring — see open positions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8.6a6 6 0 1 0-12 0c0 6.1-2.3 7.6-2.3 7.6h16.6S18 14.7 18 8.6Z"/><path d="M13.7 19.8a2 2 0 0 1-3.4 0"/></svg><span class="hb-text">We're Hiring</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Desktop nav strip -->
+    <div class="nav-strip-wrapper" id="navStripWrapper">
+      <div class="nav-strip" id="navStrip">
+        <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="industries-we-serve.html">Industries We Serve</a>
+        <a href="utilities.html">Utilities</a>
+        <a href="career_options.html">Career Options</a>
+        <a href="knowledge-centre.html">Knowledge Centre</a>
+        <a href="voices-of-bda.html">Voices of BDA</a>
+        <a href="connect-us.html">Connect Us</a>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div class="nav-dropdown" id="navDropdown" role="menu">
+      <a href="index.html" role="menuitem" aria-current="page">Home</a>
+      <a href="industries-we-serve.html" role="menuitem">Industries We Serve</a>
+      <a href="utilities.html" role="menuitem">Utilities</a>
+      <a href="career_options.html" role="menuitem">Career Options</a>
+      <a href="knowledge-centre.html" role="menuitem">Knowledge Centre</a>
+      <a href="voices-of-bda.html" role="menuitem">Voices of BDA</a>
+      <a href="connect-us.html" role="menuitem">Connect Us</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-grid"></div>
+    <div class="hero-photo-wrap fade-up">
+      <img src="assets/hero_bg_3.jpg" alt="Batra Deepak &amp; Associates" class="hero-photo" />
+    </div>
+    <div class="hero-cta fade-up">
+      <button class="btn-primary" onclick="openModal('contactModal')">Book Appointment</button>
+      <a href="#services" class="btn-outline">Our Services ↓</a>
+    </div>
+  </section>
+
+  <!-- ── TICKER ── -->
+  <div class="ticker-strip" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>Management Consulting</span>
+      <span>Transaction Advisory</span>
+      <span>Audit & Assurance Service</span>
+      <span>Corporate Law</span>
+      <span>Direct Taxes</span>
+      <span>Indirect Taxes</span>
+      <span>Management Consulting</span>
+      <span>Transaction Advisory</span>
+      <span>Audit & Assurance Service</span>
+      <span>Corporate Law</span>
+      <span>Direct Taxes</span>
+      <span>Indirect Taxes</span>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-text fade-up">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2 class="section-title">A Legacy of <span>Integrity</span><br />and Ethics</h2>
+        <div class="gold-rule"></div>
+        <p class="section-desc" style="margin-top:16px;">
+  At Batra Deepak &amp; Associates, our foundation is built on professionalism, collaboration, and unwavering integrity. We believe in leading by example, working together as one team, and respecting every individual we interact with. Our approach combines a commitment to uncovering facts with the ability to provide meaningful insights that help clients make informed decisions. We foster open and honest communication, remain dedicated to the communities we serve, and uphold the highest ethical standards in everything we do. These values guide our actions and define the trust our clients place in us.
+</p>
+        <div class="about-pillars">
+          <div class="pillar">
+  <div class="pillar-title">Integrity &amp; Ethics</div>
+  <div class="pillar-desc">We uphold the highest professional and ethical standards in every engagement.</div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-title">Collaborative Excellence</div>
+  <div class="pillar-desc">We work together, combining diverse expertise to deliver the best outcomes.</div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-title">Insight-Driven Approach</div>
+  <div class="pillar-desc">We seek facts, analyse deeply, and provide practical business insights.</div>
+</div>
+
+<div class="pillar">
+  <div class="pillar-title">People &amp; Community Focus</div>
+  <div class="pillar-desc">We respect individuals, communicate openly, and remain committed to the communities we serve.</div>
+</div>
+        </div>
+      </div>
+
+      <div class="about-visual fade-up stagger-2">
+        <div class="about-img-box">
+          <img class="about-img" src="assets/monogram.jpg" alt="Batra Deepak & Associates" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <div class="about-monogram">BDA</div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">37+</div>
+          <div class="about-badge-label">Years of<br />Excellence</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="services">
+    <div class="fade-up">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Our Core <span>Services</span></h2>
+      <div class="gold-rule"></div>
+      <p class="section-desc">
+        From financial planning to statutory compliance, our team delivers precise, reliable
+        services tailored to your business needs. Click any service to learn more.
+      </p>
+    </div>
+
+    <div class="services-grid" style="margin-top: 40px;">
+
+      <div class="service-card fade-up stagger-1" onclick="openServiceModal('management-consulting')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('management-consulting');}">
+        <div class="service-num">01</div>
+        <div class="service-title">Management Consulting</div>
+        <p class="service-desc">Strategic advisory spanning business valuation, M&amp;A integration, organisational structuring and performance improvement — helping you plan, restructure and grow with confidence.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+      <div class="service-card fade-up stagger-2" onclick="openServiceModal('transaction-advisory')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('transaction-advisory');}">
+        <div class="service-num">02</div>
+        <div class="service-title">Transaction Advisory</div>
+        <p class="service-desc">End-to-end support for fundraising, deal structuring and due diligence — guiding promoters and investors through every stage of a transaction with rigorous analysis.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+      <div class="service-card fade-up stagger-3" onclick="openServiceModal('audit-assurance')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('audit-assurance');}">
+        <div class="service-num">03</div>
+        <div class="service-title">Audit &amp; Assurance Service</div>
+        <p class="service-desc">A comprehensive suite of audit services — statutory, tax, internal, forensic and operational — delivering independent assurance and actionable insights across your organisation.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+      <div class="service-card fade-up stagger-4" onclick="openServiceModal('tax-advisory')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('tax-advisory');}">
+        <div class="service-num">04</div>
+        <div class="service-title">Tax Advisory</div>
+        <p class="service-desc">Proactive tax planning combined with assessment, return filing and representation in appeals — keeping you compliant while minimising tax exposure.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+      <div class="service-card fade-up stagger-5" onclick="openServiceModal('equity-debt-finance')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('equity-debt-finance');}">
+        <div class="service-num">05</div>
+        <div class="service-title">Equity &amp; Debt Finance</div>
+        <p class="service-desc">Assistance in raising the right mix of equity and debt — from CMA data and project reports to loan syndication — backed by sound financial structuring.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+      <div class="service-card fade-up stagger-6" onclick="openServiceModal('corporate-law')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('corporate-law');}">
+        <div class="service-num">06</div>
+        <div class="service-title">Corporate Law</div>
+        <p class="service-desc">Comprehensive company law and secretarial support — from incorporation to mergers — ensuring your corporate actions are compliant and well documented.</p>
+        <span class="service-arrow">Learn More →</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── WHY US ── -->
+  <section class="why" id="why-us">
+    <div class="fade-up">
+      <div class="section-eyebrow"> </div>
+      <h2 class="section-title">The journey of Integrity since 1989</h2>
+      <div class="gold-rule"></div>
+      <p class="section-desc" style="margin-bottom: 20px;">
+        <strong>Chartered Accountants Since 1989.</strong> Batra Deepak &amp; Associates brings more than three decades of
+        expertise in Audit &amp; Assurance, Taxation, Corporate Compliance and Advisory — partnering with businesses
+        across India to navigate complexity with clarity and confidence.
+      </p>
+      <p class="section-desc">We combine the depth of a large firm with the personal attention of a boutique practice.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up stagger-1">
+        <div class="why-num">37+</div>
+        <div class="why-title">Years of Practice</div>
+        <div class="why-desc">Decades of navigating India's evolving regulatory and tax landscape.</div>
+      </div>
+      <div class="why-card fade-up stagger-2">
+        <div class="why-num">18</div>
+        <div class="why-title">Professional Partners</div>
+        <div class="why-desc">Qualified CAs, legal experts, and domain specialists in our team.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer-nav" id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+    <h4>Disclaimer</h4>
+
+    <p>
+As per ICAI guidelines, this website is intended solely for informational purposes. By accessing it, you acknowledge that you are seeking information about Batra Deepak & Associates on your own initiative and that no solicitation, advertisement, or inducement has been made by the firm.
+    </p>
+
+    <p>
+The information provided on this website should not be construed as professional advice. Readers are advised to seek appropriate professional consultation before acting on any information contained herein. Batra Deepak & Associates shall not be responsible for any actions taken based on the contents of this website.
+    </p>
+</div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <span class="footer-link" onclick="openServiceModal('management-consulting')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('management-consulting');}">Management Consulting</span>
+        <span class="footer-link" onclick="openServiceModal('transaction-advisory')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('transaction-advisory');}">Transaction Advisory</span>
+        <span class="footer-link" onclick="openServiceModal('audit-assurance')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('audit-assurance');}">Audit &amp; Assurance Service</span>
+        <span class="footer-link" onclick="openServiceModal('tax-advisory')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('tax-advisory');}">Tax Advisory</span>
+        <span class="footer-link" onclick="openServiceModal('equity-debt-finance')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('equity-debt-finance');}">Equity &amp; Debt Finance</span>
+        <span class="footer-link" onclick="openServiceModal('corporate-law')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('corporate-law');}">Corporate Law</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#services">Services We Provide</a>
+        <a href="industries-we-serve.html">Industries We Serve</a>
+        <span class="footer-link" onclick="openModal('contactModal')" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('contactModal');}">Book Appointment</span>
+        <a href="utilities.html">Utilities</a>
+        <a href="career_options.html">Career Options</a>
+        <a href="knowledge-centre.html">Knowledge Centre</a>
+        <a href="voices-of-bda.html">Voices of BDA</a>
+        <a href="connect-us.html">Connect Us</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://maps.app.goo.gl/jwzkJFExfsF6EJ599" style="line-height:1.6;"><svg class="f-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.9 7-11.2A7 7 0 0 0 5 10.3c0 5.3 7 11.2 7 11.2Z"/><circle cx="12" cy="10.1" r="2.6"/></svg>Batra Deepak and Associates, S-517,<br>2nd Floor, Shakarpur, Delhi – 110 092</a>
+        <a href="tel:+917828780780"><svg class="f-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg>+91 78287 80780</a>
+        <a href="https://wa.me/917828780780" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;vertical-align:middle;margin-right:6px;color:#25D366;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp: +91 78287 80780
+        </a>
+        <a href="mailto:frontdesk0.bda@gmail.com"><svg class="f-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1.6"/><path d="m2.6 6 9.4 6.6L21.4 6"/></svg>frontdesk0.bda@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Batra Deepak &amp; Associates. All rights reserved.</span>
+      <span>Designed with precision — like our audit work.</span>
+    </div>
+  </footer>
+
+  <!-- ── CONTACT MODAL ── -->
+  <div class="modal-overlay" id="contactModal" onclick="closeOnOverlay(event,'contactModal')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('contactModal')" aria-label="Close">✕</button>
+      <div class="modal-eyebrow">Get In Touch</div>
+      <h3 class="modal-title">Book Appointment</h3>
+      <p class="modal-desc">Reach out to us directly using any of the options below, our team typically responds within one business day.</p>
+      <div class="contact-rows">
+        <a href="tel:+917828780780" class="contact-row">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.8 4.9 1.9 1.9 0 0 1 4.7 2.8h2.8a1.9 1.9 0 0 1 1.9 1.6c.1.9.3 1.8.7 2.6a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.6 5.6l1.2-1.2a1.9 1.9 0 0 1 2-.4c.8.4 1.7.6 2.6.7a1.9 1.9 0 0 1 1.6 2Z"/></svg></div>
+          <div>
+            <div class="contact-text-label">Call Us</div>
+            <div class="contact-text-value">+91 78287 80780</div>
+          </div>
+        </a>
+        <a href="https://wa.me/917828780780" target="_blank" rel="noopener" class="contact-row">
+          <div class="contact-icon" style="background:#25D366;border-color:#25D366;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" style="width:20px;height:20px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div>
+            <div class="contact-text-label">WhatsApp</div>
+            <div class="contact-text-value">+91 78287 80780</div>
+          </div>
+        </a>
+        <a href="mailto:frontdesk0.bda@gmail.com" class="contact-row">
+          <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.4" width="18.8" height="15.2" rx="1.6"/><path d="m2.6 6 9.4 6.6L21.4 6"/></svg></div>
+          <div>
+            <div class="contact-text-label">Email</div>
+            <div class="contact-text-value">frontdesk0.bda@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICE DETAIL MODAL ── -->
+  <div class="modal-overlay" id="serviceModal" onclick="closeOnOverlay(event,'serviceModal')">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('serviceModal')" aria-label="Close">✕</button>
+      <div class="modal-eyebrow" id="serviceModalEyebrow">Our Service</div>
+      <h3 class="modal-title" id="serviceModalTitle"></h3>
+      <p class="modal-desc" id="serviceModalDesc"></p>
+      <ul class="modal-list" id="serviceModalList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // ── Mobile Menu Toggle ──
+    const menuBtn = document.getElementById('menuBtn');
+    const navDropdown = document.getElementById('navDropdown');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navDropdown.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !navDropdown.contains(e.target)) {
+        navDropdown.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        navDropdown.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', false);
+        closeModal('contactModal');
+        closeModal('serviceModal');
+      }
+    });
+
+    // ── Nav scroll shadow ──
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Scroll Fade-In ──
+    // .fade-up starts at opacity 0, so if IntersectionObserver is missing or
+    // the visitor prefers reduced motion, everything must be revealed at once —
+    // otherwise the whole page stays invisible.
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const noMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!('IntersectionObserver' in window) || noMotion) {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      fadeEls.forEach(el => observer.observe(el));
+    }
+
+    document.querySelectorAll('.hero .fade-up').forEach(el => el.classList.add('visible'));
+
+    // ── Modal Helpers ──
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeOnOverlay(e, id) {
+      if (e.target.id === id) closeModal(id);
+    }
+
+    // ── Service Details Data ──
+    const serviceDetails = {
+      "management-consulting": {
+        title: "Management Consulting",
+        eyebrow: "Service 01",
+        desc: "Strategic advisory spanning business valuation, M&A integration, organisational structuring and performance improvement — helping you plan, restructure and grow with confidence.",
+        items: [
+          "Assistance to companies migrating for their Initial Public Offer (Listing of Securities on Stock Exchange)",
+          "Assistance to Non profit Organizations for listing of their securities on the Stock Exchange ",
+          "Advisory in relation to ESG",
+          "Merger & Acquisition Integration",
+          "Valuation of Business",
+          "Business Strategy & Business Planning",
+          "Organisational Structuring & HR Management",
+          "Market Research & Demand Studies",
+          "IT Advisory & Internal Controls Assessment"
+        ]
+      },
+      "transaction-advisory": {
+        title: "Transaction Advisory",
+        eyebrow: "Service 02",
+        desc: "End-to-end support for fundraising, deal structuring and due diligence — guiding promoters and investors through every stage of a transaction with rigorous analysis.",
+        items: [
+          "Financial and commercial due diligence",
+          "Deal structuring and negotiation support",
+          "Fundraising — equity and debt",
+          "Business and share valuations",
+          "Post-acquisition integration support",
+          "Investment and project appraisal"
+        ]
+      },
+      "audit-assurance": {
+        title: "Audit & Assurance Service",
+        eyebrow: "Service 03",
+        desc: "A comprehensive suite of audit services — statutory, tax, internal, forensic and operational — delivering independent assurance and actionable insights across your organisation.",
+        items: [
+          "Statutory Audit & Tax Audit",
+          "Internal Audit ",
+          "Process Audit",
+          "Social Audit",
+          "Forensic and Investigative Audit",
+          "Stock Verification & Cost Control Analysis",
+          "Management & Performance Audit",
+          "Operation Audit and ASM"
+        ]
+      },
+      "tax-advisory": {
+        title: "Tax Advisory",
+        eyebrow: "Service 04",
+        desc: "Proactive tax planning combined with assessment, return filing and representation in appeals — keeping you compliant while minimising tax exposure.",
+        items: [
+          "Tax planning and assessment of advance tax",
+          "Filing of income tax and TDS returns",
+          "Appeals before CIT, ITAT and High Court",
+          "Handling of demand, stay and penalty matters",
+          "Survey related matters and prosecution advice",
+          "Compliance updates on current developments"
+        ]
+      },
+      "equity-debt-finance": {
+        title: "Equity & Debt Finance",
+        eyebrow: "Service 05",
+        desc: "Assistance in raising the right mix of equity and debt — from CMA data and project reports to loan syndication — backed by sound financial structuring.",
+        items: [
+          "Preparation of CMA data and project reports",
+          "Term loan and working capital finance",
+          "Loan syndication with banks and NBFCs",
+          "Equity fundraising and investor connect",
+          "Financial restructuring and refinancing",
+          "Project finance for new ventures"
+        ]
+      },
+      "corporate-law": {
+        title: "Corporate Law",
+        eyebrow: "Service 06",
+        desc: "Comprehensive company law and secretarial support — from incorporation to mergers — ensuring your corporate actions are compliant and well documented.",
+        items: [
+"Company incorporation and business structuring",
+"Drafting and vetting of Memorandum of Association (MOA) and Articles of Association (AOA)",
+"Advisory and strategic support for mergers, acquisitions, amalgamations, and corporate restructuring",
+"Preparation and filing of merger and amalgamation petitions before the High Court, Registrar of Companies (ROC), and Regional Director (RD)",
+"Drafting of Notices, Agenda, Board Meeting and General Meeting, resolutions and minutes",
+"Assistance in conducting Board Meeting,  Annual General Meetings (AGMs) and Extraordinary General Meetings (EGMs)",
+"Filing of statutory forms relating to appointment and resignation of directors, registered office changes, company name changes, and other corporate events",
+"Preparation and filing of annual returns and statutory compliance documents",
+"Maintenance of statutory registers and corporate records",
+"Ongoing corporate governance and regulatory compliance advisory" 
+
+        ]
+      }
+    };
+
+    function openServiceModal(key) {
+      const data = serviceDetails[key];
+      if (!data) return;
+      document.getElementById('serviceModalEyebrow').textContent = data.eyebrow;
+      document.getElementById('serviceModalTitle').textContent = data.title;
+      document.getElementById('serviceModalDesc').textContent = data.desc;
+      const list = document.getElementById('serviceModalList');
+      list.innerHTML = '';
+      data.items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+      openModal('serviceModal');
+    }
+  </script>
+</body>
+</html>
